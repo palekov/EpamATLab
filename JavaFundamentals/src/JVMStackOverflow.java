@@ -9,7 +9,8 @@ public class JVMStackOverflow {
     }
 
     public static void main(String[] args) {
-        JVMStackOverflow.recursivePrint(1);
+
+        JVMStackOverflow.recursivePrint(1);     //  создаем StackOverflowError
     }
 }
 
