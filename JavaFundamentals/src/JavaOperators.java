@@ -41,7 +41,6 @@ public class JavaOperators {
         System.out.println("var_a = " + var_a);     // outputs 6
         System.out.println("var_b = " + var_b);     // outputs 8
         System.out.println("var_c = " + var_c);     // outputs 3
-
         String str1, str2, str3;
         str1 = "Hello ";
         str2 = "Vasya!";
