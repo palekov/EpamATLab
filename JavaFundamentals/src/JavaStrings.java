@@ -44,36 +44,60 @@ public class JavaStrings {
         str_num = "four";
         //num_int = Integer.parseInt(str_num);            //  this is causes NumberFormatException
 
+        Integer itr = new Integer(500), ntr = null;
+        String strItr = "" + itr;                         //  converts Integer to String using '+' operator
+        String ntrItr = "" + ntr;
+        System.out.println(itr);                          //   outputs '500'
+        System.out.println(ntr);                          //   outputs 'null'
+
         int i = 1024;
         str_num = String.valueOf(i);                      //  converts int to String
         str_num = Integer.toString(i);
+        str_num = String.valueOf(null);
 
         char ch;
-        ch = "abc".charAt(1);                            //  ch = 'b'
+        ch = "abc".charAt(1);                           //  ch = 'b'
 
-        String s = "London is a capital of Great Britain";
+        String s = "LONDON is a capital of Great Britain";
         int len = s.length();                           //  len = 36
-        String s1 = s.substring(12,19);                 //  s1 = 'capital'
-        System.out.println(len);
-        System.out.println(s1);
 
-        String[] s2 = s.split(" ");              // splits String literal into String array
+        String[] s2 = s.split(" ");               //  splits String literal into String array
         for (String word:s2)
             System.out.println(word);
+
+        String s3 = "   Много лишних пробелов!  ";
+        System.out.println(s3.trim());                  //  outputs 'Много лишних пробелов!'
+
+        String s4 = s.substring(0,6);                       // s4 = 'LONDON'
+        System.out.println(s4.toLowerCase(Locale.ROOT));    // outputs 'london'
+
+        String s1 = s.substring(12,19);                                 // s1 = 'capital'
         System.out.println(s1.toUpperCase(Locale.ROOT));                // outputs 'CAPITAL'
 
-        System.out.println(s1.indexOf('p'));                            // returns 2
+        System.out.println(s.replace(' ', '*'));                   //  outputs 'LONDON*is*a*capital*of*Great*Britain'
+        System.out.println(s.replaceFirst("LONDON", "NewYork"));  // outputs 'NewYork is a capital of Great Britain'
+        System.out.println(s.replaceAll("it", "IT"));             // outputs 'LONDON is a capITal of Great BrITain'
+                                                                        // s1 = 'capital'
+        System.out.println(s1.indexOf('a'));                            // outputs '1'
+        System.out.println(s1.lastIndexOf('a'));                    // outputs '5'
+        System.out.println(s1.contains("pi"));                          // outputs 'true'
+        System.out.println(s1.startsWith("ca"));                        // outputs 'true'
+        System.out.println(s1.endsWith("al"));                          // outputs 'true'
+        System.out.println(s1.endsWith("la"));                          // outputs 'false'
 
-        System.out.println(s1.compareToIgnoreCase("CAPITal"));      // returns 0
+        System.out.println(s1.compareTo("CAPITAL"));                    // outputs '32'
+        System.out.println(s1.compareToIgnoreCase("CAPITal"));      // outputs '0'
+        System.out.println(s1.equals("CAPITAL"));                       // outputs 'false'
+        System.out.println(s1.equalsIgnoreCase("CAPITAL")); // outputs 'true'
 
         float flo = 3.14f;
         boolean bol = true;
-        String form = String.format("String %s, integer %d, float %f, boolean %b, char %c"
+        String form = String.format("String %s, integer %d, float %f, boolean %b, char %c"  // using String.format
                 , str_lit, num, flo, bol, ch);
         System.out.println(form);           // outputs 'String Hello, integer 314, float 3,140000, boolean true, char b'
 
         DemotoString demo = new DemotoString(55, 2.545f);
-        System.out.println(demo);           //  outputs 'DemotoString: varA = 55, varB = 2.545'
+        System.out.println(demo);           //  outputs 'DemotoString: varA = 55, varB = 2.545' using override toString method
 
         String str_case = "five";
 
@@ -116,6 +140,7 @@ public class JavaStrings {
         sb.append(true);
         sb.append(" it is synchronized!");
         System.out.println(sb);                     //  outputs 'this is a string buff 1; true it is synchronized!'
+        String sbs = sb.toString();                 //  StringBuffer to String
 
         StringBuilder sb2 = new StringBuilder("this is s string build ");
         sb2.append(new Integer(101112));
@@ -123,5 +148,6 @@ public class JavaStrings {
         sb2.append(false);
         sb2.append(" it is not synchronized!");      //  outputs 'this is s string build 101112; false it is not synchronized!'
         System.out.println(sb2);
+        String sbb = sb2.toString();                 //  StringBuilder to String
     }
 }
