@@ -5,8 +5,6 @@ enum Season2 { WINTER, SPRING, SUMMER, AUTUMN }
 
 enum Currency { USD, AUD, GBP, EUR }
 
-
-
 enum NumEnum {                                    //  enum with with field, method, private constructor and the overridden 'toString'
 
     NUM_ONE("NUM_ONE"), NUM_TWO("NUM_TWO"), NUM_THREE("NUM_THREE");
@@ -56,6 +54,32 @@ enum MySingleton {                               //  enum Singleton
  */
 
 public class JavaEnums {
+
+    static enum SeasonOptionalEnum {                           //  enum with with field, method, private constructor
+        WINTER("Winter"),
+        SPRING("Spring"),
+        SUMMER("Summer"),
+        AUTUMN("Autumn");
+
+        private final String name;
+
+        private SeasonOptionalEnum(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+
+    public static Optional<SeasonOptionalEnum> fromValue(String givenName) {    //  using  Optional
+        for (SeasonOptionalEnum season : SeasonOptionalEnum.values()) {
+            if (season.name.equals(givenName)) {
+                return Optional.of(season);
+            }
+        }
+        return Optional.empty();
+    }
     public static void main(String[] args) {
 
         System.out.println(Arrays.toString(Season.values()));   //  using toString method
