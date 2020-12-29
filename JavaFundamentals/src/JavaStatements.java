@@ -55,5 +55,82 @@ public class JavaStatements {
                 default:
                     System.out.println("i>3");
             }
+
+        int operation = 2;
+        int number = 10;
+
+        switch (operation) {
+            case 1:
+                number = number + 10;
+                break;
+            case 2:
+                number = number - 4;                    //  this statement will be executed
+                                                        //  we forget to put a break statement
+            case 3:
+                number = number / 3;                    //  this statement will be executed
+                                                        //  we forget to put a break statement
+            case 4:
+                number = number * 10;                   //  this statement will be executed
+                break;
+        }
+        System.out.println("number = " + number);      //  outputs 'number = 20'  not  '6'
+
+        int weeks = 3;
+        int days = 7;
+        int i = 1, j =0;
+                                                        // Nested loops
+        while (i <= weeks) {                            // outer loop
+            System.out.println("Week: " + i);
+            for (j = 1; j <= days; ++j) {           // inner loop
+                System.out.println("  Days: " + j);
+            }
+            ++i;
+        }
+
+        for(i = 1; i <= weeks; ++i) {                   // outer loop
+            System.out.println("Week: " + i);
+
+            for(j = 1; j <= days; ++j) {            // inner loop
+
+                if(i == 2) {
+                    break;                              // break inside the inner loop
+                }
+                System.out.println("  Days: " + j);     // days for week 2 are not printed
+            }
+        }
+
+        for(i = 1; i <= weeks; ++i) {                   // outer loop
+            System.out.println("Week: " + i);
+
+            for(j = 1; j <= days; ++j) {            // inner loop
+
+                if(j % 2 != 0) {                        // continue inside the inner loop
+                    continue;
+                }
+                System.out.println("  Days: " + j);     //  outputs only even days of the week
+            }
+        }
+
+        label: for (i = 0; i < 10; i++)                 // using break with label
+        {
+            for (j = 0; j < 10; j++)
+            {
+                if (i == 5 && j == 5)
+                {
+                    break label;
+                }
+                System.out.println(i + " " + j);
+            }
+        }
+
+        label: for (i = 0; i < 10; i++)                 // using continue with label
+        {
+            for (j = 0; j < 10; j++)
+            {
+                if(i == 5)
+                    continue label;
+            }
+            System.out.println(i + " " + j);
+        }
     }
 }
