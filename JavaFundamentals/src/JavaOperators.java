@@ -54,5 +54,13 @@ public class JavaOperators {
 
         Integer num = new Integer(22);           // creating a link to the object 'Integer'
         System.out.println(num instanceof Integer);    // outputs 'true'
+
+        int number = 24;
+        String result = (number > 0) ? "Positive Number" : "Negative Number";  // ternary operator
+        System.out.println(result);    //  outputs 'Positive Number'
+
+        number = -5;
+        result = (number > 0) ? "Positive Number" : "Negative Number";  // ternary operator
+        System.out.println(result);    //  outputs 'Negative Number'
     }
 }
