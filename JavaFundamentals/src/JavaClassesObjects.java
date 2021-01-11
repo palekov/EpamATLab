@@ -1,23 +1,26 @@
 public class JavaClassesObjects {
 
     public static class Hellower {
-        // write overloaded methods with one parameter: one method of primitive type and another method of reference type
 
+        // write overloaded methods with one parameter: one method of primitive type and another method of reference type
         public void sayHi(int num) {
             System.out.println("Добрый вечер, посетитель № " + num + ", как дела?");
         }
 
+        // write overloaded methods with one parameter: of different reference types
         public void sayHi(Integer num) {
             System.out.println("Добрый вечер, ссылочный посетитель № " + num + ", как дела?");
         }
 
-        // write overloaded methods with one parameter: of different reference types
-
-        //  -----
+        public void sayHi(Cat cat) {
+            System.out.println("Добрый вечер, котик " + cat);
+        }
 
         // write overloaded methods with one parameter: of different reference types (when one type is a subtype of another)
 
-        //  -----
+        public void sayHi(BlackCat cat) {
+            System.out.println("Добрый вечер, черный котик " + cat);
+        }
 
         // write overloaded methods with a different number (1,2,3) of parameters of the same type
 
@@ -42,9 +45,38 @@ public class JavaClassesObjects {
         }
 
         //  show that’s impossible to have methods that differ only by return type (screenshot)
+
+        public int Sum(int s1, int s2) {
+            return s1 + s2;
+        }
+
+        public long Sum(int s1, int s2) {
+            return s1 + s2;
+        }
+
         //  show that’s impossible to have methods that differ only by thrown checked exceptions (screenshot)
 
-        // ----------
+        public double Div(double x1, double x2) {
+            double y;
+            try {
+                y = x1 / x2;
+            }
+            catch (ArithmeticException e) {
+                throw new ArithmeticException("Divide by zero!");
+            }
+            return y;
+        }
+
+        public double Div(double x1, double x2) {
+            double y;
+            try {
+                y = x1 / x2;
+            }
+            catch (NumberFormatException e) {
+                throw new NumberFormatException("Divide by zero!");
+            }
+            return y;
+        }
 
     }
 
@@ -68,11 +100,17 @@ public class JavaClassesObjects {
         }
 
         public static class Cat {
-
             int age;
-
             public Cat(int age) {
                 this.age = age;
+            }
+        }
+
+        public static class BlackCat extends Cat {
+            private final String color = "BLACK";
+
+            public BlackCat(int age) {
+                super(age);
             }
         }
 
@@ -80,7 +118,7 @@ public class JavaClassesObjects {
 
         Hellower hello = new Hellower();
         hello.sayHi(7);                          //  outputs 'Добрый вечер, посетитель № 7, как дела?'
-        hello.sayHi("Alex");                    //  outputs 'Добрый вечер, Alex, как ваши дела?'
+        hello.sayHi("Alex");                          //  outputs 'Добрый вечер, Alex, как ваши дела?'
         hello.sayHi((Integer) null);                  //  outputs 'Добрый вечер, null, как ваши дела?'
         hello.sayHi("Valera", "Petya");               //  outputs 'Добрый вечер, Valera, Petya, как ваши дела?'
         hello.sayHi("Fedor", "Vasilii","Denis");      //  outputs 'Добрый вечер, Fedor, Vasilii, Denis, как ваши дела?'
@@ -114,8 +152,5 @@ public class JavaClassesObjects {
         timeMachine.goToPast(barsik);
         System.out.println("Вернули изначальный возраст:");
         System.out.println(barsik.age);                        //  outputs '5'
-
-
-
     }
 }
