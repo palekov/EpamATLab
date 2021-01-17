@@ -1,3 +1,8 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class JavaClassesObjects {
 
     public static class Hellower {
@@ -46,34 +51,57 @@ public class JavaClassesObjects {
 
         //  show that’s impossible to have methods that differ only by return type (screenshot)
 
-        public int Sum(int s1, int s2) {
-            return s1 + s2;
-        }
+//        public int Sum(int s1, int s2) {
+//            return s1 + s2;
+//        }
+//
+//        public long Sum(int s1, int s2) {
+//            return s1 + s2;
+//        }
+//
+//        //  show that’s impossible to have methods that differ only by thrown checked exceptions (screenshot)
 
-        public long Sum(int s1, int s2) {
-            return s1 + s2;
-        }
+//        public void textFile(String path) throws IOException {
+//            String filePath = "hello.txt";
+//            String text = "Hello World";
+//
+//            try {
+//                FileWriter writer = new FileWriter(path, true);
+//                writer.write(text);
+//                writer.close();
+//            } catch (IOException ex) {
+//                System.err.println("Error creating file: " + ex);
+//            }
+//        }
+//
+//        public void textFile(String path) throws IOException, NumberFormatException {
+//            String filePath = "hello.txt";
+//            char[] buf = new char[255];
+//            int i;
+//            FileReader reader = new FileReader(path);
+//
+//            try {
+//                reader.read(buf);
+//                reader.close();
+//            } catch (IOException ex) {
+//                System.err.println("Error reading file: " + ex);
+//            }
+//
+//            try {
+//                i = Integer.parseInt(String.valueOf(buf[1]));
+//            } catch (NumberFormatException ex){
+//                System.out.println("Error converting file!");
+//            }
+//
+//        }
 
-        //  show that’s impossible to have methods that differ only by thrown checked exceptions (screenshot)
-
-        public double Div(double x1, double x2) {
-            double y;
-            try {
-                y = x1 / x2;
-            }
-            catch (ArithmeticException e) {
-                throw new ArithmeticException("Divide by zero!");
-            }
-            return y;
-        }
-
-        public double Div(double x1, double x2) {
+        public double Div(double x1, double x2) throws FileNotFoundException {
             double y;
             try {
                 y = x1 / x2;
             }
             catch (NumberFormatException e) {
-                throw new NumberFormatException("Divide by zero!");
+                throw new FileNotFoundException("Divide by zero!");
             }
             return y;
         }
@@ -104,6 +132,10 @@ public class JavaClassesObjects {
             public Cat(int age) {
                 this.age = age;
             }
+
+            public Cat() {
+
+            }
         }
 
         public static class BlackCat extends Cat {
@@ -111,6 +143,10 @@ public class JavaClassesObjects {
 
             public BlackCat(int age) {
                 super(age);
+            }
+
+            public BlackCat() {
+                super();
             }
         }
 
@@ -152,5 +188,10 @@ public class JavaClassesObjects {
         timeMachine.goToPast(barsik);
         System.out.println("Вернули изначальный возраст:");
         System.out.println(barsik.age);                        //  outputs '5'
+
+        Cat cat = new BlackCat();
+        hello.sayHi(cat);              //   outputs 'Добрый вечер, котик JavaClassesObjects$BlackCat@179d3b25'
+
+
     }
 }
