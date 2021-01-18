@@ -33,10 +33,10 @@ public class JavaAnnotation {
             return "Bar{}";
         }
 
-        @Override
-        public String toString(String str) {            //  its incorrect
-            return "Bar{}";
-        }
+//        @Override
+//        public String toString(String str) {            //  its incorrect
+//            return "Bar{}";
+//        }
     }
 
         //  use the @SafeVarargs annotation (use var-args with generics), screenshot
@@ -56,16 +56,16 @@ public class JavaAnnotation {
             boolean test(Integer value);
         }
 
-        @FunctionalInterface
-        interface MyPredicate0 {                //  its incorrect
-        }
+//        @FunctionalInterface
+//        interface MyPredicate0 {                //  its incorrect
+//        }
 
-        @FunctionalInterface
-        interface MyPredicate2 {                //  its incorrect
-            boolean test(Integer value);
-
-            int sum(int s1, int s2);
-        }
+//        @FunctionalInterface
+//        interface MyPredicate2 {                //  its incorrect
+//            boolean test(Integer value);
+//
+//            int sum(int s1, int s2);
+//        }
 
         // write an annotation with the meta-annotations @Retention(RetentionPolicy.RUNTIME),
         // @Target(FIELD) and the body String value();
