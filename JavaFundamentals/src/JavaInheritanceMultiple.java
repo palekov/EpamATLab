@@ -3,36 +3,48 @@ public class JavaInheritanceMultiple {
     //   show multiple inheritance of type in a subclass by extending
     //   from one superclass and implementing multiple interfaces
 
-    //   show multiple inheritance of implementation (Java 8+) in a subclass by implementing multiple interfaces
 
-    interface Suzuki
+
+    //   show multiple inheritance of implementation (Java 8+) in a subclass by implementing multiple interfaces (use default methods
+
+    interface PI1
     {
-        public abstract void body();
+        // default method
+        default void show()
+        {
+            System.out.println("Default PI1");
+        }
     }
 
-    interface Ford
+    interface PI2
     {
-        public abstract void engine();
+        // default method
+        default void show()
+        {
+            System.out.println("Default PI2");
+        }
     }
 
-    public static class Car {
+    // Implementation class code
+    static class TestClass implements PI1, PI2
+    {
+        // Overriding default show method
+        public void show()
+        {
+            // use super keyword to call the show
+            // method of PI1 interface
+            PI1.super.show();
+
+            // use super keyword to call the show
+            // method of PI2 interface
+            PI2.super.show();
+        }
     }
 
-    public static class MotorCar extends Car implements Suzuki, Ford
+    public static void main(String args[])
     {
-        public void body()
-        {
-            System.out.println("Fit Suzuki body");
-        }
-        public void engine()
-        {
-            System.out.println("Fit Ford engine");
-        }
-        public static void main(String args[])
-        {
-            MotorCar mc1 = new MotorCar();
-            mc1.body();                     //  outputs 'Fit Suzuki body'
-            mc1.engine();                   //  outputs 'Fit Ford engine'
-        }
+        TestClass d = new TestClass();
+        d.show();                       //   outputs:  Default PI1
+                                        //             Default PI2
     }
 }
