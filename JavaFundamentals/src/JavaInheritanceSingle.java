@@ -7,19 +7,19 @@ public class JavaInheritanceSingle {
 
         public void addition(int x, int y) {
             z = x + y;
-            System.out.println("The sum of the given numbers:"+z);
+            System.out.println("The sum of the given numbers:" + z);
         }
 
         public void subtraction(int x, int y) {
             z = x - y;
-            System.out.println("The difference between the given numbers:"+z);
+            System.out.println("The difference between the given numbers:" + z);
         }
     }
 
     public static class My_Calculation extends Calculation {
         public void multiplication(int x, int y) {
             z = x * y;
-            System.out.println("The product of the given numbers:"+z);
+            System.out.println("The product of the given numbers:" + z);
         }
     }
 
