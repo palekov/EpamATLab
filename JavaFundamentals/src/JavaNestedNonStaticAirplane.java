@@ -16,9 +16,13 @@ public class JavaNestedNonStaticAirplane {
     }
 
     //   write a non-static nested class
+    //   show that non-static nested class can have only instance fields/methods
 
     private class Wing {
         private String color, model;
+        int col;
+       // static int num;   //   error - inner classes cannot have static declarations
+
         JavaNestedNonStaticAirplane plane;
 
         //   show that non-static nested class has access to private fields/methods of the enclosing class
