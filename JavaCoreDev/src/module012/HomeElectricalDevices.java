@@ -44,7 +44,7 @@ public class HomeElectricalDevices {
         int powerConsumption = 0;
         for (int i = 0; i < devices.size(); i++) {
             dev = (ElectricalDevice) devices.get(i);
-            if(dev.isInserted()) powerConsumption += dev.getPower();
+            if (dev.isInserted()) powerConsumption += dev.getPower();
         }
         System.out.println("Power consumption = " + powerConsumption + " watt");
 
@@ -54,7 +54,7 @@ public class HomeElectricalDevices {
 
         for (int i = 0; i < devices.size(); i++) {
             dev = (ElectricalDevice) devices.get(i);
-            if(dev.getColor().equals(searchColor))
+            if (dev.getColor().equals(searchColor))
                 if (dev.getPower() >= searchPowerMin & dev.getPower() <= searchPowerMax)
                     System.out.println("Searched device is: " + dev);
         }
