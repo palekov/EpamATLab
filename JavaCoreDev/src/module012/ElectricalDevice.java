@@ -4,6 +4,10 @@ import java.util.Comparator;
 
 public class ElectricalDevice  {
 
+    public ElectricalDevice() {
+
+    }
+
     static class Sortbypower implements Comparator<ElectricalDevice> {
 
         public int compare(ElectricalDevice a, ElectricalDevice b) {
