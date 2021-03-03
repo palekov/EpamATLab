@@ -1,4 +1,4 @@
-package main.java.interfaces.othertasks;
+package main.java.othertasks;
 
 //  Проверить скорость работы (добавление, поиск элемента, удаление) следующих коллекций.
 //  NOTE: Для наглядности рекомендуется использовать от 10000+ элементов в коллекции
@@ -7,7 +7,7 @@ package main.java.interfaces.othertasks;
 //        c. Словари (HashTable vs Dictionary)
 
 import main.java.ElectricalDevice;
-import main.java.interfaces.module012.Mixer;
+import main.java.classes.Mixer;
 
 import java.util.*;
 

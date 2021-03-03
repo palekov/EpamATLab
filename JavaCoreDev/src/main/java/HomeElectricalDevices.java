@@ -1,8 +1,31 @@
+
 package main.java;
+
+//  Module 1.2
 
 //  Домашние электроприборы. Определить иерархию электроприборов. Включить некоторые в розетку.
 //  Посчитать потребляемую мощность. Провести сортировку приборов в квартире на основе одного из параметров.
 //  Найти прибор в квартире, соответствующий заданному диапазону параметров.
+
+//  Module 1.3
+
+//  необходимо реализовать классы пользовательских исключений и организовать обработку возможных исключительных ситуаций,
+//  например, если элемент отсутствует в коллекции, если мы не можем удалить текущий элемент и т.д. Комментарии оставлять
+//  в классах исключений. Создать минимум 3 пользовательских исключения и использовать минимум 5 встроенных исключений.
+
+//  добавить чтение и запись данных из следующих источников:
+//    1. из текстового файла
+//    2. из бинарного файла (используя сериализацию и десериализацию)
+
+//  Module 1.4
+
+//  Add data reading from the following sources (choose one of the alternatives below):
+//    1. XML File using de\serialization
+//    2. JSON File using de\serialization.
+
+//  Add data reading from a database. Process different kinds of requests as SELECT, DELETE, UPDATE, INSERT.
+//  Preparation:
+//  • You can use MySQL or SQLSERVER database.
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,60 +40,73 @@ public class HomeElectricalDevices {
     public static boolean addDevice(List<ElectricalDevice> list) {
 
         ElectricalDevice dev;
+        Scanner scan = new Scanner(System.in);
 
         System.out.println("--- Добавление прибора ---");
-        System.out.println("Введите тип прибора:");
-        System.out.println("[Mixer, Radio, Television, Torchere, Microwave, FoodProcessor, Flatiron]: ");
 
-        Scanner scan = new Scanner(System.in);
         String devType = "";
-        devType = scan.nextLine();
 
-        System.out.println("Введите марку цвет мощность: ");
-        String devParam;
-        devParam = scan.nextLine();
-        String[] param = devParam.split(" ");
+        while (!devType.equals("q")) {
 
-        if (param.length != 3) {
-            System.out.println("Некорректный ввод!");
-            return false;
-        }
+            System.out.println("Введите тип прибора:");
+            System.out.println("[mixer, radio, tele, torch, microwave, foodproc, iron]  или 'q' для выхода: ");
 
-        int devPower;
+            devType = scan.nextLine();
 
-        try {
-            devPower = Integer.parseInt(param[2]);
-        } catch (NumberFormatException e) {
-            System.out.println("Введена некорректная мощность прибора!");
-            return false;
-        }
+            if (devType.equals("q")) break;
 
-        switch (devType) {
-            case "Mixer":
-                dev = new Mixer(param[0], param[1], devPower);
-                break;
-            case "Radio":
-                dev = new Radio(param[0], param[1], devPower);
-                break;
-            case "Television":
-                dev = new Television(param[0], param[1], devPower);
-                break;
-            case "Torchere":
-                dev = new Torchere(param[0], param[1], devPower);
-                ;
-                break;
-            case "Microwave":
-                dev = new Microwave(param[0], param[1], devPower);
-                break;
-            case "FoodProcessor":
-                dev = new FoodProcessor(param[0], param[1], devPower);
-                break;
-            case "Flatiron":
-                dev = new Flatiron(param[0], param[1], devPower);
-                break;
-            default:
-                System.out.println("incorrect input! try again!");
+            System.out.println("Введите марку цвет мощность: ");
+            String devParam;
+            devParam = scan.nextLine();
+
+            if (devParam.equals("q")) break;
+
+            String[] param = devParam.split(" ");
+
+            if (param.length != 3) {
+                System.out.println("Некорректный ввод!");
                 return false;
+            }
+
+            int devPower;
+
+            try {
+                devPower = Integer.parseInt(param[2]);
+            } catch (NumberFormatException e) {
+                System.out.println("Введена некорректная мощность прибора!");
+                return false;
+            }
+
+            switch (devType) {
+                case "mixer":
+                    dev = new Mixer(param[0], param[1], devPower);
+                    break;
+                case "radio":
+                    dev = new Radio(param[0], param[1], devPower);
+                    break;
+                case "television":
+                    dev = new Television(param[0], param[1], devPower);
+                    break;
+                case "torch":
+                    dev = new Torchere(param[0], param[1], devPower);
+                    ;
+                    break;
+                case "microwave":
+                    dev = new Microwave(param[0], param[1], devPower);
+                    break;
+                case "foodproc":
+                    dev = new FoodProcessor(param[0], param[1], devPower);
+                    break;
+                case "iron":
+                    dev = new Flatiron(param[0], param[1], devPower);
+                    break;
+                default:
+                    System.out.println("incorrect input! try again!");
+                    return false;
+            }
+            list.add(dev);
+            System.out.println("Добавлено: " + dev);
+            System.out.println();
         }
         return true;
     }
@@ -105,22 +141,23 @@ public class HomeElectricalDevices {
 
         ArrayList devices = new ArrayList<ElectricalDevice>();
 
-        System.out.println("--- Домашние электроприборы ---");
-        System.out.println("1 - добавить прибор");
-        System.out.println("2 - найти прибор");
-        System.out.println("3 - удалить прибор");
-        System.out.println("q - выход");
-        System.out.println();
-        System.out.println("Ваш выбор: ");
         Scanner scan = new Scanner(System.in);
         String str = "";
-        String oper = "";
 
         while (!str.equals("q")) {
+
+            System.out.println("--- Домашние электроприборы ---");
+            System.out.println("1 - добавить прибор");
+            System.out.println("2 - найти прибор");
+            System.out.println("3 - удалить прибор");
+            System.out.println("q - выход");
+            System.out.println();
+            System.out.println("Ваш выбор: ");
+
             str = scan.nextLine();
             if (str.equals("q")) break;
 
-            switch (oper) {
+            switch (str) {
                 case "1":
                     addDevice(devices);
                     break;
