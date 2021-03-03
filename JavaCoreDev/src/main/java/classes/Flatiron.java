@@ -1,4 +1,7 @@
-package module012;
+package main.java.classes;
+
+import main.java.ElectricalDevice;
+import main.java.interfaces.Switchable;
 
 public class Flatiron extends ElectricalDevice implements Switchable {
 
@@ -8,6 +11,10 @@ public class Flatiron extends ElectricalDevice implements Switchable {
 
     public Flatiron(String model, int power) {
         super(model, power);
+    }
+
+    public Flatiron() {
+
     }
 
     @Override

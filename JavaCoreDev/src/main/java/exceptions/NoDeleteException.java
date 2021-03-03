@@ -1,4 +1,4 @@
-package module013;
+package main.java.exceptions;
 
 public class NoDeleteException extends Exception {
 
@@ -6,3 +6,4 @@ public class NoDeleteException extends Exception {
         super(message);
     }
 }
+

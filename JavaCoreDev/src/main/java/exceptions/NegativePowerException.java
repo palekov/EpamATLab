@@ -1,4 +1,4 @@
-package module013;
+package main.java.exceptions;
 
 public class NegativePowerException extends Exception {
 
@@ -7,3 +7,4 @@ public class NegativePowerException extends Exception {
         return msg;
     }
 }
+

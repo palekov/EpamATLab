@@ -1,5 +1,5 @@
 
-package module011;
+package main.java.interfaces.othertasks;
 
 import java.util.Scanner;
 

@@ -1,10 +1,13 @@
-package module012;
+package main.java.interfaces.othertasks;
 
 //  Проверить скорость работы (добавление, поиск элемента, удаление) следующих коллекций.
 //  NOTE: Для наглядности рекомендуется использовать от 10000+ элементов в коллекции
 //        a. Листы (ArrayList vs LinkedList);
 //        b. Списки (Stack vs Queue);
 //        c. Словари (HashTable vs Dictionary)
+
+import main.java.ElectricalDevice;
+import main.java.interfaces.module012.Mixer;
 
 import java.util.*;
 

@@ -1,13 +1,12 @@
-package module013;
+package main.java.interfaces.module013;
 
 //  необходимо реализовать классы пользовательских исключений и организовать обработку возможных исключительных ситуаций,
 //  например, если элемент отсутствует в коллекции, если мы не можем удалить текущий элемент и т.д. Комментарии оставлять
 //  в классах исключений. Создать минимум 3 пользовательских исключения и использовать минимум 5 встроенных исключений.
 
-import module012.*;
+import main.java.interfaces.module012.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class HomeElectricalDevices {
 
@@ -59,9 +58,18 @@ public class HomeElectricalDevices {
             System.out.println("Microwave power = " + pow);
         }
 
-        for (Object device : devices) {
-            System.out.println(device);
+        try {
+            for (int i = 0; i < 100; i++) {
+                System.out.println(devices.get(i));
+            }
+        } catch (IndexOutOfBoundsException ex) {
+            System.out.println("Alarm! Out of index!");
         }
+
+//        for (Object device : devices) {
+//            System.out.println(device);
+
+//        }
 
     }
 }
