@@ -33,11 +33,13 @@ import java.util.List;
 import java.util.Scanner;
 
 import main.java.classes.*;
+import main.java.exceptions.NegativePowerException;
 import main.java.exceptions.NoDeleteException;
+import main.java.exceptions.NoElementException;
 
 public class HomeElectricalDevices {
 
-    public static boolean addDevice(List<ElectricalDevice> list) {
+    public static void addDevice(List<ElectricalDevice> list) throws NegativePowerException {
 
         ElectricalDevice dev;
         Scanner scan = new Scanner(System.in);
@@ -65,17 +67,16 @@ public class HomeElectricalDevices {
 
             if (param.length != 3) {
                 System.out.println("Некорректный ввод!");
-                return false;
+                return;
             }
-
             int devPower;
-
             try {
                 devPower = Integer.parseInt(param[2]);
             } catch (NumberFormatException e) {
                 System.out.println("Введена некорректная мощность прибора!");
-                return false;
+                return;
             }
+            if (devPower < 0) throw new NegativePowerException();
 
             switch (devType) {
                 case "mixer":
@@ -84,12 +85,11 @@ public class HomeElectricalDevices {
                 case "radio":
                     dev = new Radio(param[0], param[1], devPower);
                     break;
-                case "television":
+                case "tele":
                     dev = new Television(param[0], param[1], devPower);
                     break;
                 case "torch":
                     dev = new Torchere(param[0], param[1], devPower);
-                    ;
                     break;
                 case "microwave":
                     dev = new Microwave(param[0], param[1], devPower);
@@ -102,42 +102,104 @@ public class HomeElectricalDevices {
                     break;
                 default:
                     System.out.println("incorrect input! try again!");
-                    return false;
+                    return;
             }
             list.add(dev);
             System.out.println("Добавлено: " + dev);
             System.out.println();
         }
-        return true;
     }
 
+    private static void searchDevice(ArrayList devices) throws NegativePowerException, NoElementException {
 
-    private static void searchDevice(ArrayList devices) {
-    }
-
-    private static void removeDevice(ArrayList devices) {
-    }
-
-    public static Object searchByModel(List<ElectricalDevice> devlist, String devmodel) {
+        System.out.println("--- Поиск прибора ---");
+        System.out.println("введите марку мин.мощность макс.мощность: ");
 
         ElectricalDevice dev;
+        String searchModel;
+        int searchPowerMin = 0;
+        int searchPowerMax = 0;
 
-        for (int i = 0; i < devlist.size(); i++) {
-            dev = devlist.get(i);
-            if (dev.getModel().equals(devmodel))
-                return dev;
+        String devParam;
+        Scanner scan = new Scanner(System.in);
+        devParam = scan.nextLine();
+        String[] param = devParam.split(" ");
+        searchModel = param[0];
+
+        try {
+            searchPowerMin = Integer.parseInt(param[1]);
+            searchPowerMax = Integer.parseInt(param[2]);
+        } catch (NumberFormatException e) {
+            System.out.println("Введена некорректная мощность прибора!");
+            return;
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Некорректное количество параметров!");
         }
-        return null;
+
+        if (searchPowerMin < 0 || searchPowerMax < 0) throw new NegativePowerException();
+
+        for (int i = 0; i < devices.size(); i++) {
+            dev = (ElectricalDevice) devices.get(i);
+            if (dev.getModel().equals(searchModel))
+                if (dev.getPower() >= searchPowerMin & dev.getPower() <= searchPowerMax)
+                    System.out.println("Searched device is: " + dev);
+                else throw new NoElementException("Device not found!");
+        }
     }
 
-    public static boolean removeDevice(List<ElectricalDevice> devlist, ElectricalDevice device) throws NoDeleteException {
+    public static void removeDevice(List<ElectricalDevice> devlist) throws NoDeleteException {
 
-        if(!devlist.remove(device))
+        System.out.println("--- Удаление прибора ---");
+        System.out.println("введите номер записи: ");
+        Scanner scan = new Scanner(System.in);
+        int i = scan.nextInt();
+
+        try {
+            devlist.remove(i);
+        }   catch (Exception e) {
             throw new NoDeleteException("The element cannot be deleted from the collection!");
-        return true;
+        }
     }
 
-    public static void main(String[] args) {
+    private static void sortDevices(ArrayList devices) {
+
+        Collections.sort(devices, new ElectricalDevice.SortByPower());
+        System.out.println("Devices sorted by power: ");
+
+        for (Object device : devices) {
+            System.out.println(device);
+        }
+    }
+
+    private static void insertDevices(ArrayList devices) {
+
+        ElectricalDevice dev;
+        int rand = (int) (Math.random() * devices.size());
+
+        for (int i = 0; i <= rand; i++) {
+            dev = (ElectricalDevice) devices.get(i);
+            dev.setInserted();
+            System.out.println(dev + " inserted");
+        }
+    }
+
+    private static void sumDevices(ArrayList devices) {
+
+        insertDevices(devices);
+
+        ElectricalDevice dev;
+        int powerConsumption = 0;
+
+        for (int i = 0; i < devices.size(); i++) {
+            dev = (ElectricalDevice) devices.get(i);
+            if (dev.isInserted()) {
+                powerConsumption += dev.getPower();
+            }
+        }
+        System.out.println("Power consumption = " + powerConsumption + " watt");
+    }
+
+    public static void main(String[] args) throws NoDeleteException, NegativePowerException, NoElementException {
 
         ArrayList devices = new ArrayList<ElectricalDevice>();
 
@@ -147,10 +209,12 @@ public class HomeElectricalDevices {
         while (!str.equals("q")) {
 
             System.out.println("--- Домашние электроприборы ---");
-            System.out.println("1 - добавить прибор");
-            System.out.println("2 - найти прибор");
-            System.out.println("3 - удалить прибор");
-            System.out.println("q - выход");
+            System.out.println("    1 - добавить прибор");
+            System.out.println("    2 - найти прибор");
+            System.out.println("    3 - удалить прибор");
+            System.out.println("    4 - сортировка");
+            System.out.println("    5 - подсчет мощности");
+            System.out.println("    q - выход");
             System.out.println();
             System.out.println("Ваш выбор: ");
 
@@ -167,44 +231,18 @@ public class HomeElectricalDevices {
                 case "3":
                     removeDevice(devices);
                     break;
+                case "4":
+                    sortDevices(devices);
+                    break;
+                case "5":
+                    sumDevices(devices);
+                    break;
                 default:
                     System.out.println("incorrect input! try again!");
             }
         }
 
-//        ElectricalDevice mixer = new Mixer("Tornado","blue", 1500);
+        System.out.println("Good bye!");
 
-//        tvset.setInserted();
-//        microwave.setInserted();
-//        torchere.setInserted();
-
-        Collections.sort(devices, new ElectricalDevice.SortByPower());
-        System.out.println("Devices sorted by power: ");
-
-        for (Object device : devices) {
-            System.out.println(device);
-        }
-
-        ElectricalDevice dev;
-        int powerConsumption = 0;
-
-        for (int i = 0; i < devices.size(); i++) {
-            dev = (ElectricalDevice) devices.get(i);
-            if (dev.isInserted()) powerConsumption += dev.getPower();
-        }
-
-        System.out.println("Power consumption = " + powerConsumption + " watt");
-
-        String searchColor = "white";
-        int searchPowerMin = 1000;
-        int searchPowerMax = 2000;
-
-        for (int i = 0; i < devices.size(); i++) {
-            dev = (ElectricalDevice) devices.get(i);
-            if (dev.getColor().equals(searchColor))
-                if (dev.getPower() >= searchPowerMin & dev.getPower() <= searchPowerMax)
-                    System.out.println("Searched device is: " + dev);
-        }
     }
-
 }
