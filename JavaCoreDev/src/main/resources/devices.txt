@@ -1,0 +1,3 @@
+Television { model = 'grund', color = 'cyan', power = 350 }
+Torchere { model = 'kodo', color = 'werd', power = 400 }
+FoodProcessor { model = 'fooji', color = 'cyan', power = 1000 }

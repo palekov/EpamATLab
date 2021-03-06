@@ -1,8 +1,9 @@
 package main.java;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public class ElectricalDevice  {
+public class ElectricalDevice implements Serializable {
 
     private String model;
     private String color;

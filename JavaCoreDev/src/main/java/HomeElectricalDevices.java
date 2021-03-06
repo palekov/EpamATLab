@@ -27,6 +27,7 @@ package main.java;
 //  Preparation:
 //  • You can use MySQL or SQLSERVER database.
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -110,7 +111,7 @@ public class HomeElectricalDevices {
         }
     }
 
-    private static void searchDevice(ArrayList devices) throws NegativePowerException, NoElementException {
+    private static void searchDevice(ArrayList<ElectricalDevice> devices) throws NegativePowerException, NoElementException {
 
         System.out.println("--- Поиск прибора ---");
         System.out.println("введите марку мин.мощность макс.мощность: ");
@@ -161,7 +162,7 @@ public class HomeElectricalDevices {
         }
     }
 
-    private static void sortDevices(ArrayList devices) {
+    private static void sortDevices(ArrayList<ElectricalDevice> devices) {
 
         Collections.sort(devices, new ElectricalDevice.SortByPower());
         System.out.println("Devices sorted by power: ");
@@ -171,7 +172,7 @@ public class HomeElectricalDevices {
         }
     }
 
-    private static void insertDevices(ArrayList devices) {
+    private static void insertDevices(ArrayList<ElectricalDevice> devices) {
 
         ElectricalDevice dev;
         int rand = (int) (Math.random() * devices.size());
@@ -183,7 +184,7 @@ public class HomeElectricalDevices {
         }
     }
 
-    private static void sumDevices(ArrayList devices) {
+    private static void sumDevices(ArrayList<ElectricalDevice> devices) {
 
         insertDevices(devices);
 
@@ -199,9 +200,59 @@ public class HomeElectricalDevices {
         System.out.println("Power consumption = " + powerConsumption + " watt");
     }
 
-    public static void main(String[] args) throws NoDeleteException, NegativePowerException, NoElementException {
+    public static void saveToTxt (String path, ArrayList<ElectricalDevice> devices) {
+        String outputFileName = path + "devices.txt";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName))) {
+            for (ElectricalDevice device : devices) {
+                writer.write(device + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+        System.out.println("Successfully saved to text file!");
+    }
+
+    public static void loadFromTxt (String path, ArrayList<ElectricalDevice> devices) {
+        String inputFileName = path + "devices.txt";
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+        System.out.println("Successfully loaded from text file!");
+    }
+
+    public static void saveToBinary (String path, ArrayList<ElectricalDevice> devices) throws IOException {
+
+        FileOutputStream outputStream = new FileOutputStream(path + "devices.bin");
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+        objectOutputStream.writeObject(devices);
+        objectOutputStream.close();
+        outputStream.close();
+    }
+
+    public static void loadFromBinary (String path, ArrayList<ElectricalDevice> devices) throws IOException, ClassNotFoundException {
+        FileInputStream fileInputStream = new FileInputStream(path + "devices.bin");
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        devices = (ArrayList<ElectricalDevice>) objectInputStream.readObject();
+        objectInputStream.close();
+        fileInputStream.close();
+        for (ElectricalDevice device : devices) {
+            System.out.println(device);;
+        }
+    }
+
+// ---------------------------------------------------------------------------------------------------------------
+
+    public static void main(String[] args) throws NoDeleteException, NegativePowerException, NoElementException, IOException, ClassNotFoundException {
 
         ArrayList devices = new ArrayList<ElectricalDevice>();
+        String pth = "src/main/resources/";
 
         Scanner scan = new Scanner(System.in);
         String str = "";
@@ -214,6 +265,10 @@ public class HomeElectricalDevices {
             System.out.println("    3 - удалить прибор");
             System.out.println("    4 - сортировка");
             System.out.println("    5 - подсчет мощности");
+            System.out.println("    6 - сохранить в txt файл");
+            System.out.println("    7 - загрузить из txt файла");
+            System.out.println("    8 - сохранить в bin файл");
+            System.out.println("    9 - загрузить из bin файла");
             System.out.println("    q - выход");
             System.out.println();
             System.out.println("Ваш выбор: ");
@@ -236,6 +291,18 @@ public class HomeElectricalDevices {
                     break;
                 case "5":
                     sumDevices(devices);
+                    break;
+                case "6":
+                    saveToTxt(pth, devices);
+                    break;
+                case "7":
+                    loadFromTxt(pth, devices);
+                    break;
+                case "8":
+                    saveToBinary(pth, devices);
+                    break;
+                case "9":
+                    loadFromBinary(pth, devices);
                     break;
                 default:
                     System.out.println("incorrect input! try again!");
