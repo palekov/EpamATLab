@@ -1,9 +1,11 @@
-package main.java.classes;
+package main.java;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import main.java.ElectricalDevice;
-import main.java.interfaces.Switchable;
+import main.java.classes.*;
+
+import java.util.ArrayList;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property="type")
 @JsonSubTypes({
@@ -13,23 +15,9 @@ import main.java.interfaces.Switchable;
         @JsonSubTypes.Type(value= Mixer.class, name="mixer"),
         @JsonSubTypes.Type(value= Radio.class, name="radio"),
         @JsonSubTypes.Type(value= Television.class, name="television"),
-        @JsonSubTypes.Type(value= Torchere.class, name="torchere")
+        @JsonSubTypes.Type(value=Torchere.class, name="torchere")
 })
-public
-class Flatiron extends ElectricalDevice implements Switchable {
 
-        Flatiron(String model, String color, int power) {
-            super(model, color, power);
-        }
-
-        Flatiron(String model, int power) {
-            super(model, power);
-        }
-
-        Flatiron() { }
-
-        @Override
-        public void setMode() {
-
-        }
-    }
+public class House {
+    public ArrayList devices = new ArrayList<ElectricalDevice>();
+}
