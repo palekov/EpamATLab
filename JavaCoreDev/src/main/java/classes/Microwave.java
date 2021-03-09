@@ -1,30 +1,26 @@
 package main.java.classes;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import main.java.ElectricalDevice;
 import main.java.interfaces.Adjustable;
 
-class Microwave extends ElectricalDevice implements Adjustable {
+@JsonTypeName("microwave")
 
-        Microwave(String model, String color, int power) {
+public class Microwave extends ElectricalDevice implements Adjustable {
+
+        private String program = "heating";
+        private int time = 5;
+
+        public Microwave(String model, String color, int power) {
             super(model, color, power);
         }
 
-        Microwave() {
-
+        @Override
+        public void setProgram(String program) {
         }
 
         @Override
-        public void setProgram() {
-
-        }
-
-        @Override
-        public void setPower() {
-
-        }
-
-        @Override
-        public void setTime() {
-
+        public void setTime(int time) {
+           this.time = time;
         }
     }

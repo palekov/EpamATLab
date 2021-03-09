@@ -1,35 +1,22 @@
 package main.java.classes;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import main.java.ElectricalDevice;
+import main.java.exceptions.NonCorrectModeException;
 import main.java.interfaces.Switchable;
 
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property="type")
-@JsonSubTypes({
-        @JsonSubTypes.Type(value= Flatiron.class, name="flatiron"),
-        @JsonSubTypes.Type(value= FoodProcessor.class, name="foodproc"),
-        @JsonSubTypes.Type(value= Microwave.class, name="microwave"),
-        @JsonSubTypes.Type(value= Mixer.class, name="mixer"),
-        @JsonSubTypes.Type(value= Radio.class, name="radio"),
-        @JsonSubTypes.Type(value= Television.class, name="television"),
-        @JsonSubTypes.Type(value= Torchere.class, name="torchere")
-})
-public
-class Flatiron extends ElectricalDevice implements Switchable {
+@JsonTypeName("flatiron")
 
-        Flatiron(String model, String color, int power) {
+public class Flatiron extends ElectricalDevice implements Switchable {
+
+  private int powerMode = 1;
+
+  public Flatiron(String model, String color, int power) {
             super(model, color, power);
         }
 
-        Flatiron(String model, int power) {
-            super(model, power);
-        }
-
-        Flatiron() { }
-
-        @Override
-        public void setMode() {
-
-        }
+    public void setMode(byte mode) throws NonCorrectModeException {
+        if (mode <= 0 || mode > 3) throw new NonCorrectModeException();
+        this.powerMode = mode;
     }
+}

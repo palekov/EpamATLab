@@ -5,6 +5,7 @@ import java.util.Comparator;
 
 public class ElectricalDevice implements Serializable {
 
+    private static final long serialVersionUID = 100L;
     private String model;
     private String color;
     private int power;
@@ -29,6 +30,18 @@ public class ElectricalDevice implements Serializable {
         public int compare(ElectricalDevice a, ElectricalDevice b) {
             return a.power - b.power;
         }
+    }
+
+    public void setModel (String model) {
+        this.model = model;
+    }
+
+    public void setColor (String color) {
+        this.color = color;
+    }
+
+    public void setPower (int power) {
+        this.power = power;
     }
 
     public String getModel() {

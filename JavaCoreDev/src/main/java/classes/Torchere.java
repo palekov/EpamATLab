@@ -1,6 +1,9 @@
 package main.java.classes;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import main.java.ElectricalDevice;
+
+@JsonTypeName("torchere")
 
 public class Torchere extends ElectricalDevice {
 

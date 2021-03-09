@@ -1,3 +1,4 @@
-Television { model = 'grund', color = 'cyan', power = 350 }
-Torchere { model = 'kodo', color = 'werd', power = 400 }
-FoodProcessor { model = 'fooji', color = 'cyan', power = 1000 }
+Torchere { model = 'morch', color = 'blue', power = 40 }
+Television { model = 'sams', color = 'white', power = 120 }
+Mixer { model = 'tornado', color = 'red', power = 1200 }
+Flatiron { model = 'lg', color = 'silver', power = 2200 }
