@@ -30,6 +30,7 @@ package main.java;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -42,6 +43,13 @@ import main.java.exceptions.NoDeleteException;
 import main.java.exceptions.NoElementException;
 
 public class HomeElectricalDevices {
+
+    // JDBC driver name and database URL
+    final static String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+    final static String DB_URL = "jdbc:mysql://localhost:3306/mysql";
+    // Database credentials
+    final static String USER = "root";
+    final static String PASS = "pass";
 
     public static void addDevice(House house) throws NegativePowerException {
 
@@ -160,7 +168,7 @@ public class HomeElectricalDevices {
 
         try {
             house.devices.remove(i);
-        }   catch (Exception e) {
+        } catch (Exception e) {
             throw new NoDeleteException("The element cannot be deleted from the collection!");
         }
     }
@@ -249,7 +257,7 @@ public class HomeElectricalDevices {
         objectInputStream.close();
         fileInputStream.close();
         for (Object device : house.devices) {
-            System.out.println(device);;
+            System.out.println(device);
         }
         System.out.println();
     }
@@ -288,16 +296,109 @@ public class HomeElectricalDevices {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
+
+    public static void saveToBase(House house) throws ClassNotFoundException {
+
+        Connection conn = null;
+        Statement stmt = null;
+        try  {
+            //Register JDBC driver
+            Class.forName(JDBC_DRIVER);
+            //Open a connection
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            createDevicesTable(conn, stmt, house);
+
+            conn.close();
+        } catch(SQLException se)
+        {
+            se.printStackTrace();
+        }
+    }
+
+    public static void createDevicesTable (Connection conn, Statement stmt, House house) throws SQLException {
+        System.out.println("Creating table in given database...");
+        stmt = conn.createStatement();
+        String sql;
+        sql = "DROP TABLE Devices";
+        stmt.executeUpdate(sql);
+        sql = "CREATE TABLE Devices " +
+                "(id INTEGER not NULL, " +
+                " type VARCHAR(255), " +
+                " model VARCHAR(255), " +
+                " color VARCHAR(255), " +
+                " power INTEGER, " +
+                " PRIMARY KEY ( id ))";
+        stmt.executeUpdate(sql);
+        System.out.println("Created table in given database...");
+        System.out.println("Inserting records into the table...");
+        stmt =conn.createStatement();
+        ElectricalDevice dev;
+        int i = 0;
+        for (Object device : house.devices) {
+            dev = (ElectricalDevice) device;
+            sql ="INSERT INTO Devices VALUES (" + i + ", '" + device.getClass().getSimpleName() + "', '" + dev.getModel() + "', '"
+                    + dev.getColor() + "', " + dev.getPower() + ")";
+            System.out.println(sql);
+            stmt.executeUpdate(sql);
+            i++;
+        }
+        System.out.println("Successfully Inserted records into the table...");
+    }
+
+    public static void loadFromBase(House house) throws ClassNotFoundException {
+        Connection conn = null;
+        Statement stmt = null;
+        try  {
+            //Register JDBC driver
+            Class.forName(JDBC_DRIVER);
+            //Open a connection
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            loadDevicesTable(conn, stmt, house);
+
+            conn.close();
+        } catch(SQLException se)
+        {
+            se.printStackTrace();
+        }
+    }
+
+    public static void loadDevicesTable (Connection conn, Statement stmt, House house) throws SQLException {
+        System.out.println("Loading devices from database...");
+        stmt = conn.createStatement();
+        String sql;
+
+        sql = "SELECT * FROM Devices";
+        ResultSet rs = stmt.executeQuery(sql);
+        ElectricalDevice dev;
+        int id;
+        String type;
+        // Extract data from result set
+        while(rs.next()){
+            //Retrieve by column name
+            id = rs.getInt("id");
+            type = rs.getString("type");
+            dev = new ElectricalDevice();
+            dev.setModel(rs.getString("model"));
+            dev.setColor(rs.getString("color"));
+            dev.setPower(rs.getInt("power"));
+            house.devices.add(dev);
+            System.out.print("Loading data from base: " + id + " ");
+            System.out.println(dev);
+        }
+    }
+
 // ---------------------------------------------------------------------------------------------------------------
 
     public static void main(String[] args) throws NoDeleteException, NegativePowerException, NoElementException, IOException, ClassNotFoundException {
 
-        House house = new House();
-
         final String pth = "src/main/resources/";
+
+        House house = new House();
 
         Scanner scan = new Scanner(System.in);
         String str = "";
@@ -316,6 +417,8 @@ public class HomeElectricalDevices {
             System.out.println("    9 - загрузить из bin файла");
             System.out.println("    10 - сохранить в Json");
             System.out.println("    11 - загрузить из Json");
+            System.out.println("    12 - сохранить в Базу данных");
+            System.out.println("    13 - загрузить из Базы данных");
             System.out.println("    q - выход");
             System.out.println();
             System.out.println("Ваш выбор: ");
@@ -356,6 +459,12 @@ public class HomeElectricalDevices {
                     break;
                 case "11":
                     loadFromJson(pth, house);
+                    break;
+                case "12":
+                    saveToBase(house);
+                    break;
+                case "13":
+                    loadFromBase(house);
                     break;
                 default:
                     System.out.println("incorrect input! try again!");
