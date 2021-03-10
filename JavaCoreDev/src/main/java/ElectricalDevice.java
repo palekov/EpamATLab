@@ -25,7 +25,7 @@ public class ElectricalDevice implements Serializable {
         this.power = power;
     }
 
-    static class SortByPower implements Comparator<ElectricalDevice> {
+    public static class SortByPower implements Comparator<ElectricalDevice> {
 
         public int compare(ElectricalDevice a, ElectricalDevice b) {
             return a.power - b.power;
