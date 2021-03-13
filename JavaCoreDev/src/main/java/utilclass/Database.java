@@ -1,8 +1,9 @@
 package main.java.utilclass;
 
 import main.java.ElectricalDevice;
-import main.java.classes.House;
+import main.java.classes.*;
 
+import java.lang.reflect.Field;
 import java.sql.*;
 
 public class Database {
@@ -11,7 +12,7 @@ public class Database {
     final static String DB_URL = "jdbc:mysql://localhost:3306/mysql";
     // Database credentials
     final static String USER = "root";
-    final static String PASS = "pass";
+    final static String PASS = "9QZjFWKtPg-170_ol";
 
     public static void saveToBase(House house) throws ClassNotFoundException, SQLException {
         Connection conn = null;
@@ -43,22 +44,30 @@ public class Database {
                 " model VARCHAR(255), " +
                 " color VARCHAR(255), " +
                 " power INTEGER, " +
+                " mode INTEGER, " +
+                " program VARCHAR(255), " +
+                " time INTEGER, " +
+                " volume INTEGER, " +
+                " channel FLOAT, " +
                 " PRIMARY KEY ( id ))";
         stmt.executeUpdate(sql);
-        System.out.println("Created table in given database...");
+        System.out.println("Creating table in given database...");
+        System.out.println(sql);
         System.out.println("Inserting records into the table...");
-        stmt =conn.createStatement();
+        stmt = conn.createStatement();
         ElectricalDevice dev;
         int i = 0;
         for (Object device : house.devices) {
             dev = (ElectricalDevice) device;
-            sql ="INSERT INTO Devices VALUES (" + i + ", '" + device.getClass().getSimpleName() + "', '" + dev.getModel() + "', '"
-                    + dev.getColor() + "', " + dev.getPower() + ")";
+            sql = "INSERT INTO Devices VALUES (" + i + ", '" + device.getClass().getSimpleName() + "', '" + dev.getModel()
+                    + "', '" + dev.getColor() + "', " + dev.getPower() + " ," + dev.getMode() + " , '" + dev.getProgram()
+                    + "' ," + dev.getTime() + " ," + dev.getVolume()  + " ," + dev.getChannel() + ")";
             System.out.println(sql);
             stmt.executeUpdate(sql);
             i++;
         }
         System.out.println("Successfully Inserted records into the table...");
+        System.out.println();
     }
 
     public static void loadFromBase(House house) throws ClassNotFoundException, SQLException {
@@ -79,27 +88,60 @@ public class Database {
         }
     }
 
-    public static void loadDevicesTable(Connection conn, House house) throws SQLException {
+    public static void loadDevicesTable(Connection conn, House house) throws SQLException, ClassNotFoundException {
         System.out.println("Loading devices from database...");
         Statement stmt = conn.createStatement();
         String sql;
-        sql = "SELECT id, type, model, color, power FROM Devices";
+        sql = "SELECT id, type, model, color, power, mode, program, time, volume, channel FROM Devices";
         ResultSet rs = stmt.executeQuery(sql);
-        ElectricalDevice dev;
-        int id;
-        String type;
+        ElectricalDevice dev = null;
+        int id, power, mode, volume, time;
+        float channel;
+        String type, model, color, program;
         // Extract data from result set
         while(rs.next()){
             //Retrieve by column name
             id = rs.getInt("id");
             type = rs.getString("type");
-            dev = new ElectricalDevice();
-            dev.setModel(rs.getString("model"));
-            dev.setColor(rs.getString("color"));
-            dev.setPower(rs.getInt("power"));
+            model = rs.getString("model");
+            color = rs.getString("color");
+            power = rs.getInt("power");
+            mode = rs.getInt("mode");
+            program = rs.getString("program");
+            time = rs.getInt("time");
+            volume = rs.getInt("volume");
+            channel = rs.getFloat("channel");
+
+            switch (type) {
+                case "Mixer":
+                    dev = new Mixer(model, color, power, mode);
+                    break;
+                case "Radio":
+                    dev = new Radio(model, color, power, volume, channel);
+                    break;
+                case "Television":
+                    dev = new Television(model, color, power, volume, channel);
+                    break;
+                case "Torchere":
+                    dev = new Torchere(model, color, power);
+                    break;
+                case "Microwave":
+                    dev = new Microwave(model, color, power, program, time);
+                    break;
+                case "FoodProcessor":
+                    dev = new FoodProcessor(model, color, power, program, time);
+                    break;
+                case "Flatiron":
+                    dev = new Flatiron(model, color, power, mode);
+                    break;
+                default:
+                    System.out.println("incorrect data type: " + type);
+                    return;
+            }
+            System.out.print("Loading data: " + id + " ");
             house.devices.add(dev);
-            System.out.print("Loading data from base: " + id + " ");
             System.out.println(dev);
         }
+        System.out.println();
     }
 }

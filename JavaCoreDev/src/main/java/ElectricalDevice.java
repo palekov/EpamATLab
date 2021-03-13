@@ -3,7 +3,7 @@ package main.java;
 import java.io.Serializable;
 import java.util.Comparator;
 
-public class ElectricalDevice implements Serializable {
+public abstract class ElectricalDevice implements Serializable {
 
     private static final long serialVersionUID = 100L;
     private String model;
@@ -54,6 +54,26 @@ public class ElectricalDevice implements Serializable {
 
     public int getPower() {
         return power;
+    }
+
+    public int getMode() {
+        return 0;
+    }
+
+    public String getProgram() {
+        return null;
+    }
+
+    public int getTime() {
+        return 0;
+    }
+
+    public int getVolume() {
+        return 0;
+    }
+
+    public float getChannel() {
+        return 0;
     }
 
     public boolean isInserted() {

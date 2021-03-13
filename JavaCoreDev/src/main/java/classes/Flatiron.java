@@ -11,12 +11,32 @@ public class Flatiron extends ElectricalDevice implements Switchable {
 
   private int powerMode = 1;
 
+ public Flatiron(String model, String color, int power, int mode) {
+     super(model, color, power);
+     this.powerMode = mode;
+    }
+
   public Flatiron(String model, String color, int power) {
             super(model, color, power);
         }
 
-    public void setMode(byte mode) throws NonCorrectModeException {
+    public void setMode(int mode) throws NonCorrectModeException {
         if (mode <= 0 || mode > 3) throw new NonCorrectModeException();
         this.powerMode = mode;
+    }
+
+    @Override
+    public int getMode() {
+      return this.powerMode;
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() +" { " +
+                "model = '" + this.getModel() + '\'' +
+                ", color = '" + this.getColor() + '\'' +
+                ", power = " + this.getPower() +
+                ", mode = " + this.powerMode +
+                " }";
     }
 }

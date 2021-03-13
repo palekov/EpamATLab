@@ -53,7 +53,6 @@ public class HomeElectricalDevices {
         String str = "";
 
         while (!str.equals("q")) {
-
             System.out.println("--- Домашние электроприборы ---");
             System.out.println("    1 - добавить прибор");
             System.out.println("    2 - найти прибор");

@@ -7,11 +7,19 @@ import main.java.ElectricalDevice;
 
 public class Torchere extends ElectricalDevice {
 
-        public Torchere(String model, String color, int power) {
-            super(model, color, power);
-        }
-
-        public Torchere() {
-
-        }
+    public Torchere(String model, String color, int power) {
+        super(model, color, power);
     }
+
+    public Torchere() {
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + " { " +
+                "model = '" + this.getModel() + '\'' +
+                ", color = '" + this.getColor() + '\'' +
+                ", power = " + this.getPower() +
+                " }";
+    }
+}

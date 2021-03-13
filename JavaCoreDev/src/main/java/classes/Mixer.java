@@ -9,22 +9,41 @@ import main.java.exceptions.NonCorrectModeException;
 
 public class Mixer extends ElectricalDevice implements Switchable {
 
-        private byte speedMode = 1;
+    private int speedMode = 1;
 
-        public Mixer(String model, String color, int power) {
-            super(model, color, power);
-        }
-
-        public Mixer(String model, int power) {
-            super(model, power);
-        }
-
-        public Mixer() {
-        }
-
-        @Override
-        public void setMode(byte mode) throws NonCorrectModeException {
-            if (mode <=0 || mode > 3) throw new NonCorrectModeException();
-            this.speedMode = mode;
-        }
+    public Mixer(String model, String color, int power, int mode) {
+        super(model, color, power);
+        this.speedMode = mode;
     }
+
+    public Mixer(String model, String color, int power) {
+        super(model, color, power);
+    }
+
+    public Mixer(String model, int power) {
+        super(model, power);
+    }
+
+    public Mixer() {
+    }
+
+    @Override
+    public int getMode() {
+        return this.speedMode;
+    }
+
+    public void setMode(int mode) throws NonCorrectModeException {
+        if (mode <= 0 || mode > 3) throw new NonCorrectModeException();
+        this.speedMode = mode;
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + " { " +
+                "model = '" + this.getModel() + '\'' +
+                ", color = '" + this.getColor() + '\'' +
+                ", power = " + this.getPower() +
+                ", speed = " + this.speedMode +
+                " }";
+    }
+}

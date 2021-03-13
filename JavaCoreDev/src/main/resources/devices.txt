@@ -1,4 +1,6 @@
-Torchere { model = 'morch', color = 'blue', power = 40 }
-Television { model = 'sams', color = 'white', power = 120 }
-Mixer { model = 'tornado', color = 'red', power = 1200 }
-Flatiron { model = 'lg', color = 'silver', power = 2200 }
+Mixer { model = 'tornado', color = 'red', power = 1200, speed = 1 }
+Radio { model = 'rocks', color = 'gray', power = 45, volume = 5, channel = 92.8 }
+Television { model = 'lg', color = 'white', power = 120, volume = 7, channel = 895.5 }
+Microwave { model = 'supra', color = 'silver', power = 2200, program = 'heating', time = 5 }
+FoodProcessor { model = 'gorenje', color = 'brown', power = 1800, program = 'easy', channel = 10 }
+Flatiron { model = 'aresa', color = 'white', power = 2000, mode = 1 }
