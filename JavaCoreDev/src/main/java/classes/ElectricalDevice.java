@@ -1,4 +1,4 @@
-package main.java;
+package main.java.classes;
 
 import java.io.Serializable;
 import java.util.Comparator;

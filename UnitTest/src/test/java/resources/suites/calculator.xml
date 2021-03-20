@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Test suite" verbose="1" parallel="methods" thread-count="4">
+
+<!--    <test name="Calculator">-->
+<!--        <parameter name="a" value="1"></parameter>-->
+<!--        <parameter name="b" value="2"></parameter>-->
+<!--        <parameter name="expected" value="3"></parameter>-->
+<!--        <classes>-->
+<!--            <class name="CalculatorTestNG"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+    <test name="CalculatorTrigonometry">
+        <classes>
+            <class name="CalculatorTrigonometryTest">
+                <methods>
+                    <exclude name="cos90Test"></exclude>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -1,7 +1,6 @@
 package main.java.classes;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import main.java.ElectricalDevice;
 
 import java.util.ArrayList;
 

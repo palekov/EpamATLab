@@ -1,9 +1,8 @@
 package main.java.utilclass;
 
-import main.java.ElectricalDevice;
+import main.java.classes.ElectricalDevice;
 import main.java.classes.*;
 
-import java.lang.reflect.Field;
 import java.sql.*;
 
 public class Database {

@@ -6,8 +6,7 @@ package main.java.othertasks;
 //        b. Списки (Stack vs Queue);
 //        c. Словари (HashTable vs Dictionary)
 
-import main.java.ElectricalDevice;
-import main.java.classes.House;
+import main.java.classes.ElectricalDevice;
 import main.java.classes.Mixer;
 
 import java.util.*;

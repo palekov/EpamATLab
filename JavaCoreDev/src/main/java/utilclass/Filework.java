@@ -2,7 +2,7 @@ package main.java.utilclass;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import main.java.ElectricalDevice;
+import main.java.classes.ElectricalDevice;
 import main.java.classes.House;
 
 import java.io.*;

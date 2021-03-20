@@ -1,6 +1,6 @@
 package main.java.utilclass;
 
-import main.java.ElectricalDevice;
+import main.java.classes.ElectricalDevice;
 import main.java.classes.*;
 import main.java.exceptions.NegativePowerException;
 import main.java.exceptions.NoDeleteException;

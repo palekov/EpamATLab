@@ -1,7 +1,6 @@
 package main.java.classes;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import main.java.ElectricalDevice;
 import main.java.interfaces.Tuneable;
 
 @JsonTypeName("radio")
