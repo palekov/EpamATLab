@@ -48,9 +48,7 @@ public class CalculatorTestJUnit {
     }
 
     @Test
-    public void divLongTest() {
-        assertEquals(10L, calc.div(50L, 5L));
-    }
+    public void divLongTest() {  assertEquals(10L, calc.div(50L, 5L));   }
 
     @Test
     public void divDoubleTest() {
@@ -144,12 +142,4 @@ public class CalculatorTestJUnit {
         assertTrue(calc.isNegative(-17L));
     }
 
-    public static void main(String[] args) throws Exception {
-        JUnitCore runner = new JUnitCore();
-        Result result = runner.run(CalculatorTestJUnit.class);
-        System.out.println("run tests: " + result.getRunCount());
-        System.out.println("failed tests: " + result.getFailureCount());
-        System.out.println("ignored tests: " + result.getIgnoreCount());
-        System.out.println("success: " + result.wasSuccessful());
-    }
 }
