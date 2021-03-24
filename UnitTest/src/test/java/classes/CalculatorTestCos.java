@@ -1,8 +1,8 @@
 package classes;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
-import static junit.framework.TestCase.assertEquals;
+import static org.testng.Assert.*;
 
 public class CalculatorTestCos extends CalculatorTest {
 

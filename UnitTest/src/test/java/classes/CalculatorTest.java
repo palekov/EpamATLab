@@ -1,17 +1,24 @@
 package classes;
 
 import com.epam.tat.module4.Calculator;
-import org.junit.After;
-import org.junit.Before;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
 public class CalculatorTest {
 
     public Calculator calc;
 
-    @Before
+//    double d = Math.sqrt(-4);
+
+    @BeforeClass
     public void init() { calc = new Calculator(); }
 
-    @After
+    @AfterClass
     public void tearDown() { calc = null; }
+
+//    public static void main(String[] args) {
+//        CalculatorTest test = new CalculatorTest();
+//        System.out.println(test.d);
+//    }
 
 }

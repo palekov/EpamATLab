@@ -1,6 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Test suite" verbose="1" parallel="methods" thread-count="4">
+<suite name="Test suite" verbose="1">
+<!--       parallel="methods" thread-count="4">-->
 
 <!--    <test name="Calculator">-->
 <!--        <parameter name="a" value="1"></parameter>-->
@@ -11,13 +12,30 @@
 <!--        </classes>-->
 <!--    </test>-->
 
-    <test name="CalculatorTrigonometry">
+    <test name="CalculatorTest">
         <classes>
-            <class name="CalculatorTrigonometryTest">
+            <class name="classes.CalculatorTestIsPositive"></class>
+            <class name="classes.CalculatorTestIsNegative"></class>
+            <class name="classes.CalculatorTestSumDouble"></class>
+            <class name="classes.CalculatorTestSumLong"></class>
+            <class name="classes.CalculatorTestSubDouble"></class>
+            <class name="classes.CalculatorTestSubLong"></class>
+            <class name="classes.CalculatorTestMultDouble"></class>
+            <class name="classes.CalculatorTestMultLong"></class>
+            <class name="classes.CalculatorTestDivDouble"></class>
+            <class name="classes.CalculatorTestDivLong"></class>
+            <class name="classes.CalculatorTestPowDouble"></class>
+            <class name="classes.CalculatorTestSqrt">
                 <methods>
-                    <exclude name="cos90Test"></exclude>
+                    <exclude name="sqrtNegativeTest"></exclude>
                 </methods>
             </class>
+            <class name="classes.CalculatorTestSin"></class>
+            <class name="classes.CalculatorTestCos"></class>
+            <class name="classes.CalculatorTestTg"></class>
+            <class name="classes.CalculatorTestCtg"></class>
         </classes>
     </test>
+
+
 </suite>
