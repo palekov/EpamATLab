@@ -8,7 +8,7 @@ public class CalculatorTest {
 
     public Calculator calc;
 
-//    double d = Math.sqrt(-4);
+//    long d = 155l / 0l;
 
     @BeforeClass
     public void init() { calc = new Calculator(); }

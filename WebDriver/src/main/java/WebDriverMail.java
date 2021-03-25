@@ -18,7 +18,7 @@ public class WebDriverMail {
 
         Thread.sleep(5000);
 
-        WebElement loginInput = driver.findElement(By.cssSelector(".Field.Field_view_floating-label"));
+        WebElement loginInput = driver.findElement(By.xpath("//*[@id='passp-field-login']"));
 
         // #passp-field-login
         //*[@id="passp-field-login"]

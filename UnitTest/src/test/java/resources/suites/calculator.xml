@@ -3,15 +3,6 @@
 <suite name="Test suite" verbose="1">
 <!--       parallel="methods" thread-count="4">-->
 
-<!--    <test name="Calculator">-->
-<!--        <parameter name="a" value="1"></parameter>-->
-<!--        <parameter name="b" value="2"></parameter>-->
-<!--        <parameter name="expected" value="3"></parameter>-->
-<!--        <classes>-->
-<!--            <class name="CalculatorTestNG"></class>-->
-<!--        </classes>-->
-<!--    </test>-->
-
     <test name="CalculatorTest">
         <classes>
             <class name="classes.CalculatorTestIsPositive"></class>
@@ -36,6 +27,5 @@
             <class name="classes.CalculatorTestCtg"></class>
         </classes>
     </test>
-
 
 </suite>
