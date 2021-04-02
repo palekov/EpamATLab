@@ -8,11 +8,11 @@ public class CalculatorTestDivDouble extends CalculatorTest {
 
     @Test
     public void divDoubleNumbers() {
-        assertEquals(10d, calc.div(50d, 5d));
+        assertEquals(calc.div(50d, 5d), 10d);
     }
 
     @Test
     public void divDoubleNull() {
-        assertTrue(Double.isInfinite(calc.div(155d, 0d)));
+        assertTrue(Double.isInfinite(calc.div(0d, 155d)));
     }
 }

@@ -8,6 +8,6 @@ public class CalculatorTestMultLong extends CalculatorTest {
 
     @Test
     public void multLongTest() {
-        assertEquals(200L, calc.mult(100L, 2L));
+        assertEquals(calc.mult(100L, 2L), 200L);
     }
 }

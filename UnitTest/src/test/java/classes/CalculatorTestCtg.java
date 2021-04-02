@@ -13,16 +13,16 @@ public class CalculatorTestCtg extends CalculatorTest {
 
     @Test
     public void сtg30Test() {
-        assertEquals(1.732d , calc.ctg(Math.toRadians(30)));
+        assertEquals(calc.ctg(Math.toRadians(30)), 1.732d);
     }
 
     @Test
     public void сtg60Test() {
-        assertEquals(0.577d , calc.ctg(Math.toRadians(60)));
+        assertEquals(calc.ctg(Math.toRadians(60)), 0.577d);
     }
 
     @Test
     public void сtg90Test() {
-        assertEquals(0.0d , calc.ctg(Math.toRadians(90)));
+        assertEquals(calc.ctg(Math.toRadians(90)), 0.0d);
     }
 }

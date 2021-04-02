@@ -8,6 +8,6 @@ public class CalculatorTestSubLong extends CalculatorTest {
 
     @Test
     public void subLongTest() {
-        assertEquals(0L, calc.sub(1L, 1L));
+        assertEquals(calc.sub(1L, 1L), 0L);
     }
 }

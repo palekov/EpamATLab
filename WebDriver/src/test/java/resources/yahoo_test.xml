@@ -1,0 +1,20 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Test suite" verbose="1" parallel="classes" thread-count="4">
+
+    <test name="YahooTest">
+        <classes>
+            <class name="WebDriverYahooTest">
+                <methods>
+                    <include name="loginTest"></include>
+                    <include name="createMailTest"></include>
+                    <include name="verifyMailPresents"></include>
+                    <include name="verifyDraftContent"></include>
+                    <include name="sendMailTest"></include>
+                    <include name="logoutTest"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>

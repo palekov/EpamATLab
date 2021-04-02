@@ -3,7 +3,7 @@ import org.testng.annotations.*;
 
 import static org.testng.AssertJUnit.assertEquals;
 
-public class CalculatorTestNG {
+public class CalculatorTestNgDDT {
     private Calculator calc;
 
     @BeforeClass

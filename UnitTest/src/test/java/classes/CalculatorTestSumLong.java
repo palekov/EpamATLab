@@ -8,7 +8,7 @@ public class CalculatorTestSumLong extends CalculatorTest {
 
     @Test
     public void sumLongTest() {
-        assertEquals(10L, calc.sum(8L, 2L));
+        assertEquals(calc.sum(8L, 2L), 10L);
     }
 
     }
