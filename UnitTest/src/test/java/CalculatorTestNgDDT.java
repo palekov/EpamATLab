@@ -27,7 +27,8 @@ public class CalculatorTestNG {
     public Object[][] sumDataProvider() {
         return new Object[][] {
                 {1, 1, 2},
-                {0, 0, 0}
+                {0, 0, 0},
+                {2_400_000, 2_600_000, 5_000_000}
         };
     }
 }
