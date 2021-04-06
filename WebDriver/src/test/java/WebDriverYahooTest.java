@@ -18,6 +18,7 @@ public class WebDriverYahooTest {
     private WebDriver driver;
     private final String MAIL_LINK = "//a[@aria-label=\"palekov-2011@mail.ru\'s email\"]";
     private final String MAIL_TEXT = "This is a test message from Selenium WebDriver testing scenario!!!";
+
     private final int AUTOSAVE_TIMEOUT = 25000;
 
     @BeforeClass
