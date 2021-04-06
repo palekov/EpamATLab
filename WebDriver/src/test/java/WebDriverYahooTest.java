@@ -1,5 +1,4 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,12 +9,16 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
+import java.util.List;
+
+import static org.testng.Assert.*;
 
 public class WebDriverYahooTest {
 
     private WebDriver driver;
+    private final String MAIL_LINK = "//a[@aria-label=\"palekov-2011@mail.ru\'s email\"]";
+    private final String MAIL_TEXT = "This is a test message from Selenium WebDriver testing scenario!!!";
+    private final int AUTOSAVE_TIMEOUT = 25000;
 
     @BeforeClass
     public void setUp() {
@@ -60,8 +63,13 @@ public class WebDriverYahooTest {
 
         WebElement signinBtn2 = driver.findElement(By.id("login-signin"));
         signinBtn2.click();
-    }
 
+        WebElement accountMenu = driver.findElement(By.xpath("//*[@id=\"ybarAccountMenu\"]"));
+
+        assertEquals(accountMenu.getAttribute("aria-label"), "Manage your Yahoo accounts: Alexander (palekovnet)");
+
+    }
+    
     @Test
     public void createMailTest() {
         //  create a new mail
@@ -76,22 +84,21 @@ public class WebDriverYahooTest {
         subjectInput.sendKeys("Alexander");
 
         WebElement messageTextInput = driver.findElement(By.xpath("//div/*[@aria-label='Message body']"));
-        messageTextInput.sendKeys("This is a test message from Selenium WebDriver testing scenario!!!");
+        messageTextInput.sendKeys(MAIL_TEXT);
 
         //  waiting for autosave the mail in to drafts folder
-        threadSleep(25000);
+        threadSleep(AUTOSAVE_TIMEOUT);
     }
 
     @Test
     public void verifyMailPresents() {
         //  verify that the mail presents in drafts folder
-
         WebElement draftBtn = driver.findElement(By.xpath("//div/*[@data-test-folder-name='Draft']"));
         draftBtn.click();
 
-        WebElement draftmailLink = new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@aria-label=\"palekov-2011@mail.ru\'s email\"]")));
-        draftmailLink.click();
+        List<WebElement> draftMailLink = driver.findElements(By.xpath(MAIL_LINK));
+
+        assertFalse(draftMailLink.isEmpty());
 
         threadSleep(5000);
     }
@@ -104,7 +111,7 @@ public class WebDriverYahooTest {
 
         WebElement verifyTextInput = driver.findElement(By.cssSelector("#editor-container > div.rte.em_N.ir_0.iy_A.iz_h.N_6Fd5 > div > div"));
 
-        assertEquals("This is a test message from Selenium WebDriver testing scenario!!!", verifyTextInput.getText());
+        assertEquals(MAIL_TEXT, verifyTextInput.getText());
     }
 
     @Test
@@ -115,19 +122,16 @@ public class WebDriverYahooTest {
         threadSleep(5000);
 
         //  verify that the mail disappeared from drafts folder
-        boolean draftIsPresent = true;
-        try {
-        WebElement draftmailLink = driver.findElement(By.xpath("//a[@aria-label=\"palekov-2011@mail.ru\'s email\"]"));
-        } catch (NoSuchElementException ex) {
-            draftIsPresent = false;
-        }
-        assertFalse(draftIsPresent);
+        List<WebElement> draftMailLink = driver.findElements(By.xpath(MAIL_LINK));
+        assertTrue(draftMailLink.isEmpty());
 
         //  verify that the mail is in sent folder
         WebElement sentFolderBtn = driver.findElement(By.xpath("//a[@data-test-folder-name='Sent']"));
         sentFolderBtn.click();
 
-        WebElement sentmailLink = driver.findElement(By.xpath("//a[@aria-label=\"palekov-2011@mail.ru\'s email\"]"));
+        List<WebElement> sentMailLink = driver.findElements(By.xpath(MAIL_LINK));
+
+        assertFalse(sentMailLink.isEmpty());
 
         threadSleep(5000);
     }
@@ -140,10 +144,5 @@ public class WebDriverYahooTest {
 
         WebElement accountMenuSingOut = driver.findElement(By.xpath("//a[@data-soa='Sign out all']"));
         new Actions(driver).moveToElement(accountMenuSingOut).click().build().perform();
-
-//        WebElement signoutBtn = new WebDriverWait(driver, 10)
-//                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@data-soa='Sign out all']")));
-//        signoutBtn.click();
-
     }
 }
