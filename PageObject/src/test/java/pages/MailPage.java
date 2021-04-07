@@ -3,22 +3,30 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class MailPage {
+public class MailPage extends AbstractPage {
 
-    private final WebDriver driver;
+    private final String BASE_URL = "https://mail.yahoo.com/";
+
+    private static final By LOGIN_BUTTON_LOCATOR = By.cssSelector("a.fuji-button-link.fuji-button-text");
+
+    @Override
+    public MailPage openPage() {
+            driver.navigate().to(BASE_URL);
+            return this;
+        }
 
     public MailPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
-    public ComposePage composeMail() {
-        WebElement composeBtn = new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div/*[@data-test-id='compose-button']")));
-        composeBtn.click();
+    public String getMailPageTitle() {
+        return driver.getTitle();
+    }
 
-        return new ComposePage(driver);
+    public LoginPage loginToMail() {
+        WebElement enterBtn = driver.findElement(LOGIN_BUTTON_LOCATOR);
+        enterBtn.click();
+        return new LoginPage(driver);
     }
 }

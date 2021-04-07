@@ -3,18 +3,23 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ComposePage {
+public class ComposePage extends AbstractPage {
 
-    private final WebDriver driver;
+    private final String BASE_URL = "";
 
     private final int AUTOSAVE_TIMEOUT = 25000;
     private final String MAIL_TEXT = "This is a test message from Selenium WebDriver testing scenario!!!";
 
     public ComposePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+    }
+
+    @Override
+    public ComposePage openPage()
+    {
+        driver.navigate().to(BASE_URL);
+        return this;
     }
 
     public SendPage composeMail() throws InterruptedException {

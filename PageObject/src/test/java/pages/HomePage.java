@@ -4,19 +4,28 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class HomePage {
+public class HomePage extends AbstractPage {
+
+    private final String BASE_URL = "https://yahoo.com/";
 
     private static final By ENTER_BUTTON_LOCATOR = By.id("ybarMailLink");
 
-    private final WebDriver driver;
-
-    public HomePage(WebDriver driver) {
-        this.driver = driver;
+    @Override
+    public HomePage openPage()
+    {
+        driver.navigate().to(BASE_URL);
+        return this;
     }
 
-    public EnterPage enterToMail() {
+    public HomePage(WebDriver driver)
+    {
+        super(driver);
+    }
+
+    public MailPage enterToMail() throws InterruptedException {
         WebElement postBtn = driver.findElement(ENTER_BUTTON_LOCATOR);
         postBtn.click();
-        return new EnterPage(driver);
+        Thread.sleep(5000);
+        return new MailPage(driver);
     }
 }

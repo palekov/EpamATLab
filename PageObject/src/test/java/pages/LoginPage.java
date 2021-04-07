@@ -6,53 +6,51 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginPage {
+public class LoginPage extends AbstractPage {
+
+    private final String BASE_URL = "https://login.yahoo.com/";
+
     By usernameLocator = By.id("login-username");
     By passwordLocator = By.className("password");
     By nextButtonLocator = By.id("login-signin");
 
-//    WebElement loginInput = new WebDriverWait(driver, 10)
-//            .until(ExpectedConditions.presenceOfElementLocated(use)));
-//
-//        loginInput.sendKeys("palekovnet");
-
-    private final WebDriver driver;
+    @Override
+    public LoginPage openPage() {
+            driver.navigate().to(BASE_URL);
+            return this;
+        }
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public LoginPage typeUsername(String username) {
-        WebElement loginInput = new WebDriverWait(driver, 10)
+        WebElement loginInput = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
                 .until(ExpectedConditions.presenceOfElementLocated(usernameLocator));
-        loginInput.sendKeys(username);      //  ("palekovnet");
-
+        loginInput.sendKeys(username);
         return this;
     }
 
     public LoginPage typePassword(String password) {
-        WebElement passwordInput = new WebDriverWait(driver, 10)
+        WebElement passwordInput = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
                 .until(ExpectedConditions.presenceOfElementLocated(passwordLocator));
-        passwordInput.sendKeys(password);     //("w3b-driwen43");
-
+        passwordInput.sendKeys(password);
         return this;
     }
 
-    public MailPage submitInput() {
-        WebElement nextBtn = driver.findElement(nextButtonLocator);
-        nextBtn.click();
-        return new MailPage(driver);
+    public String getLoginPageTitle() {
+        return driver.getTitle();
     }
 
-//    public LoginPage submitLoginExpectingFailure() {
-//        driver.findElement(loginButtonLocator).submit();
-//        return new LoginPage(driver);
-//    }
-//
-//    public HomePage loginAs(String username, String password) {
-//        typeUsername(username);
-//        typePassword(password);
-//        return submitLogin();
-//    }
+    public LoginPage submitUsernameInput() {
+        WebElement nextBtn = driver.findElement(nextButtonLocator);
+        nextBtn.click();
+        return this;
+    }
 
+    public FoldersPage submitPasswordInput() {
+        WebElement nextBtn = driver.findElement(nextButtonLocator);
+        nextBtn.click();
+        return new FoldersPage(driver);
+    }
 }

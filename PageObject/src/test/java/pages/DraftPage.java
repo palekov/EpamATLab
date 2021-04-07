@@ -9,15 +9,22 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 import static test.CommonConditions.MAIL_TEXT;
 
-public class DraftPage {
+public class DraftPage extends AbstractPage {
 
-    private final WebDriver driver;
+    private final String BASE_URL = "";
 
     private final String MAIL_LINK = "//a[@aria-label=\"palekov-2011@mail.ru\'s email\"]";
 
-        public DraftPage(WebDriver driver) {
-            this.driver = driver;
-        }
+    public DraftPage(WebDriver driver) {
+        super(driver);
+    }
+
+    @Override
+    public DraftPage openPage()
+    {
+        driver.navigate().to(BASE_URL);
+        return this;
+    }
 
     public void verifyDraftPresent() throws InterruptedException {
         //  verify that the mail presents in drafts folder

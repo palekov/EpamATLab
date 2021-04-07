@@ -10,11 +10,18 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 import static test.CommonConditions.MAIL_LINK;
 
-public class SendPage {
-    private final WebDriver driver;
+public class SendPage extends AbstractPage {
+
+    private final String BASE_URL = "";
+
+    @Override
+    protected AbstractPage openPage() {
+        driver.navigate().to(BASE_URL);
+        return this;
+    }
 
     public SendPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void sendMail() throws InterruptedException {
