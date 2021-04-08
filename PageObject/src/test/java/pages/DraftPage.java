@@ -6,14 +6,14 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-import static org.testng.Assert.assertEquals;
-import static test.CommonConditions.MAIL_TEXT;
-
 public class DraftPage extends AbstractPage {
 
-    private final String BASE_URL = "";
+    private final String BASE_URL = "https://mail.yahoo.com/d/folders/3";
 
-    private final String MAIL_LINK = "//a[@aria-label=\"palekov-2011@mail.ru\'s email\"]";
+    By draftButtonLocator = By.xpath("//div/*[@data-test-folder-name='Draft']");
+    By subjectInputLocator = By.xpath("//input[@data-test-id='compose-subject']");
+    By textInputLocator = By.cssSelector("#editor-container > div.rte.em_N.ir_0.iy_A.iz_h.N_6Fd5 > div > div");
+    By sendButtonLocator = By.xpath("//button[@data-test-id='compose-send-button']");
 
     public DraftPage(WebDriver driver) {
         super(driver);
@@ -26,25 +26,36 @@ public class DraftPage extends AbstractPage {
         return this;
     }
 
-    public void verifyDraftPresent() throws InterruptedException {
+    public boolean verifyDraftPresent(String draftMailLink) {
         //  verify that the mail presents in drafts folder
-        WebElement draftBtn = driver.findElement(By.xpath("//div/*[@data-test-folder-name='Draft']"));
+        System.out.println("Verifying the draft is present...");
+        this.waitForElementPresent(draftButtonLocator);
+        WebElement draftBtn = driver.findElement(draftButtonLocator);
         draftBtn.click();
 
-        List<WebElement> draftMailLink = driver.findElements(By.xpath(MAIL_LINK));
+        this.waitForElementPresent(By.xpath(draftMailLink));
+        List<WebElement> draftMails = driver.findElements(By.xpath(draftMailLink));
+        draftMails.get(0).click();
 
-       // assertFalse(draftMailLink.isEmpty());
-
-        Thread.sleep(5000);
+        return !draftMails.isEmpty();
     }
 
-    public void verifyDraftContent() {
-        //  verify the draft content
-        WebElement verifySubjectInput = driver.findElement(By.xpath("//input[@data-test-id='compose-subject']"));
-        assertEquals("Alexander", verifySubjectInput.getAttribute("value"));
+    public boolean verifyDraftContent(String mailSubject, String mailText) {
+        System.out.println("Verifying the draft content...");
+        this.waitForElementPresent(subjectInputLocator);
+        WebElement subjectInput = driver.findElement(subjectInputLocator);
+        String mailUserName = subjectInput.getAttribute("value");
 
-        WebElement verifyTextInput = driver.findElement(By.cssSelector("#editor-container > div.rte.em_N.ir_0.iy_A.iz_h.N_6Fd5 > div > div"));
+        WebElement textInput = driver.findElement(textInputLocator);
+        String mailTextInput = textInput.getText();
 
-        assertEquals(MAIL_TEXT, verifyTextInput.getText());
+        return (mailUserName.equals(mailSubject)) && (mailTextInput.equals(mailText));
+    }
+
+    public void sendMail() {
+        System.out.println("Sending the mail...");
+        this.waitForElementPresent(sendButtonLocator);
+        WebElement sendBtn = driver.findElement(sendButtonLocator);
+        sendBtn.click();
     }
 }

@@ -11,6 +11,10 @@ public class ComposePage extends AbstractPage {
     private final int AUTOSAVE_TIMEOUT = 25000;
     private final String MAIL_TEXT = "This is a test message from Selenium WebDriver testing scenario!!!";
 
+    By messagetoInputLocator = By.id("message-to-field");
+    By subjectInputLocator = By.xpath("//input[@data-test-id='compose-subject']");
+    By textInputLocator = By.xpath("//div/*[@aria-label='Message body']");
+
     public ComposePage(WebDriver driver) {
         super(driver);
     }
@@ -22,20 +26,25 @@ public class ComposePage extends AbstractPage {
         return this;
     }
 
-    public SendPage composeMail() throws InterruptedException {
+    public String getComposePageTitle() throws InterruptedException {
+        Thread.sleep(WAIT_TITLE_TIMEOUT);
+        return driver.getTitle();
+    }
 
-        WebElement messagetoInput = driver.findElement(By.id("message-to-field"));
+    public SentPage composeMail() throws InterruptedException {
+        System.out.println("Composing the mail...");
+        WebElement messagetoInput = driver.findElement(messagetoInputLocator);
         messagetoInput.sendKeys("palekov-2011@mail.ru");
 
-        WebElement subjectInput = driver.findElement(By.xpath("//input[@data-test-id='compose-subject']"));
+        WebElement subjectInput = driver.findElement(subjectInputLocator);
         subjectInput.sendKeys("Alexander");
 
-        WebElement messageTextInput = driver.findElement(By.xpath("//div/*[@aria-label='Message body']"));
+        WebElement messageTextInput = driver.findElement(textInputLocator);
         messageTextInput.sendKeys(MAIL_TEXT);
 
         //  waiting for autosave the mail in to drafts folder
         Thread.sleep(AUTOSAVE_TIMEOUT);
 
-        return new SendPage(driver);
+        return new SentPage(driver);
     }
 }

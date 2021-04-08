@@ -25,6 +25,7 @@ public class LoginPage extends AbstractPage {
     }
 
     public LoginPage typeUsername(String username) {
+        System.out.println("Typing user name...");
         WebElement loginInput = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
                 .until(ExpectedConditions.presenceOfElementLocated(usernameLocator));
         loginInput.sendKeys(username);
@@ -32,23 +33,27 @@ public class LoginPage extends AbstractPage {
     }
 
     public LoginPage typePassword(String password) {
+        System.out.println("Typing password...");
         WebElement passwordInput = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
                 .until(ExpectedConditions.presenceOfElementLocated(passwordLocator));
         passwordInput.sendKeys(password);
         return this;
     }
 
-    public String getLoginPageTitle() {
+    public String getLoginPageTitle() throws InterruptedException {
+        Thread.sleep(WAIT_TITLE_TIMEOUT);
         return driver.getTitle();
     }
 
     public LoginPage submitUsernameInput() {
+        System.out.println("Submitting username...");
         WebElement nextBtn = driver.findElement(nextButtonLocator);
         nextBtn.click();
         return this;
     }
 
     public FoldersPage submitPasswordInput() {
+        System.out.println("Submitting password...");
         WebElement nextBtn = driver.findElement(nextButtonLocator);
         nextBtn.click();
         return new FoldersPage(driver);

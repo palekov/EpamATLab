@@ -8,24 +8,27 @@ public class MailPage extends AbstractPage {
 
     private final String BASE_URL = "https://mail.yahoo.com/";
 
-    private static final By LOGIN_BUTTON_LOCATOR = By.cssSelector("a.fuji-button-link.fuji-button-text");
+    By loginButtonLocator = By.cssSelector("a.fuji-button-link.fuji-button-text");
 
     @Override
     public MailPage openPage() {
-            driver.navigate().to(BASE_URL);
-            return this;
-        }
+        driver.navigate().to(BASE_URL);
+        return this;
+    }
 
     public MailPage(WebDriver driver) {
         super(driver);
     }
 
-    public String getMailPageTitle() {
+    public String getMailPageTitle() throws InterruptedException {
+        Thread.sleep(WAIT_TITLE_TIMEOUT);
         return driver.getTitle();
     }
 
     public LoginPage loginToMail() {
-        WebElement enterBtn = driver.findElement(LOGIN_BUTTON_LOCATOR);
+        System.out.println("Logging to mail account...");
+        this.waitForElementPresent(loginButtonLocator);
+        WebElement enterBtn = driver.findElement(loginButtonLocator);
         enterBtn.click();
         return new LoginPage(driver);
     }
