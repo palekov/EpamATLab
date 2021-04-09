@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static test.Constants.MAIL_LINK_LOCATOR;
+
 public class DraftPage extends AbstractPage {
 
     private final String BASE_URL = "https://mail.yahoo.com/d/folders/3";

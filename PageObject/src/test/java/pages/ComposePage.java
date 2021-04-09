@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static test.Constants.MAIL_SUBJECT_ADDRESS;
+import static test.Constants.MAIL_SUBJECT_NAME;
+
 public class ComposePage extends AbstractPage {
 
     private final String BASE_URL = "https://mail.yahoo.com/d/compose/";
