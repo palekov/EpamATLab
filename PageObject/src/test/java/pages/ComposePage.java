@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class ComposePage extends AbstractPage {
 
-    private final String BASE_URL = "";
+    private final String BASE_URL = "https://mail.yahoo.com/d/compose/";
 
     private final int AUTOSAVE_TIMEOUT = 25000;
     private final String MAIL_TEXT = "This is a test message from Selenium WebDriver testing scenario!!!";
@@ -26,18 +26,13 @@ public class ComposePage extends AbstractPage {
         return this;
     }
 
-    public String getComposePageTitle() throws InterruptedException {
-        Thread.sleep(WAIT_TITLE_TIMEOUT);
-        return driver.getTitle();
-    }
-
     public SentPage composeMail() throws InterruptedException {
         System.out.println("Composing the mail...");
         WebElement messagetoInput = driver.findElement(messagetoInputLocator);
-        messagetoInput.sendKeys("palekov-2011@mail.ru");
+        messagetoInput.sendKeys(MAIL_SUBJECT_ADDRESS);
 
         WebElement subjectInput = driver.findElement(subjectInputLocator);
-        subjectInput.sendKeys("Alexander");
+        subjectInput.sendKeys(MAIL_SUBJECT_NAME);
 
         WebElement messageTextInput = driver.findElement(textInputLocator);
         messageTextInput.sendKeys(MAIL_TEXT);

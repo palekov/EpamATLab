@@ -40,11 +40,6 @@ public class LoginPage extends AbstractPage {
         return this;
     }
 
-    public String getLoginPageTitle() throws InterruptedException {
-        Thread.sleep(WAIT_TITLE_TIMEOUT);
-        return driver.getTitle();
-    }
-
     public LoginPage submitUsernameInput() {
         System.out.println("Submitting username...");
         WebElement nextBtn = driver.findElement(nextButtonLocator);

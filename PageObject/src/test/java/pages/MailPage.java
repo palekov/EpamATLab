@@ -20,11 +20,6 @@ public class MailPage extends AbstractPage {
         super(driver);
     }
 
-    public String getMailPageTitle() throws InterruptedException {
-        Thread.sleep(WAIT_TITLE_TIMEOUT);
-        return driver.getTitle();
-    }
-
     public LoginPage loginToMail() {
         System.out.println("Logging to mail account...");
         this.waitForElementPresent(loginButtonLocator);

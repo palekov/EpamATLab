@@ -8,14 +8,10 @@ import pages.*;
 
 import static org.testng.Assert.*;
 
-public class SendMailTest extends CommonConditions {
+public class SendMailTest extends Constants {
 
     @BeforeMethod
-    public void setUp()
-    {
-        driver = DriverSingleton.getDriver();
-        //driver.get("https://yahoo.com");
-    }
+    public void setUp()  { driver = DriverSingleton.getDriver();  }
 
     @AfterMethod(alwaysRun = true)
     public void stopBrowser() {
@@ -25,27 +21,27 @@ public class SendMailTest extends CommonConditions {
     @Test
     public void sendTest() throws InterruptedException {
 
-        String mailPageTitle = new HomePage(driver).openPage()
-                .enterToMail().getMailPageTitle();
-        assertEquals(mailPageTitle, MAIL_PAGE_TITLE);
+        HomePage homePage = new HomePage(driver).openPage();
+        assertEquals(homePage.getPageTitle(), HOME_PAGE_TITLE);
 
-        String loginPageTitle = new MailPage(driver).loginToMail().getLoginPageTitle();
+        MailPage mailPage = homePage.enterToMail();
+        Thread.sleep(4500);
+
+        assertEquals(mailPage.getPageTitle(), MAIL_PAGE_TITLE);
+
+        String loginPageTitle = new MailPage(driver).loginToMail().getPageTitle();
         assertEquals(loginPageTitle, LOGIN_PAGE_TITLE);
 
-        String foldersPageTitle = new LoginPage(driver).typeUsername(USER_NAME).submitUsernameInput()
-                .typePassword(USER_PASSWORD).submitPasswordInput()
-                .getFoldersPageTitle();
-        assertEquals(foldersPageTitle, FOLDERS_PAGE_TITLE);
+        FoldersPage foldersPage = new LoginPage(driver).typeUsername(USER_NAME).submitUsernameInput()
+                .typePassword(USER_PASSWORD).submitPasswordInput();
 
-        ComposePage composePage = new FoldersPage(driver).enterToComposeMailFolder();
+        assertEquals(foldersPage.getPageTitle(), FOLDERS_PAGE_TITLE);
 
-        composePage.composeMail();
+        DraftPage draftPage = foldersPage.enterToComposeMailFolder().composeMail().enterToDraftsFolder();
 
-        DraftPage draftPage = new FoldersPage(driver).enterToDraftsFolder();
+        assertTrue(draftPage.isDraftPresent());
 
-        assertTrue(draftPage.verifyDraftPresent(MAIL_LINK));
-
-        assertTrue(draftPage.verifyDraftContent(MAIL_USER_NAME, MAIL_TEXT));
+        assertTrue(draftPage.isDraftContentCorrect(MAIL_USER_NAME, MAIL_TEXT));
 
         draftPage.sendMail();
 
@@ -53,9 +49,10 @@ public class SendMailTest extends CommonConditions {
 
         SentPage sendPage = new SentPage(driver).openPage();
 
-        assertTrue(sendPage.verifyMailWasSent(MAIL_LINK));
+        assertTrue(sendPage.isMailWasSent());
 
-        String homePageTitle = new FoldersPage(driver).openPage().logOut().getHomePageTitle();
-        assertEquals(homePageTitle, HOME_PAGE_TITLE);
+        sendPage.logOut();
+
+        assertEquals(homePage.getPageTitle(), HOME_PAGE_TITLE);
     }
 }

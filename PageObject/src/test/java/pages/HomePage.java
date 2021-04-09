@@ -17,11 +17,6 @@ public class HomePage extends AbstractPage {
         return this;
     }
 
-    public String getHomePageTitle() throws InterruptedException {
-        Thread.sleep(WAIT_TITLE_TIMEOUT);
-        return driver.getTitle();
-    }
-
     public HomePage(WebDriver driver)
     {
         super(driver);
