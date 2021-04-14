@@ -6,12 +6,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
 
+import java.net.MalformedURLException;
+
 import static org.testng.Assert.*;
 
 public class SendMailTest extends Constants {
 
     @BeforeMethod
-    public void setUp()  { driver = DriverSingleton.getDriver();  }
+    public void setUp() throws MalformedURLException { driver = DriverSingleton.getDriver();  }
 
     @AfterMethod(alwaysRun = true)
     public void stopBrowser() {
