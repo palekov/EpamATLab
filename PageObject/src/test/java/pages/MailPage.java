@@ -8,7 +8,8 @@ public class MailPage extends AbstractPage {
 
     private final String BASE_URL = "https://mail.yahoo.com/";
 
-    By loginButtonLocator = By.cssSelector("a.fuji-button-link.fuji-button-text");
+    By loginButtonLocator = By.id("login-username");
+            //By.cssSelector("a.fuji-button-link.fuji-button-text");
 
     @Override
     public MailPage openPage() {

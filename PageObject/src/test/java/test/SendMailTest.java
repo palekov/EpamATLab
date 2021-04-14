@@ -1,6 +1,7 @@
 package test;
 
 import driver.DriverSingleton;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -11,7 +12,9 @@ import static org.testng.Assert.*;
 public class SendMailTest extends Constants {
 
     @BeforeMethod
-    public void setUp()  { driver = DriverSingleton.getDriver();  }
+    public void setUp()  {
+        driver = DriverSingleton.getDriver();
+    }
 
     @AfterMethod(alwaysRun = true)
     public void stopBrowser() {
@@ -21,16 +24,29 @@ public class SendMailTest extends Constants {
     @Test
     public void sendTest() throws InterruptedException {
 
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
         HomePage homePage = new HomePage(driver).openPage();
         assertEquals(homePage.getPageTitle(), HOME_PAGE_TITLE);
 
-        MailPage mailPage = homePage.enterToMail();
+        String url = js.executeScript("return document.URL;").toString();
+        System.out.println("URL of the site = "+url);
+
+        homePage.searchAnything("selenium");
+
+        Thread.sleep(3000);
+
+        js.executeScript("window.scrollBy(0,1500)");
+        js.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 3000);");
+        js.executeScript("window.scrollBy(0,-1500)");
+
+        Thread.sleep(3000);
+
+        MailPage mailPage = homePage.openPage().enterToMail();
+
         Thread.sleep(4500);
 
-        assertEquals(mailPage.getPageTitle(), MAIL_PAGE_TITLE);
-
         String loginPageTitle = new MailPage(driver).loginToMail().getPageTitle();
-        assertEquals(loginPageTitle, LOGIN_PAGE_TITLE);
 
         FoldersPage foldersPage = new LoginPage(driver).typeUsername(USER_NAME).submitUsernameInput()
                 .typePassword(USER_PASSWORD).submitPasswordInput();
@@ -50,6 +66,8 @@ public class SendMailTest extends Constants {
         SentPage sendPage = new SentPage(driver).openPage();
 
         assertTrue(sendPage.isMailWasSent());
+
+        sendPage.clearSentMails();
 
         sendPage.logOut();
 

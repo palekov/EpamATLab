@@ -16,6 +16,8 @@ public class SentPage extends AbstractPage {
 
     By accountMenuLocator = By.id("ybarAccountMenu");
     By signOutButtonLocator = By.xpath("//a[@data-soa='Sign out all']");
+    By clearCheckBoxLocator = By.xpath("//span/*[@type='button' and @data-test-id='checkbox']");
+    By deleteButtonLocator = By.xpath("//div/*[@data-test-id='toolbar-delete']");
 
     @Override
     public SentPage openPage() {
@@ -45,6 +47,17 @@ public class SentPage extends AbstractPage {
         WebElement draftBtn = driver.findElement(draftButtonLocator);
         draftBtn.click();
         return new DraftPage(driver);
+    }
+
+    public SentPage clearSentMails() {
+        System.out.println("Clearing sent folder...");
+        this.waitForElementPresent(clearCheckBoxLocator);
+        WebElement clearCheckBox = driver.findElement(clearCheckBoxLocator);
+        clearCheckBox.click();
+        this.waitForElementPresent(deleteButtonLocator);
+        WebElement deleteButton = driver.findElement(deleteButtonLocator);
+        new Actions(driver).moveToElement(deleteButton).click().build().perform();
+        return this;
     }
 
     public HomePage logOut() throws InterruptedException {
