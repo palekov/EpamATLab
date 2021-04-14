@@ -6,7 +6,7 @@ public class Constants {
 
     protected WebDriver driver;
     protected static final String USER_NAME = "palekovnet";
-    protected static final String USER_PASSWORD = "w3b-driwen43";
+    protected static final String USER_PASSWORD = "w3b-drinken715";
 
     protected static final String MAIL_USER_NAME = "Alexander";
     protected static final String MAIL_TEXT = "This is a test message from Selenium WebDriver testing scenario!!!";
