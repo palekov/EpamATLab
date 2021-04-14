@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AbstractPage {
 
-    protected WebDriver driver;;
+    protected WebDriver driver;
 
     protected abstract AbstractPage openPage();
 

@@ -29,8 +29,7 @@ public class HomePage extends AbstractPage {
         System.out.println("Searching anything...");
         this.waitForElementPresent(searchInputLocator);
         WebElement searchInput = driver.findElement(searchInputLocator);
-        new Actions(driver).sendKeys(searchInput, keyword).build().perform();
-        new Actions(driver).sendKeys(searchInput, Keys.RETURN).build().perform();
+        new Actions(driver).sendKeys(searchInput, keyword).sendKeys(searchInput, Keys.RETURN).build().perform();
         return this;
     }
 
