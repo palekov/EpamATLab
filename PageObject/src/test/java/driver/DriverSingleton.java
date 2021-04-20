@@ -20,7 +20,7 @@ public class DriverSingleton {
     public static WebDriver getDriver() throws MalformedURLException {
         if (driver == null) {
             //driver = new ChromeDriver();
-            String nodeURL = "http://192.168.1.104:5566/wd/hub";
+            String nodeURL = "http://192.168.1.102:5566/wd/hub";
 //            DesiredCapabilities capability = DesiredCapabilities.firefox();
 //            capability.setBrowserName("firefox");
 //            capability.setPlatform(Platform.VISTA);
