@@ -7,9 +7,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AbstractPage {
 
-    public WebDriver driver;
+    protected WebDriver driver;
 
-    public abstract AbstractPage openPage();
+    protected abstract AbstractPage openPage();
 
     protected final int WAIT_TIMEOUT_SECONDS = 10;
     protected final int WAIT_TITLE_TIMEOUT = 4000;
