@@ -53,4 +53,6 @@ public class LoginPage extends AbstractPage {
         nextBtn.click();
         return new FoldersPage(driver);
     }
+
+
 }
