@@ -1,11 +1,13 @@
 package test;
 
 import driver.DriverSingleton;
+import model.User;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
+import service.UserCreator;
 
 import static org.testng.Assert.*;
 
@@ -26,21 +28,13 @@ public class SendMailTest extends Constants {
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
+        User testUser = UserCreator.withNameAndPassword();
+
         HomePage homePage = new HomePage(driver).openPage();
         assertEquals(homePage.getPageTitle(), HOME_PAGE_TITLE);
 
         String url = js.executeScript("return document.URL;").toString();
         System.out.println("URL of the site = "+url);
-
-        homePage.searchAnything("selenium");
-
-        Thread.sleep(3000);
-
-        js.executeScript("window.scrollBy(0,1500)");
-        js.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 3000);");
-        js.executeScript("window.scrollBy(0,-1500)");
-
-        Thread.sleep(3000);
 
         MailPage mailPage = homePage.openPage().enterToMail();
 
@@ -48,8 +42,7 @@ public class SendMailTest extends Constants {
 
         String loginPageTitle = new MailPage(driver).loginToMail().getPageTitle();
 
-        FoldersPage foldersPage = new LoginPage(driver).typeUsername(USER_NAME).submitUsernameInput()
-                .typePassword(USER_PASSWORD).submitPasswordInput();
+        FoldersPage foldersPage = new LoginPage(driver).login(testUser);
 
         assertEquals(foldersPage.getPageTitle(), FOLDERS_PAGE_TITLE);
 

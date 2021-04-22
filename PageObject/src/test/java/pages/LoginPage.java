@@ -1,18 +1,23 @@
 package pages;
 
-import org.openqa.selenium.By;
+import model.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends AbstractPage {
 
     private final String BASE_URL = "https://login.yahoo.com/";
 
-    By usernameLocator = By.id("login-username");
-    By passwordLocator = By.className("password");
-    By nextButtonLocator = By.id("login-signin");
+    @FindBy(id = "login-username")
+    private WebElement usernameInput;
+
+    @FindBy(className = "password")
+    private WebElement passwordInput;
+
+    @FindBy(id = "login-signin")
+    private WebElement nextButton;
 
     @Override
     public LoginPage openPage() {
@@ -22,37 +27,38 @@ public class LoginPage extends AbstractPage {
 
     public LoginPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(this.driver, this);
     }
 
     public LoginPage typeUsername(String username) {
         System.out.println("Typing user name...");
-        WebElement loginInput = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.presenceOfElementLocated(usernameLocator));
-        loginInput.sendKeys(username);
+        usernameInput.sendKeys(username);
         return this;
     }
 
-    public LoginPage typePassword(String password) {
+    public LoginPage typePassword(String password) throws InterruptedException {
         System.out.println("Typing password...");
-        WebElement passwordInput = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.presenceOfElementLocated(passwordLocator));
+        Thread.sleep(3000);
         passwordInput.sendKeys(password);
         return this;
     }
 
     public LoginPage submitUsernameInput() {
         System.out.println("Submitting username...");
-        WebElement nextBtn = driver.findElement(nextButtonLocator);
-        nextBtn.click();
+        nextButton.click();
         return this;
     }
 
-    public FoldersPage submitPasswordInput() {
+    public LoginPage submitPasswordInput() {
         System.out.println("Submitting password...");
-        WebElement nextBtn = driver.findElement(nextButtonLocator);
-        nextBtn.click();
-        return new FoldersPage(driver);
+        nextButton.click();
+        return this;
     }
 
+    public FoldersPage login(User user) throws InterruptedException {
+            this.typeUsername(user.getUsername()).submitUsernameInput()
+                .typePassword(user.getPassword()).submitPasswordInput();
+        return new FoldersPage(driver);
+        }
 
 }
