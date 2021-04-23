@@ -1,5 +1,7 @@
 package pages;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,6 +14,7 @@ public class DraftPage extends AbstractPage {
 
     private final String BASE_URL = "https://mail.yahoo.com/d/folders/3";
 
+    private final Logger logger = LogManager.getRootLogger();
 
     By subjectInputLocator = By.xpath("//input[@data-test-id='compose-subject']");
     By textInputLocator = By.cssSelector("#editor-container > div.rte.em_N.ir_0.iy_A.iz_h.N_6Fd5 > div > div");
@@ -25,12 +28,13 @@ public class DraftPage extends AbstractPage {
     public DraftPage openPage()
     {
         driver.navigate().to(BASE_URL);
+        logger.warn("Opening Draft Page...");
         return this;
     }
 
     public boolean isDraftPresent() {
         //  verify that the mail presents in drafts folder
-        System.out.println("Verifying the draft is present...");
+        logger.info("Verifying the draft is present...");
         this.waitForElementPresent(draftButtonLocator);
         WebElement draftBtn = driver.findElement(draftButtonLocator);
         draftBtn.click();
@@ -43,7 +47,7 @@ public class DraftPage extends AbstractPage {
     }
 
     public boolean isDraftContentCorrect(String mailSubject, String mailText) {
-        System.out.println("Verifying the draft content...");
+        logger.info("Verifying the draft content...");
         this.waitForElementPresent(subjectInputLocator);
         WebElement subjectInput = driver.findElement(subjectInputLocator);
         String mailUserName = subjectInput.getAttribute("value");
@@ -55,7 +59,7 @@ public class DraftPage extends AbstractPage {
     }
 
     public void sendMail() {
-        System.out.println("Sending the mail...");
+        logger.info("Sending the mail...");
         this.waitForElementPresent(sendButtonLocator);
         WebElement sendBtn = driver.findElement(sendButtonLocator);
         sendBtn.click();

@@ -1,6 +1,8 @@
 package pages;
 
 import model.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +11,8 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage extends AbstractPage {
 
     private final String BASE_URL = "https://login.yahoo.com/";
+
+    private final Logger logger = LogManager.getRootLogger();
 
     @FindBy(id = "login-username")
     private WebElement usernameInput;
@@ -22,6 +26,7 @@ public class LoginPage extends AbstractPage {
     @Override
     public LoginPage openPage() {
             driver.navigate().to(BASE_URL);
+            logger.warn("Opening Login page...");
             return this;
         }
 
@@ -31,26 +36,26 @@ public class LoginPage extends AbstractPage {
     }
 
     public LoginPage typeUsername(String username) {
-        System.out.println("Typing user name...");
+        logger.info("Typing user name...");
         usernameInput.sendKeys(username);
         return this;
     }
 
     public LoginPage typePassword(String password) throws InterruptedException {
-        System.out.println("Typing password...");
+        logger.info("Typing password...");
         Thread.sleep(3000);
         passwordInput.sendKeys(password);
         return this;
     }
 
     public LoginPage submitUsernameInput() {
-        System.out.println("Submitting username...");
+        logger.info("Submitting username...");
         nextButton.click();
         return this;
     }
 
     public LoginPage submitPasswordInput() {
-        System.out.println("Submitting password...");
+        logger.info("Submitting password...");
         nextButton.click();
         return this;
     }

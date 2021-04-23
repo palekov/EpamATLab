@@ -5,12 +5,15 @@ import model.User;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.*;
 import service.UserCreator;
+import util.TestListener;
 
 import static org.testng.Assert.*;
 
+@Listeners({TestListener.class})
 public class SendMailTest extends Constants {
 
     @BeforeMethod
@@ -36,11 +39,13 @@ public class SendMailTest extends Constants {
         String url = js.executeScript("return document.URL;").toString();
         System.out.println("URL of the site = "+url);
 
-        MailPage mailPage = homePage.openPage().enterToMail();
+        homePage.enterToMail();
 
-        Thread.sleep(4500);
+        Thread.sleep(3000);
 
-        String loginPageTitle = new MailPage(driver).loginToMail().getPageTitle();
+        new MailPage(driver).loginToMail();
+
+        Thread.sleep(3000);
 
         FoldersPage foldersPage = new LoginPage(driver).login(testUser);
 
