@@ -1,30 +1,20 @@
 package test;
 
-import driver.DriverSingleton;
 import model.User;
 import org.openqa.selenium.JavascriptExecutor;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.*;
 import service.UserCreator;
-import util.TestListener;
 
 import static org.testng.Assert.*;
 
-@Listeners({TestListener.class})
-public class SendMailTest extends Constants {
 
-    @BeforeMethod
-    public void setUp()  {
-        driver = DriverSingleton.getDriver();
-    }
+public class SendMailTest extends AbstractTest {
 
-    @AfterMethod(alwaysRun = true)
-    public void stopBrowser() {
-        DriverSingleton.closeDriver();
-    }
+    protected static final String MAIL_USER_NAME = "Alexander";
+    protected static final String MAIL_TEXT = "This is a test message from Selenium WebDriver testing scenario!!!";
+    protected static final String HOME_PAGE_TITLE = "Yahoo";
+    protected static final String FOLDERS_PAGE_TITLE = "palekovnet@yahoo.com - Yahoo Mail";
 
     @Test
     public void sendTest() throws InterruptedException {

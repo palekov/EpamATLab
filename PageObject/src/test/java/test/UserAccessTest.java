@@ -11,7 +11,7 @@ import service.UserCreator;
 
 import static org.testng.AssertJUnit.assertTrue;
 
-public class UserAccessTest extends Constants {
+public class UserAccessTest extends AbstractTest {
 
     @BeforeMethod
     public void setUp()  {
