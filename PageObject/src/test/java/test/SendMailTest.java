@@ -1,30 +1,27 @@
 package test;
 
-import driver.DriverSingleton;
+import model.User;
 import org.openqa.selenium.JavascriptExecutor;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
+import service.UserCreator;
 
 import static org.testng.Assert.*;
 
-public class SendMailTest extends Constants {
 
-    @BeforeMethod
-    public void setUp()  {
-        driver = DriverSingleton.getDriver();
-    }
+public class SendMailTest extends AbstractTest {
 
-    @AfterMethod(alwaysRun = true)
-    public void stopBrowser() {
-        DriverSingleton.closeDriver();
-    }
+    protected static final String MAIL_USER_NAME = "Alexander";
+    protected static final String MAIL_TEXT = "This is a test message from Selenium WebDriver testing scenario!!!";
+    protected static final String HOME_PAGE_TITLE = "Yahoo";
+    protected static final String FOLDERS_PAGE_TITLE = "palekovnet@yahoo.com - Yahoo Mail";
 
     @Test
     public void sendTest() throws InterruptedException {
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        User testUser = UserCreator.withNameAndPassword();
 
         HomePage homePage = new HomePage(driver).openPage();
         assertEquals(homePage.getPageTitle(), HOME_PAGE_TITLE);
@@ -32,24 +29,15 @@ public class SendMailTest extends Constants {
         String url = js.executeScript("return document.URL;").toString();
         System.out.println("URL of the site = "+url);
 
-        homePage.searchAnything("selenium");
+        homePage.enterToMail();
 
         Thread.sleep(3000);
 
-        js.executeScript("window.scrollBy(0,1500)");
-        js.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 3000);");
-        js.executeScript("window.scrollBy(0,-1500)");
+        new MailPage(driver).loginToMail();
 
         Thread.sleep(3000);
 
-        MailPage mailPage = homePage.openPage().enterToMail();
-
-        Thread.sleep(4500);
-
-        String loginPageTitle = new MailPage(driver).loginToMail().getPageTitle();
-
-        FoldersPage foldersPage = new LoginPage(driver).typeUsername(USER_NAME).submitUsernameInput()
-                .typePassword(USER_PASSWORD).submitPasswordInput();
+        FoldersPage foldersPage = new LoginPage(driver).login(testUser);
 
         assertEquals(foldersPage.getPageTitle(), FOLDERS_PAGE_TITLE);
 
