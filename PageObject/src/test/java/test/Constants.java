@@ -8,7 +8,8 @@ public class Constants {
     protected WebDriver driver;
     protected static final String MAIL_BASE_URL = "https://mail.yahoo.com/";
 
-    protected static final By loginButtonLocator = By.id("login-username");
+    protected static final By loginButtonLocator = By.cssSelector("a.fuji-button-link.fuji-button-text");
+    //By.id("login-username");
     protected static final By usernameLocator = By.id("login-username");
     protected static final By passwordLocator = By.className("password");
     protected static final By nextButtonLocator = By.id("login-signin");
@@ -20,7 +21,7 @@ public class Constants {
     protected static final String MAIL_TEXT = "This is a test message from Selenium WebDriver testing scenario!!!";
 
     protected static final String HOME_PAGE_TITLE = "Yahoo";
-    protected static final String MAIL_PAGE_TITLE = "Yahoo Почта";
+    protected static final String MAIL_PAGE_TITLE = "palekovnet@yahoo.com";
     protected static final String FOLDERS_PAGE_TITLE = "palekovnet@yahoo.com - Yahoo Mail";
     protected static final String LOGIN_PAGE_TITLE = "Yahoo";
 

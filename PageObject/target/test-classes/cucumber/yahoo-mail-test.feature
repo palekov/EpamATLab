@@ -1,4 +1,5 @@
 Feature: YahooMailTest
+
   Scenario: yahoo mail login
     Given User have open the browser
     When user navigates to yahoo mail page

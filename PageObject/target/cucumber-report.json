@@ -3,7 +3,7 @@
     "line": 1,
     "elements": [
       {
-        "line": 2,
+        "line": 3,
         "name": "yahoo mail login",
         "description": "",
         "id": "yahoomailtest;yahoo-mail-login",
@@ -12,47 +12,62 @@
         "steps": [
           {
             "result": {
-              "status": "undefined"
+              "duration": 1730113700,
+              "status": "passed"
             },
-            "line": 3,
+            "line": 4,
             "name": "User have open the browser",
-            "match": {},
+            "match": {
+              "location": "CucumberSteps.open_the_browser()"
+            },
             "keyword": "Given "
           },
           {
             "result": {
-              "status": "undefined"
+              "duration": 3066567100,
+              "status": "passed"
             },
-            "line": 4,
+            "line": 5,
             "name": "user navigates to yahoo mail page",
-            "match": {},
+            "match": {
+              "location": "CucumberSteps.navigate_to_home_page()"
+            },
             "keyword": "When "
           },
           {
             "result": {
-              "status": "undefined"
-            },
-            "line": 5,
-            "name": "click login button",
-            "match": {},
-            "keyword": "And "
-          },
-          {
-            "result": {
-              "status": "undefined"
+              "duration": 74587800,
+              "status": "passed"
             },
             "line": 6,
-            "name": "enters user credentials",
-            "match": {},
+            "name": "click login button",
+            "match": {
+              "location": "CucumberSteps.click_login_button()"
+            },
             "keyword": "And "
           },
           {
             "result": {
-              "status": "undefined"
+              "duration": 25955691400,
+              "status": "passed"
             },
             "line": 7,
+            "name": "enters user credentials",
+            "match": {
+              "location": "CucumberSteps.enter_user_credentials()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 4666308500,
+              "status": "passed"
+            },
+            "line": 8,
             "name": "yahoo mail page is displayed",
-            "match": {},
+            "match": {
+              "location": "CucumberSteps.mail_home_page_is_displayed()"
+            },
             "keyword": "Then "
           }
         ]

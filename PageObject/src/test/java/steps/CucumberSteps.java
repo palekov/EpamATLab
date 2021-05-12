@@ -1,4 +1,4 @@
-package test;
+package steps;
 
 import cucumber.api.java.en.*;
 import driver.DriverSingleton;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import test.Constants;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 //        @Given User have open the browser
 //        @When user navigates to yahoo mail page
@@ -16,7 +16,7 @@ import static org.testng.Assert.assertEquals;
 //        @And enters user credentials
 //        @Then yahoo mail page is displayed
 
-public class CucumberMailTestSteps extends Constants {
+public class CucumberSteps extends Constants {
 
     protected final int WAIT_TIMEOUT_SECONDS = 10;
     protected final int WAIT_TITLE_TIMEOUT = 4000;
@@ -56,14 +56,14 @@ public class CucumberMailTestSteps extends Constants {
                 .until(ExpectedConditions.presenceOfElementLocated(passwordLocator));
         passwordInput.sendKeys(USER_PASSWORD);
 
-        //driver.findElement(nextButtonLocator);
-        nextBtn.click();
+        WebElement pswnextBtn = driver.findElement(nextButtonLocator);
+        pswnextBtn.click();
     }
 
-    @Then("^yahoo mail home page is displayed$")
+    @Then("^yahoo mail page is displayed$")
     public void mail_home_page_is_displayed() throws InterruptedException {
         Thread.sleep(WAIT_TITLE_TIMEOUT);
-        assertEquals(driver.getTitle(), FOLDERS_PAGE_TITLE);
+        assertTrue(driver.getTitle().contains(MAIL_PAGE_TITLE));
         DriverSingleton.closeDriver();
     }
 
