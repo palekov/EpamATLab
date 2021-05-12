@@ -1,10 +1,18 @@
 package test;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class Constants {
 
     protected WebDriver driver;
+    protected static final String MAIL_BASE_URL = "https://mail.yahoo.com/";
+
+    protected static final By loginButtonLocator = By.id("login-username");
+    protected static final By usernameLocator = By.id("login-username");
+    protected static final By passwordLocator = By.className("password");
+    protected static final By nextButtonLocator = By.id("login-signin");
+
     protected static final String USER_NAME = "palekovnet";
     protected static final String USER_PASSWORD = "w3b-drinken715";
 
