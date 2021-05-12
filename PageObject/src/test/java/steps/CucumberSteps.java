@@ -3,20 +3,17 @@ package steps;
 import cucumber.api.java.en.*;
 import driver.DriverSingleton;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import test.Constants;
 
 import static org.testng.Assert.assertTrue;
+import static test.Constants.*;
 
-//        @Given User have open the browser
-//        @When user navigates to yahoo mail page
-//        @And click login button
-//        @And enters user credentials
-//        @Then yahoo mail page is displayed
+public class CucumberSteps {
 
-public class CucumberSteps extends Constants {
+    protected WebDriver driver;
 
     protected final int WAIT_TIMEOUT_SECONDS = 10;
     protected final int WAIT_TITLE_TIMEOUT = 4000;

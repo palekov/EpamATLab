@@ -6,24 +6,24 @@ import org.openqa.selenium.WebDriver;
 public class Constants {
 
     protected WebDriver driver;
-    protected static final String MAIL_BASE_URL = "https://mail.yahoo.com/";
 
-    protected static final By loginButtonLocator = By.cssSelector("a.fuji-button-link.fuji-button-text");
-    //By.id("login-username");
-    protected static final By usernameLocator = By.id("login-username");
-    protected static final By passwordLocator = By.className("password");
-    protected static final By nextButtonLocator = By.id("login-signin");
+    public static final String MAIL_BASE_URL = "https://mail.yahoo.com/";
 
-    protected static final String USER_NAME = "palekovnet";
-    protected static final String USER_PASSWORD = "w3b-drinken715";
+    public static final By loginButtonLocator = By.cssSelector("a.fuji-button-link.fuji-button-text");
+                                                    //By.id("login-username");
+    public static final By usernameLocator = By.id("login-username");
+    public static final By passwordLocator = By.className("password");
+    public static final By nextButtonLocator = By.id("login-signin");
 
-    protected static final String MAIL_USER_NAME = "Alexander";
-    protected static final String MAIL_TEXT = "This is a test message from Selenium WebDriver testing scenario!!!";
+    public static final String USER_NAME = "palekovnet";
+    public static final String USER_PASSWORD = "w3b-drinken715";
 
-    protected static final String HOME_PAGE_TITLE = "Yahoo";
-    protected static final String MAIL_PAGE_TITLE = "palekovnet@yahoo.com";
-    protected static final String FOLDERS_PAGE_TITLE = "palekovnet@yahoo.com - Yahoo Mail";
-    protected static final String LOGIN_PAGE_TITLE = "Yahoo";
+    public static final String MAIL_USER_NAME = "Alexander";
+    public static final String MAIL_TEXT = "This is a test message from Selenium WebDriver testing scenario!!!";
+
+    public static final String HOME_PAGE_TITLE = "Yahoo";
+    public static final String MAIL_PAGE_TITLE = "palekovnet@yahoo.com";
+    public static final String FOLDERS_PAGE_TITLE = "palekovnet@yahoo.com - Yahoo Mail";
 
     public static final String MAIL_SUBJECT_NAME = "Alexander";
     public static final String MAIL_SUBJECT_ADDRESS = "palekov-2011@mail.ru";
