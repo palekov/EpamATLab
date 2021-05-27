@@ -1,0 +1,24 @@
+task hello {
+   doLast {
+      println 'tutorialspoint'
+   }
+}
+
+task upper {
+   String expString = 'TUTORIALS point'
+   println "Original: " + expString
+   println "Upper case: " + expString.toUpperCase()
+}
+
+task count {
+   4.times { 
+      print "$it " 
+   }
+}
+
+task groovyJDK {
+   String myName = "Marc";
+   myName.each() { 
+      println "${it}" 
+   };
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="TestDeleteDummy" skipped="0" tests="1" time="3.95" timestamp="2021-05-24T17:26:31.749877+03:00[Europe/Minsk]"><testcase classname="TestDeleteDummy" name="Delete"><failure message="expected:&lt;429&gt; but was:&lt;200&gt;" type="java.lang.AssertionError">expected:&lt;429&gt; but was:&lt;200&gt;</failure><system-err>expected:&lt;429&gt; but was:&lt;200&gt;&#13;
+TestDeleteDummy.delete(TestDeleteDummy.java:21)&#13;
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)&#13;
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)&#13;
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+</system-err></testcase></testsuite>
