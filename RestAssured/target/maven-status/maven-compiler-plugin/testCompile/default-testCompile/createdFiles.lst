@@ -1,4 +1,4 @@
 TestPutDummy.class
-TestGetPostman.class
-TestPostWebHook.class
+TestGetDummy.class
+TestPostDummy.class
 TestDeleteDummy.class

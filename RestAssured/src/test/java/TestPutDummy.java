@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 @RunWith(SerenityRunner.class)
 public class TestPutDummy {
     @Test
-    public void UpdateRecordsWinthPut(){
+    public void putTest(){
         int empid = 15410;
         RestAssured.baseURI ="http://dummy.restapiexample.com/api/v1/";
         RequestSpecification request = RestAssured.given();
