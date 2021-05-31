@@ -1,3 +1,5 @@
+package tests;
+
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -14,7 +16,7 @@ public class TestPostDummy {
         RestAssured.baseURI ="http://dummy.restapiexample.com/api/v1/";
         RequestSpecification request = RestAssured.given();
         JSONObject requestParams = new JSONObject();
-        requestParams.put("name", "test");
+        requestParams.put("name", "tests");
         requestParams.put("age", 23);
         requestParams.put("salary", 12000);
         request.body(requestParams.toString());
@@ -47,7 +49,7 @@ public class TestPostDummy {
         RestAssured.baseURI ="http://dummy.restapiexample.com/api/v1/";
         RequestSpecification request = RestAssured.given();
         JSONObject requestParams = new JSONObject();
-        requestParams.put("name", "test");
+        requestParams.put("name", "tests");
         requestParams.put("salary", 12000);
         request.body(requestParams.toString());
         Response response = request.post("/create");
@@ -63,7 +65,7 @@ public class TestPostDummy {
         RestAssured.baseURI ="http://dummy.restapiexample.com/api/v1/";
         RequestSpecification request = RestAssured.given();
         JSONObject requestParams = new JSONObject();
-        requestParams.put("name", "test");
+        requestParams.put("name", "tests");
         requestParams.put("age", 0);
         requestParams.put("salary", 12000);
         request.body(requestParams.toString());
@@ -80,7 +82,7 @@ public class TestPostDummy {
         RestAssured.baseURI ="http://dummy.restapiexample.com/api/v1/";
         RequestSpecification request = RestAssured.given();
         JSONObject requestParams = new JSONObject();
-        requestParams.put("name", "test");
+        requestParams.put("name", "tests");
         requestParams.put("age", -1);
         requestParams.put("salary", 12000);
         request.body(requestParams.toString());
@@ -97,7 +99,7 @@ public class TestPostDummy {
         RestAssured.baseURI ="http://dummy.restapiexample.com/api/v1/";
         RequestSpecification request = RestAssured.given();
         JSONObject requestParams = new JSONObject();
-        requestParams.put("name", "test");
+        requestParams.put("name", "tests");
         requestParams.put("age", 120);
         requestParams.put("salary", 12000);
         request.body(requestParams.toString());
@@ -129,7 +131,7 @@ public class TestPostDummy {
         RestAssured.baseURI ="http://dummy.restapiexample.com/api/v1/";
         RequestSpecification request = RestAssured.given();
         JSONObject requestParams = new JSONObject();
-        requestParams.put("name", "test");
+        requestParams.put("name", "tests");
         requestParams.put("age", 23);
         requestParams.put("salary", -12000);
         request.body(requestParams.toString());

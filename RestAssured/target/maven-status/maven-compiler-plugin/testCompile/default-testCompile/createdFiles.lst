@@ -1,4 +1,6 @@
-TestPutDummy.class
-TestGetDummy.class
-TestPostDummy.class
-TestDeleteDummy.class
+tests\TestGetDummy.class
+steps\StepDefinitions.class
+tests\RunCucumberTest.class
+tests\TestPutDummy.class
+tests\TestDeleteDummy.class
+tests\TestPostDummy.class

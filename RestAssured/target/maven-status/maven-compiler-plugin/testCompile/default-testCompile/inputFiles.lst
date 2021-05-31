@@ -1,4 +1,6 @@
-D:\EpamATLab\RestAssured\src\test\java\TestPostDummy.java
-D:\EpamATLab\RestAssured\src\test\java\TestDeleteDummy.java
-D:\EpamATLab\RestAssured\src\test\java\TestPutDummy.java
-D:\EpamATLab\RestAssured\src\test\java\TestGetDummy.java
+D:\EpamATLab\RestAssured\src\test\java\tests\TestDeleteDummy.java
+D:\EpamATLab\RestAssured\src\test\java\tests\TestGetDummy.java
+D:\EpamATLab\RestAssured\src\test\java\tests\TestPutDummy.java
+D:\EpamATLab\RestAssured\src\test\java\steps\StepDefinitions.java
+D:\EpamATLab\RestAssured\src\test\java\tests\RunCucumberTest.java
+D:\EpamATLab\RestAssured\src\test\java\tests\TestPostDummy.java
