@@ -12,10 +12,6 @@ public class TestGetDummy {
         RestAssured.
                 when().get("http://dummy.restapiexample.com/employees").
                 then().assertThat().statusCode(200);
-
-//                when().get("https://postman-echo.com/get?foo1=bar1&foo2=bar2").
-//                then().assertThat().statusCode(200).
-//                and().body("args.foo2", is("bar2"));
     }
 
     @Test

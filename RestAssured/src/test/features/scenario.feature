@@ -4,7 +4,7 @@ Feature: Create an employee
 
     When I create an employee "<NAME>" with age "<AGE>" and salary "<SALARY>"
     Then I should receive response 200 OK code
-    And created employee has name "<NAME>" and age "<AGE>" and salary "<SALARY>"
+    And created employee has some id number
 
     Examples:
       | NAME    | AGE | SALARY |
@@ -17,5 +17,6 @@ Feature: Create an employee
       |         | 10  | 1000   |
       | Emptage |     | 1000   |
       | Emptsal | 10  |        |
+      | Aaaaaa  | xx  | zzz    |
       |         |     |        |
 
