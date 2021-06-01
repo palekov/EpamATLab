@@ -17,7 +17,7 @@ public class StepDefinitions {
     private int statusCode;
 
     @When("I create an employee {string} with age {string} and salary {string}")
-    public void createAnEmployee(String name, String age, String salary) {
+    public void createAnEmployee(String name, String age, String salary) throws InterruptedException {
         RestAssured.baseURI ="http://dummy.restapiexample.com/api/v1/";
         RequestSpecification request = RestAssured.given();
         JSONObject requestParams = new JSONObject();
@@ -25,12 +25,20 @@ public class StepDefinitions {
         requestParams.put("age", age);
         requestParams.put("salary", salary);
         request.body(requestParams.toString());
-        response = request.post("/create");
+        statusCode = 0;
+        int attemptNum = 0;
+
+        while ((statusCode != 200) && (attemptNum < 3 )) {
+            response = request.post("/create");
+            statusCode = response.getStatusCode();
+            Thread.sleep(1000);
+            attemptNum++;
+        }
     }
 
     @Then("^I should receive response (\\d+) OK code$")
     public void receiveResponse(int expectedCode) {
-        statusCode = response.getStatusCode();
+
         Assert.assertEquals(expectedCode, statusCode);
     }
 
