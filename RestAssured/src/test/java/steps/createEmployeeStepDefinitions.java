@@ -7,14 +7,12 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Assert;
 
-public class StepDefinitions {
+public class createEmployeeStepDefinitions {
     private Response response;
     private ValidatableResponse json;
-    JSONArray jsonResponse;
     private RequestSpecification request;
     private int statusCode;
 
@@ -36,14 +34,10 @@ public class StepDefinitions {
             Thread.sleep(3000);
             attemptNum++;
         }
-        //jsonResponse = new JSONArray(response.asString());
     }
 
     @Then("^I should receive response (\\d+) OK code$")
     public void receiveResponse(int expectedCode) {
-
-        //  System.out.println(response.asString());
-        //  {"status":"success","data":{"id":6756},"message":"Successfully! Record has been added."}
         Assert.assertEquals(expectedCode, statusCode);
     }
 

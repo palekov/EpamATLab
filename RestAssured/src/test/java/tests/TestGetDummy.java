@@ -10,7 +10,7 @@ public class TestGetDummy {
     @Test
     public void getAllEmployeesTest() {
         RestAssured.
-                when().get("http://dummy.restapiexample.com/employees").
+                when().get("http://dummy.restapiexample.com/employee").
                 then().assertThat().statusCode(200);
     }
 
