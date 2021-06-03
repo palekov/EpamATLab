@@ -23,9 +23,5 @@ public class TestDeleteDummy {
         Assert.assertEquals(200, statusCode);
         String jsonString = response.asString();
         Assert.assertTrue(jsonString.contains("Successfully! Record has been deleted"));
-
-//        Assert.assertEquals(statusCode, 404);
-//        jsonString =response.asString();
-//        Assert.assertEquals(jsonString.contains("Record to delete not found"), true);
     }
 }
