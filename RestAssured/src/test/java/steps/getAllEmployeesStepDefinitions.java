@@ -12,16 +12,22 @@ import org.junit.Assert;
 import java.util.HashMap;
 import java.util.List;
 
-public class getEmployeeStepDefinitions {
+public class getAllEmployeesStepDefinitions {
     private Response response;
     JsonPath path;
     private int statusCode;
 
     @When("^I requesting all existing employees$")
-    public void getAllEmployees() {
+    public void getAllEmployees() throws InterruptedException {
         RequestSpecification request = RestAssured.given();
-        response = request.get("http://dummy.restapiexample.com/api/v1/employees");
-        statusCode = response.getStatusCode();
+        statusCode = 0;
+        int attemptNum = 0;
+        while ((statusCode != 200) && (attemptNum < 3)) {
+            response = request.get("http://dummy.restapiexample.com/api/v1/employees");
+            statusCode = response.getStatusCode();
+            Thread.sleep(3000);
+            attemptNum++;
+        }
     }
 
     @Then("^I receive response (\\d+) OK code$")
@@ -30,12 +36,11 @@ public class getEmployeeStepDefinitions {
         Assert.assertEquals(expectedCode, statusCode);
     }
 
-    @And("the number of employees received must be more than one")
-    public void checkNumberOfEmployees() {
+    @And("^the number of employees received")
+    public void receiveNumberOfEmployees() {
         path = response.jsonPath();
         List<HashMap<String, Object>> data = path.getList("data");
         int  employeesNum = data.size();
         System.out.println("Number of employees received: " + employeesNum);
-        Assert.assertTrue(employeesNum > 1 );
     }
 }
