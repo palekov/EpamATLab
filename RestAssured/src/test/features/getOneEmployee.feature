@@ -8,7 +8,5 @@ Feature: Get one employee
     Examples:
     | ID   | RESPONSE  |
     | 1    |   200     |
-    | 10   |   200     |
     | 0    |   400     |
-    | 999  |   200     |
     | -1   |   404     |
