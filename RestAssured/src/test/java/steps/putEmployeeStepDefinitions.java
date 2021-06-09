@@ -50,22 +50,22 @@ public class putEmployeeStepDefinitions {
 
     @Then("I should receive response code {int}")
     public void responseCode(int expectedCode) {
-        System.out.println(response.asString());
+        System.out.println("Response: " + response.asString());
         Assert.assertEquals(expectedCode, statusCode);
     }
 
-    @And("updated employee has some {string}, {string} and {string}")
-    public void getUpdatedEmployee(String age, String name, String salary) throws InterruptedException {
+    @Then("updated employee has some {string}, {string} and {string}")
+    public void getUpdatedEmployee(String name, String age, String salary) throws InterruptedException {
 
         getEmployee(employeeId);
-        JsonPath path = response.jsonPath();
-
+        JsonPath path = response.body().jsonPath();
+        System.out.println("Path: " + path.toString());
         String employeeName = path.get("data.employee_name");
         Integer employeeAge = path.get("data.age");
         Integer employeeSalary = path.get("data.employee_salary");
 
-        Assert.assertEquals(name, employeeName);
         Assert.assertEquals(age, employeeAge.toString());
+        Assert.assertEquals(name, employeeName);
         Assert.assertEquals(salary, employeeSalary.toString());
     }
 }
