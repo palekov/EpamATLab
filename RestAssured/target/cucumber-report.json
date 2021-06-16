@@ -1,0 +1,106 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 11,
+        "name": "Create an employee with valid parameters",
+        "description": "",
+        "id": "create-an-employee;create-an-employee-with-valid-parameters;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 5,
+            "name": "I create an employee \"Petrov\" with age \"23\" and salary \"1400\"",
+            "match": {},
+            "matchedColumns": [
+              0,
+              1,
+              2
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 6,
+            "name": "I should receive response 200 OK code",
+            "match": {},
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 7,
+            "name": "created employee has name \"Petrov\" and age \"23\" and salary \"1400\"",
+            "match": {},
+            "matchedColumns": [
+              0,
+              1,
+              2
+            ],
+            "keyword": "And "
+          }
+        ]
+      },
+      {
+        "line": 12,
+        "name": "Create an employee with valid parameters",
+        "description": "",
+        "id": "create-an-employee;create-an-employee-with-valid-parameters;;3",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 5,
+            "name": "I create an employee \"Sidorov\" with age \"45\" and salary \"2800\"",
+            "match": {},
+            "matchedColumns": [
+              0,
+              1,
+              2
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 6,
+            "name": "I should receive response 200 OK code",
+            "match": {},
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 7,
+            "name": "created employee has name \"Sidorov\" and age \"45\" and salary \"2800\"",
+            "match": {},
+            "matchedColumns": [
+              0,
+              1,
+              2
+            ],
+            "keyword": "And "
+          }
+        ]
+      }
+    ],
+    "name": "Create an employee",
+    "description": "",
+    "id": "create-an-employee",
+    "keyword": "Feature",
+    "uri": "src/test/resources/cucumber/scenario.feature"
+  }
+]

@@ -9,5 +9,6 @@ Feature: Delete one employee
     Examples:
       | ID | RESPONSE |
       |  1 |   200    |
-      | 10 |   200    |
-      |999 |   200    |
+      |  0 |   400    |
+      | -1 |   400    |
+      |9999|   400    |
