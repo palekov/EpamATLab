@@ -12,25 +12,19 @@
         "steps": [
           {
             "result": {
-              "duration": 37038064700,
+              "duration": 19947410400,
               "status": "passed"
             },
             "line": 5,
-            "name": "I am on the \"Welcome Dummy api example\" web page",
+            "name": "I am on the Dummy sample rest api web page",
             "match": {
-              "arguments": [
-                {
-                  "val": "Welcome Dummy api example",
-                  "offset": 13
-                }
-              ],
-              "location": "checkTableStepDefinitions.openDummyMainPage(String)"
+              "location": "checkTableStepDefinitions.openDummyMainPage()"
             },
             "keyword": "Given "
           },
           {
             "result": {
-              "duration": 118100,
+              "duration": 28937700,
               "status": "passed"
             },
             "line": 6,
@@ -42,44 +36,28 @@
           },
           {
             "result": {
-              "duration": 384100,
+              "duration": 748941100,
               "status": "passed"
             },
             "line": 7,
-            "name": "the table have a specified columns with names \"#\" \"Route\" \"Method\" \"Type\" \"Full route\" \"Description\" \"Details\"",
+            "name": "the table have a specified columns with names",
             "match": {
-              "arguments": [
-                {
-                  "val": "#",
-                  "offset": 47
-                },
-                {
-                  "val": "Route",
-                  "offset": 51
-                },
-                {
-                  "val": "Method",
-                  "offset": 59
-                },
-                {
-                  "val": "Type",
-                  "offset": 68
-                },
-                {
-                  "val": "Full route",
-                  "offset": 75
-                },
-                {
-                  "val": "Description",
-                  "offset": 88
-                },
-                {
-                  "val": "Details",
-                  "offset": 102
-                }
-              ],
-              "location": "checkTableStepDefinitions.the_table_have_a_specified_columns_with_names(String,String,String,String,String,String,String)"
+              "location": "checkTableStepDefinitions.the_table_have_a_specified_columns_with_names(String\u003e)"
             },
+            "rows": [
+              {
+                "cells": [
+                  "#",
+                  "Route",
+                  "Method",
+                  "Type",
+                  "Full route",
+                  "Description",
+                  "Details"
+                ],
+                "line": 8
+              }
+            ],
             "keyword": "Then "
           }
         ]

@@ -6,8 +6,11 @@ import cucumber.api.java.en.When;
 import driver.DriverSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
@@ -19,18 +22,17 @@ public class checkTableStepDefinitions {
     protected final String MAIL_BASE_URL = "http://dummy.restapiexample.com/";
     public static final String HOME_PAGE_TITLE = "Dummy sample rest api - dummy.restapiexample.com";
     public static final By tableLocator = By.className("table");
-    public static final By columnLocator = By.className("col");
+    public static final By columnLocator = By.xpath("//thead/tr/th");
 
     public void waitForElementPresent(By locator) {
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
                 .until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
     }
 
-    @Given("^I am on the \"([^\"]*)\" web page$")
-    public void openDummyMainPage(String pageHeader) {
+    @Given("^I am on the Dummy sample rest api web page$")
+    public void openDummyMainPage() {
         driver = DriverSingleton.getDriver();
         driver.navigate().to(MAIL_BASE_URL);
-        //System.out.println(driver.getTitle());
         assertEquals(driver.getTitle(), HOME_PAGE_TITLE);
     }
 
@@ -40,9 +42,16 @@ public class checkTableStepDefinitions {
         assertFalse(driver.findElements(tableLocator).isEmpty());
     }
 
-    @Then("^the table have a specified columns with names \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")
-    public void the_table_have_a_specified_columns_with_names
-            (String arg1, String arg2, String arg3, String arg4, String arg5, String arg6, String arg7) {
-        driver.findElements(columnLocator);
+    @Then("^the table have a specified columns with names$")
+    public void the_table_have_a_specified_columns_with_names(List<String> columnNames) {
+        List<WebElement> tableColumns = driver.findElements(columnLocator);
+        System.out.println("Number of columns found:" + tableColumns.size());
+        String columnName = "";
+        for (int i = 0; i < tableColumns.size(); i++) {
+            columnName = tableColumns.get(i).getText();
+            System.out.println("Column title:" + columnName);
+            assertEquals(columnName, columnNames.get(i));
+        }
+        DriverSingleton.closeDriver();
     }
 }
