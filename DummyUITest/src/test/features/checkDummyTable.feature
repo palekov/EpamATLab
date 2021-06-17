@@ -6,3 +6,4 @@ Feature: Check the table
     When the table with request examples is present
     Then the table have a specified columns with names
     | # | Route | Method | Type | Full route | Description | Details |
+    And the contents of the columns are correct

@@ -12,7 +12,7 @@
         "steps": [
           {
             "result": {
-              "duration": 19947410400,
+              "duration": 19767558100,
               "status": "passed"
             },
             "line": 5,
@@ -24,7 +24,7 @@
           },
           {
             "result": {
-              "duration": 28937700,
+              "duration": 108176900,
               "status": "passed"
             },
             "line": 6,
@@ -36,7 +36,7 @@
           },
           {
             "result": {
-              "duration": 748941100,
+              "duration": 464711800,
               "status": "passed"
             },
             "line": 7,
@@ -59,6 +59,18 @@
               }
             ],
             "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 626442600,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "the contents of the columns are correct",
+            "match": {
+              "location": "checkTableStepDefinitions.checkColumnsContent()"
+            },
+            "keyword": "And "
           }
         ]
       }
