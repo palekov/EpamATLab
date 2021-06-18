@@ -12,7 +12,7 @@
         "steps": [
           {
             "result": {
-              "duration": 19767558100,
+              "duration": 2792005700,
               "status": "passed"
             },
             "line": 5,
@@ -24,7 +24,7 @@
           },
           {
             "result": {
-              "duration": 108176900,
+              "duration": 28114500,
               "status": "passed"
             },
             "line": 6,
@@ -36,7 +36,7 @@
           },
           {
             "result": {
-              "duration": 464711800,
+              "duration": 91165601,
               "status": "passed"
             },
             "line": 7,
@@ -62,14 +62,44 @@
           },
           {
             "result": {
-              "duration": 626442600,
+              "duration": 200544700,
               "status": "passed"
             },
-            "line": 9,
-            "name": "the contents of the columns are correct",
+            "line": 10,
+            "name": "the contents of the Method and Type columns contains a correct data",
             "match": {
-              "location": "checkTableStepDefinitions.checkColumnsContent()"
+              "location": "checkTableStepDefinitions.checkColumnsContent(String,String\u003e)"
             },
+            "rows": [
+              {
+                "cells": [
+                  "GET",
+                  "JSON"
+                ],
+                "line": 11
+              },
+              {
+                "cells": [
+                  "PUT",
+                  "JSON"
+                ],
+                "line": 12
+              },
+              {
+                "cells": [
+                  "POST",
+                  "JSON"
+                ],
+                "line": 13
+              },
+              {
+                "cells": [
+                  "DELETE",
+                  "JSON"
+                ],
+                "line": 14
+              }
+            ],
             "keyword": "And "
           }
         ]

@@ -1,6 +1,5 @@
 package steps;
 
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -9,7 +8,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import static driver.DriverSingleton.driver;
 import static org.testng.Assert.*;
@@ -54,8 +56,10 @@ public class checkTableStepDefinitions {
         }
     }
 
-    @And("the contents of the columns are correct")
-    public void checkColumnsContent() {
+    @Then("^the contents of the Method and Type columns contains a correct data$")
+    public void checkColumnsContent(Map<String, String> data) {
+        Set<String> methodData = data.keySet();
+        Collection<String> typeData = data.values();
         List<WebElement> tableRows = driver.findElements(rowsLocator);
         System.out.println("\nNumber of rows found:" + tableRows.size());
         for (WebElement row: tableRows) {
@@ -63,10 +67,10 @@ public class checkTableStepDefinitions {
             if (cells.size() < 2) throw new ArithmeticException("Incorrect number of columns!");
             // asserting column with header "Method"
             String methodColumnCell = cells.get(1).getText();
-            assertTrue(methods.contains(methodColumnCell));
+            assertTrue(methodData.contains(methodColumnCell));
             // asserting column with header "Type"
             String typeColumnCell = cells.get(2).getText();
-            assertEquals(typeColumnCell, "JSON");
+            assertTrue(typeData.contains(typeColumnCell));
         }
     }
 }

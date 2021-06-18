@@ -6,4 +6,9 @@ Feature: Check the table
     When the table with request examples is present
     Then the table have a specified columns with names
     | # | Route | Method | Type | Full route | Description | Details |
-    And the contents of the columns are correct
+
+    And the contents of the Method and Type columns contains a correct data
+    |  GET   | JSON |
+    |  PUT   | JSON |
+    |  POST  | JSON |
+    | DELETE | JSON |
