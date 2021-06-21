@@ -1,4 +1,4 @@
-@checkTable
+@checkDummyTable
 Feature: Check the table
   Scenario: Checking the table is present and consist of some columns with a specified names
 
@@ -7,8 +7,11 @@ Feature: Check the table
     Then the table have a specified columns with names
     | # | Route | Method | Type | Full route | Description | Details |
 
-    And the contents of the Method and Type columns contains a correct data
-    |  GET   | JSON |
-    |  PUT   | JSON |
-    |  POST  | JSON |
-    | DELETE | JSON |
+    And the contents of the Method column contains a correct data
+    |  GET   |
+    |  PUT   |
+    |  POST  |
+    | DELETE |
+
+    And the contents of the Type column contains a correct data
+    | JSON |

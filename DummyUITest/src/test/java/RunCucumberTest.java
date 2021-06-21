@@ -6,7 +6,7 @@ import static driver.DriverSingleton.driver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-@CucumberOptions(tags = "@checkTable", strict = true, plugin = {"json:target/cucumber-report.json"},
+@CucumberOptions(tags = "@checkGetAllTable", strict = true, plugin = {"json:target/cucumber-report.json"},
         features = "src/test/features", glue = "steps")
 
 public class RunCucumberTest extends AbstractTestNGCucumberTests {

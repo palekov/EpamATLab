@@ -6,43 +6,43 @@
         "line": 3,
         "name": "Checking the table is present and consist of some columns with a specified names",
         "description": "",
-        "id": "check-the-table;checking-the-table-is-present-and-consist-of-some-columns-with-a-specified-names",
+        "id": "check-get-all-employees-table;checking-the-table-is-present-and-consist-of-some-columns-with-a-specified-names",
         "type": "scenario",
         "keyword": "Scenario",
         "steps": [
           {
             "result": {
-              "duration": 2792005700,
+              "duration": 26316547000,
               "status": "passed"
             },
             "line": 5,
-            "name": "I am on the Dummy sample rest api web page",
+            "name": "I am on the main Dummy sample rest api web page",
             "match": {
-              "location": "checkTableStepDefinitions.openDummyMainPage()"
+              "location": "CheckGetAllTableStepDefinitions.i_am_on_the_main_Dummy_sample_rest_api_web_page()"
             },
             "keyword": "Given "
           },
           {
             "result": {
-              "duration": 28114500,
+              "duration": 4292882100,
               "status": "passed"
             },
             "line": 6,
-            "name": "the table with request examples is present",
+            "name": "I click on Details link in \u0027Details\u0027 column on \u0027Get all employee data\u0027 row",
             "match": {
-              "location": "checkTableStepDefinitions.the_table_with_request_examples_is_present()"
+              "location": "CheckGetAllTableStepDefinitions.i_click_on_Details_link_in_Details_column_on_Get_all_employee_data_row()"
             },
             "keyword": "When "
           },
           {
             "result": {
-              "duration": 91165601,
+              "duration": 446486400,
               "status": "passed"
             },
             "line": 7,
-            "name": "the table have a specified columns with names",
+            "name": "I can see web page with table, contains specified columns",
             "match": {
-              "location": "checkTableStepDefinitions.the_table_have_a_specified_columns_with_names(String\u003e)"
+              "location": "CheckDummyTableStepDefinitions.i_can_see_web_page_with_specified_columns(String\u003e)"
             },
             "rows": [
               {
@@ -50,10 +50,8 @@
                   "#",
                   "Route",
                   "Method",
-                  "Type",
-                  "Full route",
-                  "Description",
-                  "Details"
+                  "Sample Json",
+                  "Results"
                 ],
                 "line": 8
               }
@@ -62,58 +60,29 @@
           },
           {
             "result": {
-              "duration": 200544700,
-              "status": "passed"
+              "duration": 61868900,
+              "error_message": "java.lang.AssertionError: expected [/employee] but found [/employees]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertEqualsImpl(Assert.java:135)\r\n\tat org.testng.Assert.assertEquals(Assert.java:116)\r\n\tat org.testng.Assert.assertEquals(Assert.java:190)\r\n\tat org.testng.Assert.assertEquals(Assert.java:200)\r\n\tat steps.CheckGetAllTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table(CheckGetAllTableStepDefinitions.java:42)\r\n\tat ✽.And the text in Route column equals to Route column text in main table(checkGetAllTable.feature:9)\r\n",
+              "status": "failed"
             },
-            "line": 10,
-            "name": "the contents of the Method and Type columns contains a correct data",
+            "line": 9,
+            "name": "the text in Route column equals to Route column text in main table",
             "match": {
-              "location": "checkTableStepDefinitions.checkColumnsContent(String,String\u003e)"
+              "location": "CheckGetAllTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table()"
             },
-            "rows": [
-              {
-                "cells": [
-                  "GET",
-                  "JSON"
-                ],
-                "line": 11
-              },
-              {
-                "cells": [
-                  "PUT",
-                  "JSON"
-                ],
-                "line": 12
-              },
-              {
-                "cells": [
-                  "POST",
-                  "JSON"
-                ],
-                "line": 13
-              },
-              {
-                "cells": [
-                  "DELETE",
-                  "JSON"
-                ],
-                "line": 14
-              }
-            ],
             "keyword": "And "
           }
         ]
       }
     ],
-    "name": "Check the table",
+    "name": "Check get all employees table",
     "description": "",
-    "id": "check-the-table",
+    "id": "check-get-all-employees-table",
     "keyword": "Feature",
-    "uri": "checkDummyTable.feature",
+    "uri": "checkGetAllTable.feature",
     "tags": [
       {
         "line": 1,
-        "name": "@checkTable"
+        "name": "@checkGetAllTable"
       }
     ]
   }
