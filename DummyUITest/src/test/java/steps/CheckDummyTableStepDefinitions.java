@@ -66,7 +66,7 @@ public class CheckDummyTableStepDefinitions {
     @Then("^I can see web page with table, contains specified columns$")
     public void i_can_see_web_page_with_specified_columns(List<String> columnNames) {
         List<WebElement> tableColumns = driver.findElements(theadLocator);
-        System.out.println("Number of columns found:" + tableColumns.size());
+        //System.out.println("Number of columns found:" + tableColumns.size());
         String columnName = "";
         for (int i = 0; i < tableColumns.size(); i++) {
             columnName = tableColumns.get(i).getText();

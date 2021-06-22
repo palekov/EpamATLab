@@ -3,43 +3,52 @@
     "line": 2,
     "elements": [
       {
-        "line": 3,
+        "line": 14,
         "name": "Checking the table is present and consist of some columns with a specified names",
         "description": "",
-        "id": "check-get-all-employees-table;checking-the-table-is-present-and-consist-of-some-columns-with-a-specified-names",
+        "id": "check-get-all-employees-table;checking-the-table-is-present-and-consist-of-some-columns-with-a-specified-names;;2",
         "type": "scenario",
-        "keyword": "Scenario",
+        "keyword": "Scenario Outline",
         "steps": [
           {
             "result": {
-              "duration": 26316547000,
+              "duration": 25878654900,
               "status": "passed"
             },
-            "line": 5,
+            "line": 6,
             "name": "I am on the main Dummy sample rest api web page",
             "match": {
-              "location": "CheckGetAllTableStepDefinitions.i_am_on_the_main_Dummy_sample_rest_api_web_page()"
+              "location": "CheckDetailsTableStepDefinitions.i_am_on_the_main_Dummy_sample_rest_api_web_page()"
             },
             "keyword": "Given "
           },
           {
             "result": {
-              "duration": 4292882100,
+              "duration": 2477510800,
               "status": "passed"
             },
-            "line": 6,
-            "name": "I click on Details link in \u0027Details\u0027 column on \u0027Get all employee data\u0027 row",
+            "line": 7,
+            "name": "I click on Details link in \u0027Details\u0027 column on row with some \"Get all employee data\"",
             "match": {
-              "location": "CheckGetAllTableStepDefinitions.i_click_on_Details_link_in_Details_column_on_Get_all_employee_data_row()"
+              "arguments": [
+                {
+                  "val": "Get all employee data",
+                  "offset": 62
+                }
+              ],
+              "location": "CheckDetailsTableStepDefinitions.i_click_on_Details_link_in_Details_column(String)"
             },
+            "matchedColumns": [
+              0
+            ],
             "keyword": "When "
           },
           {
             "result": {
-              "duration": 446486400,
+              "duration": 239947200,
               "status": "passed"
             },
-            "line": 7,
+            "line": 8,
             "name": "I can see web page with table, contains specified columns",
             "match": {
               "location": "CheckDummyTableStepDefinitions.i_can_see_web_page_with_specified_columns(String\u003e)"
@@ -53,23 +62,372 @@
                   "Sample Json",
                   "Results"
                 ],
-                "line": 8
+                "line": 9
               }
             ],
             "keyword": "Then "
           },
           {
             "result": {
-              "duration": 61868900,
-              "error_message": "java.lang.AssertionError: expected [/employee] but found [/employees]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertEqualsImpl(Assert.java:135)\r\n\tat org.testng.Assert.assertEquals(Assert.java:116)\r\n\tat org.testng.Assert.assertEquals(Assert.java:190)\r\n\tat org.testng.Assert.assertEquals(Assert.java:200)\r\n\tat steps.CheckGetAllTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table(CheckGetAllTableStepDefinitions.java:42)\r\n\tat ✽.And the text in Route column equals to Route column text in main table(checkGetAllTable.feature:9)\r\n",
+              "duration": 55249300,
+              "error_message": "java.lang.AssertionError: expected [/employee] but found [/employees]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertEqualsImpl(Assert.java:135)\r\n\tat org.testng.Assert.assertEquals(Assert.java:116)\r\n\tat org.testng.Assert.assertEquals(Assert.java:190)\r\n\tat org.testng.Assert.assertEquals(Assert.java:200)\r\n\tat steps.CheckDetailsTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table(CheckDetailsTableStepDefinitions.java:75)\r\n\tat ✽.And the text in Route column equals to Route column text in main table(checkDetailsTable.feature:10)\r\n",
               "status": "failed"
             },
-            "line": 9,
+            "line": 10,
             "name": "the text in Route column equals to Route column text in main table",
             "match": {
-              "location": "CheckGetAllTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table()"
+              "location": "CheckDetailsTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table()"
             },
             "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 1,
+            "name": "@checkGetAllTable"
+          }
+        ]
+      },
+      {
+        "line": 15,
+        "name": "Checking the table is present and consist of some columns with a specified names",
+        "description": "",
+        "id": "check-get-all-employees-table;checking-the-table-is-present-and-consist-of-some-columns-with-a-specified-names;;3",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 1747296000,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I am on the main Dummy sample rest api web page",
+            "match": {
+              "location": "CheckDetailsTableStepDefinitions.i_am_on_the_main_Dummy_sample_rest_api_web_page()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 4029047200,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I click on Details link in \u0027Details\u0027 column on row with some \"Get a single employee data\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Get a single employee data",
+                  "offset": 62
+                }
+              ],
+              "location": "CheckDetailsTableStepDefinitions.i_click_on_Details_link_in_Details_column(String)"
+            },
+            "matchedColumns": [
+              0
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 315291300,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I can see web page with table, contains specified columns",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.i_can_see_web_page_with_specified_columns(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "#",
+                  "Route",
+                  "Method",
+                  "Sample Json",
+                  "Results"
+                ],
+                "line": 9
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 40727300,
+              "error_message": "java.lang.AssertionError: expected [/employee/{id}] but found [/employee/719]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertEqualsImpl(Assert.java:135)\r\n\tat org.testng.Assert.assertEquals(Assert.java:116)\r\n\tat org.testng.Assert.assertEquals(Assert.java:190)\r\n\tat org.testng.Assert.assertEquals(Assert.java:200)\r\n\tat steps.CheckDetailsTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table(CheckDetailsTableStepDefinitions.java:75)\r\n\tat ✽.And the text in Route column equals to Route column text in main table(checkDetailsTable.feature:10)\r\n",
+              "status": "failed"
+            },
+            "line": 10,
+            "name": "the text in Route column equals to Route column text in main table",
+            "match": {
+              "location": "CheckDetailsTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 1,
+            "name": "@checkGetAllTable"
+          }
+        ]
+      },
+      {
+        "line": 16,
+        "name": "Checking the table is present and consist of some columns with a specified names",
+        "description": "",
+        "id": "check-get-all-employees-table;checking-the-table-is-present-and-consist-of-some-columns-with-a-specified-names;;4",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 1798008400,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I am on the main Dummy sample rest api web page",
+            "match": {
+              "location": "CheckDetailsTableStepDefinitions.i_am_on_the_main_Dummy_sample_rest_api_web_page()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 3432077300,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I click on Details link in \u0027Details\u0027 column on row with some \"Create new record in database\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Create new record in database",
+                  "offset": 62
+                }
+              ],
+              "location": "CheckDetailsTableStepDefinitions.i_click_on_Details_link_in_Details_column(String)"
+            },
+            "matchedColumns": [
+              0
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 49935400,
+              "error_message": "java.lang.AssertionError: expected [#] but found [Route]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertEqualsImpl(Assert.java:135)\r\n\tat org.testng.Assert.assertEquals(Assert.java:116)\r\n\tat org.testng.Assert.assertEquals(Assert.java:190)\r\n\tat org.testng.Assert.assertEquals(Assert.java:200)\r\n\tat steps.CheckDummyTableStepDefinitions.i_can_see_web_page_with_specified_columns(CheckDummyTableStepDefinitions.java:73)\r\n\tat ✽.Then I can see web page with table, contains specified columns(checkDetailsTable.feature:8)\r\n",
+              "status": "failed"
+            },
+            "line": 8,
+            "name": "I can see web page with table, contains specified columns",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.i_can_see_web_page_with_specified_columns(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "#",
+                  "Route",
+                  "Method",
+                  "Sample Json",
+                  "Results"
+                ],
+                "line": 9
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 10,
+            "name": "the text in Route column equals to Route column text in main table",
+            "match": {
+              "location": "CheckDetailsTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 1,
+            "name": "@checkGetAllTable"
+          }
+        ]
+      },
+      {
+        "line": 17,
+        "name": "Checking the table is present and consist of some columns with a specified names",
+        "description": "",
+        "id": "check-get-all-employees-table;checking-the-table-is-present-and-consist-of-some-columns-with-a-specified-names;;5",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 1962590200,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I am on the main Dummy sample rest api web page",
+            "match": {
+              "location": "CheckDetailsTableStepDefinitions.i_am_on_the_main_Dummy_sample_rest_api_web_page()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2353741300,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I click on Details link in \u0027Details\u0027 column on row with some \"Update an employee record\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Update an employee record",
+                  "offset": 62
+                }
+              ],
+              "location": "CheckDetailsTableStepDefinitions.i_click_on_Details_link_in_Details_column(String)"
+            },
+            "matchedColumns": [
+              0
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 28265400,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I can see web page with table, contains specified columns",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.i_can_see_web_page_with_specified_columns(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "#",
+                  "Route",
+                  "Method",
+                  "Sample Json",
+                  "Results"
+                ],
+                "line": 9
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 52188800,
+              "error_message": "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//tbody/tr/td[1]\"}\n  (Session info: chrome\u003d91.0.4472.106)\nFor documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027EPBYVITW00FE\u0027, ip: \u0027192.168.1.102\u0027, os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002711\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 91.0.4472.106, chrome: {chromedriverVersion: 91.0.4472.101 (af52a90bf870..., userDataDir: C:\\Users\\ALIAKS~1\\AppData\\L...}, goog:chromeOptions: {debuggerAddress: localhost:57418}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}\nSession ID: 18a2724542b8bf4632bed67cc4773e5e\n*** Element info: {Using\u003dxpath, value\u003d//tbody/tr/td[1]}\r\n\tat java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\r\n\tat java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\r\n\tat java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)\r\n\tat org.openqa.selenium.By$ByXPath.findElement(By.java:353)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\r\n\tat steps.CheckDetailsTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table(CheckDetailsTableStepDefinitions.java:73)\r\n\tat ✽.And the text in Route column equals to Route column text in main table(checkDetailsTable.feature:10)\r\n",
+              "status": "failed"
+            },
+            "line": 10,
+            "name": "the text in Route column equals to Route column text in main table",
+            "match": {
+              "location": "CheckDetailsTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 1,
+            "name": "@checkGetAllTable"
+          }
+        ]
+      },
+      {
+        "line": 18,
+        "name": "Checking the table is present and consist of some columns with a specified names",
+        "description": "",
+        "id": "check-get-all-employees-table;checking-the-table-is-present-and-consist-of-some-columns-with-a-specified-names;;6",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 2983767600,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I am on the main Dummy sample rest api web page",
+            "match": {
+              "location": "CheckDetailsTableStepDefinitions.i_am_on_the_main_Dummy_sample_rest_api_web_page()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2571215900,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I click on Details link in \u0027Details\u0027 column on row with some \"Delete an employee record\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Delete an employee record",
+                  "offset": 62
+                }
+              ],
+              "location": "CheckDetailsTableStepDefinitions.i_click_on_Details_link_in_Details_column(String)"
+            },
+            "matchedColumns": [
+              0
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 187708200,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I can see web page with table, contains specified columns",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.i_can_see_web_page_with_specified_columns(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "#",
+                  "Route",
+                  "Method",
+                  "Sample Json",
+                  "Results"
+                ],
+                "line": 9
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 54266000,
+              "error_message": "java.lang.AssertionError: expected [/delete/{id}] but found [/delete/719]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertEqualsImpl(Assert.java:135)\r\n\tat org.testng.Assert.assertEquals(Assert.java:116)\r\n\tat org.testng.Assert.assertEquals(Assert.java:190)\r\n\tat org.testng.Assert.assertEquals(Assert.java:200)\r\n\tat steps.CheckDetailsTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table(CheckDetailsTableStepDefinitions.java:75)\r\n\tat ✽.And the text in Route column equals to Route column text in main table(checkDetailsTable.feature:10)\r\n",
+              "status": "failed"
+            },
+            "line": 10,
+            "name": "the text in Route column equals to Route column text in main table",
+            "match": {
+              "location": "CheckDetailsTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 1,
+            "name": "@checkGetAllTable"
           }
         ]
       }
@@ -78,7 +436,7 @@
     "description": "",
     "id": "check-get-all-employees-table",
     "keyword": "Feature",
-    "uri": "checkGetAllTable.feature",
+    "uri": "checkDetailsTable.feature",
     "tags": [
       {
         "line": 1,
