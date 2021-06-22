@@ -3,31 +3,127 @@
     "line": 2,
     "elements": [
       {
-        "line": 14,
+        "line": 28,
         "name": "Checking the table is present and consist of some columns with a specified names",
         "description": "",
-        "id": "check-get-all-employees-table;checking-the-table-is-present-and-consist-of-some-columns-with-a-specified-names;;2",
+        "id": "check-the-table;checking-the-table-is-present-and-consist-of-some-columns-with-a-specified-names;;2",
         "type": "scenario",
         "keyword": "Scenario Outline",
         "steps": [
           {
             "result": {
-              "duration": 25878654900,
+              "duration": 31137488500,
               "status": "passed"
             },
             "line": 6,
-            "name": "I am on the main Dummy sample rest api web page",
+            "name": "I am on the Dummy sample rest api web page",
             "match": {
-              "location": "CheckDetailsTableStepDefinitions.i_am_on_the_main_Dummy_sample_rest_api_web_page()"
+              "location": "CheckDummyTableStepDefinitions.openDummyMainPage()"
             },
             "keyword": "Given "
           },
           {
             "result": {
-              "duration": 2477510800,
+              "duration": 107389000,
               "status": "passed"
             },
             "line": 7,
+            "name": "the table with request examples is present",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_table_with_request_examples_is_present()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 351352600,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "the table have a specified columns with names",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_table_have_a_specified_columns_with_names(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "#",
+                  "Route",
+                  "Method",
+                  "Type",
+                  "Full route",
+                  "Description",
+                  "Details"
+                ],
+                "line": 9
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 320068400,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "the contents of the Method column contains a correct data",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_contents_of_the_Method_column_contains_a_correct_data(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "GET"
+                ],
+                "line": 12
+              },
+              {
+                "cells": [
+                  "PUT"
+                ],
+                "line": 13
+              },
+              {
+                "cells": [
+                  "POST"
+                ],
+                "line": 14
+              },
+              {
+                "cells": [
+                  "DELETE"
+                ],
+                "line": 15
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 347995000,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "the contents of the Type column contains a correct data",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_contents_of_the_Type_column_contains_a_correct_data(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "JSON"
+                ],
+                "line": 18
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2691733300,
+              "status": "passed"
+            },
+            "line": 20,
             "name": "I click on Details link in \u0027Details\u0027 column on row with some \"Get all employee data\"",
             "match": {
               "arguments": [
@@ -36,7 +132,7 @@
                   "offset": 62
                 }
               ],
-              "location": "CheckDetailsTableStepDefinitions.i_click_on_Details_link_in_Details_column(String)"
+              "location": "CheckDummyTableStepDefinitions.i_click_on_Details_link_in_Details_column(String)"
             },
             "matchedColumns": [
               0
@@ -45,10 +141,10 @@
           },
           {
             "result": {
-              "duration": 239947200,
+              "duration": 338607200,
               "status": "passed"
             },
-            "line": 8,
+            "line": 21,
             "name": "I can see web page with table, contains specified columns",
             "match": {
               "location": "CheckDummyTableStepDefinitions.i_can_see_web_page_with_specified_columns(String\u003e)"
@@ -62,21 +158,21 @@
                   "Sample Json",
                   "Results"
                 ],
-                "line": 9
+                "line": 22
               }
             ],
             "keyword": "Then "
           },
           {
             "result": {
-              "duration": 55249300,
-              "error_message": "java.lang.AssertionError: expected [/employee] but found [/employees]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertEqualsImpl(Assert.java:135)\r\n\tat org.testng.Assert.assertEquals(Assert.java:116)\r\n\tat org.testng.Assert.assertEquals(Assert.java:190)\r\n\tat org.testng.Assert.assertEquals(Assert.java:200)\r\n\tat steps.CheckDetailsTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table(CheckDetailsTableStepDefinitions.java:75)\r\n\tat ✽.And the text in Route column equals to Route column text in main table(checkDetailsTable.feature:10)\r\n",
+              "duration": 89596000,
+              "error_message": "java.lang.AssertionError: expected [/employee] but found [/employees]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertEqualsImpl(Assert.java:135)\r\n\tat org.testng.Assert.assertEquals(Assert.java:116)\r\n\tat org.testng.Assert.assertEquals(Assert.java:190)\r\n\tat org.testng.Assert.assertEquals(Assert.java:200)\r\n\tat steps.CheckDummyTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table(CheckDummyTableStepDefinitions.java:110)\r\n\tat ✽.And the text in Route column equals to Route column text in main table(checkDummyTable.feature:24)\r\n",
               "status": "failed"
             },
-            "line": 10,
+            "line": 24,
             "name": "the text in Route column equals to Route column text in main table",
             "match": {
-              "location": "CheckDetailsTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table()"
+              "location": "CheckDummyTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table()"
             },
             "keyword": "And "
           }
@@ -84,36 +180,132 @@
         "tags": [
           {
             "line": 1,
-            "name": "@checkGetAllTable"
+            "name": "@checkDummyTable"
           }
         ]
       },
       {
-        "line": 15,
+        "line": 29,
         "name": "Checking the table is present and consist of some columns with a specified names",
         "description": "",
-        "id": "check-get-all-employees-table;checking-the-table-is-present-and-consist-of-some-columns-with-a-specified-names;;3",
+        "id": "check-the-table;checking-the-table-is-present-and-consist-of-some-columns-with-a-specified-names;;3",
         "type": "scenario",
         "keyword": "Scenario Outline",
         "steps": [
           {
             "result": {
-              "duration": 1747296000,
+              "duration": 2085814400,
               "status": "passed"
             },
             "line": 6,
-            "name": "I am on the main Dummy sample rest api web page",
+            "name": "I am on the Dummy sample rest api web page",
             "match": {
-              "location": "CheckDetailsTableStepDefinitions.i_am_on_the_main_Dummy_sample_rest_api_web_page()"
+              "location": "CheckDummyTableStepDefinitions.openDummyMainPage()"
             },
             "keyword": "Given "
           },
           {
             "result": {
-              "duration": 4029047200,
+              "duration": 57616900,
               "status": "passed"
             },
             "line": 7,
+            "name": "the table with request examples is present",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_table_with_request_examples_is_present()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 383064400,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "the table have a specified columns with names",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_table_have_a_specified_columns_with_names(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "#",
+                  "Route",
+                  "Method",
+                  "Type",
+                  "Full route",
+                  "Description",
+                  "Details"
+                ],
+                "line": 9
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 421583100,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "the contents of the Method column contains a correct data",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_contents_of_the_Method_column_contains_a_correct_data(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "GET"
+                ],
+                "line": 12
+              },
+              {
+                "cells": [
+                  "PUT"
+                ],
+                "line": 13
+              },
+              {
+                "cells": [
+                  "POST"
+                ],
+                "line": 14
+              },
+              {
+                "cells": [
+                  "DELETE"
+                ],
+                "line": 15
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 308576600,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "the contents of the Type column contains a correct data",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_contents_of_the_Type_column_contains_a_correct_data(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "JSON"
+                ],
+                "line": 18
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2700705000,
+              "status": "passed"
+            },
+            "line": 20,
             "name": "I click on Details link in \u0027Details\u0027 column on row with some \"Get a single employee data\"",
             "match": {
               "arguments": [
@@ -122,7 +314,7 @@
                   "offset": 62
                 }
               ],
-              "location": "CheckDetailsTableStepDefinitions.i_click_on_Details_link_in_Details_column(String)"
+              "location": "CheckDummyTableStepDefinitions.i_click_on_Details_link_in_Details_column(String)"
             },
             "matchedColumns": [
               0
@@ -131,10 +323,10 @@
           },
           {
             "result": {
-              "duration": 315291300,
+              "duration": 271838500,
               "status": "passed"
             },
-            "line": 8,
+            "line": 21,
             "name": "I can see web page with table, contains specified columns",
             "match": {
               "location": "CheckDummyTableStepDefinitions.i_can_see_web_page_with_specified_columns(String\u003e)"
@@ -148,21 +340,21 @@
                   "Sample Json",
                   "Results"
                 ],
-                "line": 9
+                "line": 22
               }
             ],
             "keyword": "Then "
           },
           {
             "result": {
-              "duration": 40727300,
-              "error_message": "java.lang.AssertionError: expected [/employee/{id}] but found [/employee/719]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertEqualsImpl(Assert.java:135)\r\n\tat org.testng.Assert.assertEquals(Assert.java:116)\r\n\tat org.testng.Assert.assertEquals(Assert.java:190)\r\n\tat org.testng.Assert.assertEquals(Assert.java:200)\r\n\tat steps.CheckDetailsTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table(CheckDetailsTableStepDefinitions.java:75)\r\n\tat ✽.And the text in Route column equals to Route column text in main table(checkDetailsTable.feature:10)\r\n",
+              "duration": 78236300,
+              "error_message": "java.lang.AssertionError: expected [/employee/{id}] but found [/employee/719]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertEqualsImpl(Assert.java:135)\r\n\tat org.testng.Assert.assertEquals(Assert.java:116)\r\n\tat org.testng.Assert.assertEquals(Assert.java:190)\r\n\tat org.testng.Assert.assertEquals(Assert.java:200)\r\n\tat steps.CheckDummyTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table(CheckDummyTableStepDefinitions.java:110)\r\n\tat ✽.And the text in Route column equals to Route column text in main table(checkDummyTable.feature:24)\r\n",
               "status": "failed"
             },
-            "line": 10,
+            "line": 24,
             "name": "the text in Route column equals to Route column text in main table",
             "match": {
-              "location": "CheckDetailsTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table()"
+              "location": "CheckDummyTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table()"
             },
             "keyword": "And "
           }
@@ -170,36 +362,132 @@
         "tags": [
           {
             "line": 1,
-            "name": "@checkGetAllTable"
+            "name": "@checkDummyTable"
           }
         ]
       },
       {
-        "line": 16,
+        "line": 30,
         "name": "Checking the table is present and consist of some columns with a specified names",
         "description": "",
-        "id": "check-get-all-employees-table;checking-the-table-is-present-and-consist-of-some-columns-with-a-specified-names;;4",
+        "id": "check-the-table;checking-the-table-is-present-and-consist-of-some-columns-with-a-specified-names;;4",
         "type": "scenario",
         "keyword": "Scenario Outline",
         "steps": [
           {
             "result": {
-              "duration": 1798008400,
+              "duration": 2012608500,
               "status": "passed"
             },
             "line": 6,
-            "name": "I am on the main Dummy sample rest api web page",
+            "name": "I am on the Dummy sample rest api web page",
             "match": {
-              "location": "CheckDetailsTableStepDefinitions.i_am_on_the_main_Dummy_sample_rest_api_web_page()"
+              "location": "CheckDummyTableStepDefinitions.openDummyMainPage()"
             },
             "keyword": "Given "
           },
           {
             "result": {
-              "duration": 3432077300,
+              "duration": 62378900,
               "status": "passed"
             },
             "line": 7,
+            "name": "the table with request examples is present",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_table_with_request_examples_is_present()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 367454600,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "the table have a specified columns with names",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_table_have_a_specified_columns_with_names(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "#",
+                  "Route",
+                  "Method",
+                  "Type",
+                  "Full route",
+                  "Description",
+                  "Details"
+                ],
+                "line": 9
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 404905700,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "the contents of the Method column contains a correct data",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_contents_of_the_Method_column_contains_a_correct_data(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "GET"
+                ],
+                "line": 12
+              },
+              {
+                "cells": [
+                  "PUT"
+                ],
+                "line": 13
+              },
+              {
+                "cells": [
+                  "POST"
+                ],
+                "line": 14
+              },
+              {
+                "cells": [
+                  "DELETE"
+                ],
+                "line": 15
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 310695300,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "the contents of the Type column contains a correct data",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_contents_of_the_Type_column_contains_a_correct_data(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "JSON"
+                ],
+                "line": 18
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 4287578100,
+              "status": "passed"
+            },
+            "line": 20,
             "name": "I click on Details link in \u0027Details\u0027 column on row with some \"Create new record in database\"",
             "match": {
               "arguments": [
@@ -208,7 +496,7 @@
                   "offset": 62
                 }
               ],
-              "location": "CheckDetailsTableStepDefinitions.i_click_on_Details_link_in_Details_column(String)"
+              "location": "CheckDummyTableStepDefinitions.i_click_on_Details_link_in_Details_column(String)"
             },
             "matchedColumns": [
               0
@@ -217,11 +505,11 @@
           },
           {
             "result": {
-              "duration": 49935400,
-              "error_message": "java.lang.AssertionError: expected [#] but found [Route]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertEqualsImpl(Assert.java:135)\r\n\tat org.testng.Assert.assertEquals(Assert.java:116)\r\n\tat org.testng.Assert.assertEquals(Assert.java:190)\r\n\tat org.testng.Assert.assertEquals(Assert.java:200)\r\n\tat steps.CheckDummyTableStepDefinitions.i_can_see_web_page_with_specified_columns(CheckDummyTableStepDefinitions.java:73)\r\n\tat ✽.Then I can see web page with table, contains specified columns(checkDetailsTable.feature:8)\r\n",
+              "duration": 76202900,
+              "error_message": "java.lang.AssertionError: expected [#] but found [Route]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertEqualsImpl(Assert.java:135)\r\n\tat org.testng.Assert.assertEquals(Assert.java:116)\r\n\tat org.testng.Assert.assertEquals(Assert.java:190)\r\n\tat org.testng.Assert.assertEquals(Assert.java:200)\r\n\tat steps.CheckDummyTableStepDefinitions.i_can_see_web_page_with_specified_columns(CheckDummyTableStepDefinitions.java:71)\r\n\tat ✽.Then I can see web page with table, contains specified columns(checkDummyTable.feature:21)\r\n",
               "status": "failed"
             },
-            "line": 8,
+            "line": 21,
             "name": "I can see web page with table, contains specified columns",
             "match": {
               "location": "CheckDummyTableStepDefinitions.i_can_see_web_page_with_specified_columns(String\u003e)"
@@ -235,7 +523,7 @@
                   "Sample Json",
                   "Results"
                 ],
-                "line": 9
+                "line": 22
               }
             ],
             "keyword": "Then "
@@ -244,10 +532,10 @@
             "result": {
               "status": "skipped"
             },
-            "line": 10,
+            "line": 24,
             "name": "the text in Route column equals to Route column text in main table",
             "match": {
-              "location": "CheckDetailsTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table()"
+              "location": "CheckDummyTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table()"
             },
             "keyword": "And "
           }
@@ -255,36 +543,132 @@
         "tags": [
           {
             "line": 1,
-            "name": "@checkGetAllTable"
+            "name": "@checkDummyTable"
           }
         ]
       },
       {
-        "line": 17,
+        "line": 31,
         "name": "Checking the table is present and consist of some columns with a specified names",
         "description": "",
-        "id": "check-get-all-employees-table;checking-the-table-is-present-and-consist-of-some-columns-with-a-specified-names;;5",
+        "id": "check-the-table;checking-the-table-is-present-and-consist-of-some-columns-with-a-specified-names;;5",
         "type": "scenario",
         "keyword": "Scenario Outline",
         "steps": [
           {
             "result": {
-              "duration": 1962590200,
+              "duration": 2017396900,
               "status": "passed"
             },
             "line": 6,
-            "name": "I am on the main Dummy sample rest api web page",
+            "name": "I am on the Dummy sample rest api web page",
             "match": {
-              "location": "CheckDetailsTableStepDefinitions.i_am_on_the_main_Dummy_sample_rest_api_web_page()"
+              "location": "CheckDummyTableStepDefinitions.openDummyMainPage()"
             },
             "keyword": "Given "
           },
           {
             "result": {
-              "duration": 2353741300,
+              "duration": 62512200,
               "status": "passed"
             },
             "line": 7,
+            "name": "the table with request examples is present",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_table_with_request_examples_is_present()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 448388900,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "the table have a specified columns with names",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_table_have_a_specified_columns_with_names(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "#",
+                  "Route",
+                  "Method",
+                  "Type",
+                  "Full route",
+                  "Description",
+                  "Details"
+                ],
+                "line": 9
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 411700300,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "the contents of the Method column contains a correct data",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_contents_of_the_Method_column_contains_a_correct_data(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "GET"
+                ],
+                "line": 12
+              },
+              {
+                "cells": [
+                  "PUT"
+                ],
+                "line": 13
+              },
+              {
+                "cells": [
+                  "POST"
+                ],
+                "line": 14
+              },
+              {
+                "cells": [
+                  "DELETE"
+                ],
+                "line": 15
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 683161400,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "the contents of the Type column contains a correct data",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_contents_of_the_Type_column_contains_a_correct_data(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "JSON"
+                ],
+                "line": 18
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3106263000,
+              "status": "passed"
+            },
+            "line": 20,
             "name": "I click on Details link in \u0027Details\u0027 column on row with some \"Update an employee record\"",
             "match": {
               "arguments": [
@@ -293,7 +677,7 @@
                   "offset": 62
                 }
               ],
-              "location": "CheckDetailsTableStepDefinitions.i_click_on_Details_link_in_Details_column(String)"
+              "location": "CheckDummyTableStepDefinitions.i_click_on_Details_link_in_Details_column(String)"
             },
             "matchedColumns": [
               0
@@ -302,10 +686,10 @@
           },
           {
             "result": {
-              "duration": 28265400,
+              "duration": 28887900,
               "status": "passed"
             },
-            "line": 8,
+            "line": 21,
             "name": "I can see web page with table, contains specified columns",
             "match": {
               "location": "CheckDummyTableStepDefinitions.i_can_see_web_page_with_specified_columns(String\u003e)"
@@ -319,21 +703,21 @@
                   "Sample Json",
                   "Results"
                 ],
-                "line": 9
+                "line": 22
               }
             ],
             "keyword": "Then "
           },
           {
             "result": {
-              "duration": 52188800,
-              "error_message": "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//tbody/tr/td[1]\"}\n  (Session info: chrome\u003d91.0.4472.106)\nFor documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027EPBYVITW00FE\u0027, ip: \u0027192.168.1.102\u0027, os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002711\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 91.0.4472.106, chrome: {chromedriverVersion: 91.0.4472.101 (af52a90bf870..., userDataDir: C:\\Users\\ALIAKS~1\\AppData\\L...}, goog:chromeOptions: {debuggerAddress: localhost:57418}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}\nSession ID: 18a2724542b8bf4632bed67cc4773e5e\n*** Element info: {Using\u003dxpath, value\u003d//tbody/tr/td[1]}\r\n\tat java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\r\n\tat java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\r\n\tat java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)\r\n\tat org.openqa.selenium.By$ByXPath.findElement(By.java:353)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\r\n\tat steps.CheckDetailsTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table(CheckDetailsTableStepDefinitions.java:73)\r\n\tat ✽.And the text in Route column equals to Route column text in main table(checkDetailsTable.feature:10)\r\n",
+              "duration": 107306000,
+              "error_message": "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//tbody/tr/td[1]\"}\n  (Session info: chrome\u003d91.0.4472.106)\nFor documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027EPBYVITW00FE\u0027, ip: \u0027192.168.1.102\u0027, os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002711\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 91.0.4472.106, chrome: {chromedriverVersion: 91.0.4472.101 (af52a90bf870..., userDataDir: C:\\Users\\ALIAKS~1\\AppData\\L...}, goog:chromeOptions: {debuggerAddress: localhost:63073}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}\nSession ID: 1eac1011e0408d185f3bb4fd1e9c611c\n*** Element info: {Using\u003dxpath, value\u003d//tbody/tr/td[1]}\r\n\tat java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\r\n\tat java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\r\n\tat java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)\r\n\tat org.openqa.selenium.By$ByXPath.findElement(By.java:353)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\r\n\tat steps.CheckDummyTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table(CheckDummyTableStepDefinitions.java:108)\r\n\tat ✽.And the text in Route column equals to Route column text in main table(checkDummyTable.feature:24)\r\n",
               "status": "failed"
             },
-            "line": 10,
+            "line": 24,
             "name": "the text in Route column equals to Route column text in main table",
             "match": {
-              "location": "CheckDetailsTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table()"
+              "location": "CheckDummyTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table()"
             },
             "keyword": "And "
           }
@@ -341,36 +725,132 @@
         "tags": [
           {
             "line": 1,
-            "name": "@checkGetAllTable"
+            "name": "@checkDummyTable"
           }
         ]
       },
       {
-        "line": 18,
+        "line": 32,
         "name": "Checking the table is present and consist of some columns with a specified names",
         "description": "",
-        "id": "check-get-all-employees-table;checking-the-table-is-present-and-consist-of-some-columns-with-a-specified-names;;6",
+        "id": "check-the-table;checking-the-table-is-present-and-consist-of-some-columns-with-a-specified-names;;6",
         "type": "scenario",
         "keyword": "Scenario Outline",
         "steps": [
           {
             "result": {
-              "duration": 2983767600,
+              "duration": 2837600300,
               "status": "passed"
             },
             "line": 6,
-            "name": "I am on the main Dummy sample rest api web page",
+            "name": "I am on the Dummy sample rest api web page",
             "match": {
-              "location": "CheckDetailsTableStepDefinitions.i_am_on_the_main_Dummy_sample_rest_api_web_page()"
+              "location": "CheckDummyTableStepDefinitions.openDummyMainPage()"
             },
             "keyword": "Given "
           },
           {
             "result": {
-              "duration": 2571215900,
+              "duration": 51582400,
               "status": "passed"
             },
             "line": 7,
+            "name": "the table with request examples is present",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_table_with_request_examples_is_present()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 455254600,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "the table have a specified columns with names",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_table_have_a_specified_columns_with_names(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "#",
+                  "Route",
+                  "Method",
+                  "Type",
+                  "Full route",
+                  "Description",
+                  "Details"
+                ],
+                "line": 9
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 402696300,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "the contents of the Method column contains a correct data",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_contents_of_the_Method_column_contains_a_correct_data(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "GET"
+                ],
+                "line": 12
+              },
+              {
+                "cells": [
+                  "PUT"
+                ],
+                "line": 13
+              },
+              {
+                "cells": [
+                  "POST"
+                ],
+                "line": 14
+              },
+              {
+                "cells": [
+                  "DELETE"
+                ],
+                "line": 15
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 338081600,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "the contents of the Type column contains a correct data",
+            "match": {
+              "location": "CheckDummyTableStepDefinitions.the_contents_of_the_Type_column_contains_a_correct_data(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "JSON"
+                ],
+                "line": 18
+              }
+            ],
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3317593400,
+              "status": "passed"
+            },
+            "line": 20,
             "name": "I click on Details link in \u0027Details\u0027 column on row with some \"Delete an employee record\"",
             "match": {
               "arguments": [
@@ -379,7 +859,7 @@
                   "offset": 62
                 }
               ],
-              "location": "CheckDetailsTableStepDefinitions.i_click_on_Details_link_in_Details_column(String)"
+              "location": "CheckDummyTableStepDefinitions.i_click_on_Details_link_in_Details_column(String)"
             },
             "matchedColumns": [
               0
@@ -388,10 +868,10 @@
           },
           {
             "result": {
-              "duration": 187708200,
+              "duration": 575499800,
               "status": "passed"
             },
-            "line": 8,
+            "line": 21,
             "name": "I can see web page with table, contains specified columns",
             "match": {
               "location": "CheckDummyTableStepDefinitions.i_can_see_web_page_with_specified_columns(String\u003e)"
@@ -405,21 +885,21 @@
                   "Sample Json",
                   "Results"
                 ],
-                "line": 9
+                "line": 22
               }
             ],
             "keyword": "Then "
           },
           {
             "result": {
-              "duration": 54266000,
-              "error_message": "java.lang.AssertionError: expected [/delete/{id}] but found [/delete/719]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertEqualsImpl(Assert.java:135)\r\n\tat org.testng.Assert.assertEquals(Assert.java:116)\r\n\tat org.testng.Assert.assertEquals(Assert.java:190)\r\n\tat org.testng.Assert.assertEquals(Assert.java:200)\r\n\tat steps.CheckDetailsTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table(CheckDetailsTableStepDefinitions.java:75)\r\n\tat ✽.And the text in Route column equals to Route column text in main table(checkDetailsTable.feature:10)\r\n",
+              "duration": 60933000,
+              "error_message": "java.lang.AssertionError: expected [/delete/{id}] but found [/delete/719]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertEqualsImpl(Assert.java:135)\r\n\tat org.testng.Assert.assertEquals(Assert.java:116)\r\n\tat org.testng.Assert.assertEquals(Assert.java:190)\r\n\tat org.testng.Assert.assertEquals(Assert.java:200)\r\n\tat steps.CheckDummyTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table(CheckDummyTableStepDefinitions.java:110)\r\n\tat ✽.And the text in Route column equals to Route column text in main table(checkDummyTable.feature:24)\r\n",
               "status": "failed"
             },
-            "line": 10,
+            "line": 24,
             "name": "the text in Route column equals to Route column text in main table",
             "match": {
-              "location": "CheckDetailsTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table()"
+              "location": "CheckDummyTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table()"
             },
             "keyword": "And "
           }
@@ -427,20 +907,20 @@
         "tags": [
           {
             "line": 1,
-            "name": "@checkGetAllTable"
+            "name": "@checkDummyTable"
           }
         ]
       }
     ],
-    "name": "Check get all employees table",
+    "name": "Check the table",
     "description": "",
-    "id": "check-get-all-employees-table",
+    "id": "check-the-table",
     "keyword": "Feature",
-    "uri": "checkDetailsTable.feature",
+    "uri": "checkDummyTable.feature",
     "tags": [
       {
         "line": 1,
-        "name": "@checkGetAllTable"
+        "name": "@checkDummyTable"
       }
     ]
   }
