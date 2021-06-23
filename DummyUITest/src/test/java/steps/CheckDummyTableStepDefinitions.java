@@ -3,6 +3,7 @@ package steps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -17,6 +18,7 @@ public class CheckDummyTableStepDefinitions {
     String routeTextExpected;
     List<WebElement> tableRows;
     List<WebElement> tableColumns;
+    private Logger logger;
 
     @Given("^I am on the Dummy sample rest api web page$")
     public void openDummyMainPage() {
@@ -55,7 +57,6 @@ public class CheckDummyTableStepDefinitions {
         tableRows = driver.findElements(rowsLocator);
         for (WebElement row : tableRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (cells.size() < 2) throw new ArithmeticException("Incorrect number of columns!");
             String methodColumnCell = cells.get(columnNumber).getText();
             assertTrue(columnData.contains(methodColumnCell));
         }
@@ -95,7 +96,7 @@ public class CheckDummyTableStepDefinitions {
                 break;
             rowNumber++;
         }
-        System.out.println(description.getText());
+        logger.info(description.getText());
         // находим все элементы - ссылки
         waitForElementPresent(detailsLink);
         List<WebElement> links = driver.findElements(detailsLink);

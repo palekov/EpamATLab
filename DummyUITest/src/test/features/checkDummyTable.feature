@@ -1,7 +1,7 @@
 @checkDummyTable
 Feature: Check the table
 
-  Scenario Outline: Checking the table is present and consist of some columns with a specified names
+  Scenario: Checking the table is present and consist of some columns with a specified names
 
     Given I am on the Dummy sample rest api web page
     When the table with request examples is present
@@ -9,14 +9,13 @@ Feature: Check the table
       | # | Route | Method | Type | Full route | Description | Details |
 
     And the contents of the Method column contains a correct data
-      | GET    |
-      | PUT    |
-      | POST   |
-      | DELETE |
+      | GET, PUT, POST, DELETE |
 
-    And the contents of the Type column contains a correct data
-      | JSON |
+    And the contents of the Type column contains a <JSON> text
 
+  Scenario Outline: Checking the table is present and consist of some columns names
+
+    Given I am on the Dummy sample rest api web page
     When I click on Details link in 'Details' column on row with some "<DESCRIPTION>"
     Then I can see web page with table, contains specified columns
       | # | Route | Method | Sample Json | Results |
