@@ -3,7 +3,8 @@ package steps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -11,14 +12,23 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 import static driver.DriverSingleton.driver;
-import static org.testng.Assert.*;
-import static steps.Constants.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
+import static steps.Constants.HOME_PAGE_TITLE;
+import static steps.Constants.MAIL_BASE_URL;
+import static steps.Constants.detailsLink;
+import static steps.Constants.routeLocator;
+import static steps.Constants.rowsLocator;
+import static steps.Constants.tableLocator;
+import static steps.Constants.theadLocator;
+import static steps.Constants.waitForElementPresent;
 
 public class CheckDummyTableStepDefinitions {
     String routeTextExpected;
     List<WebElement> tableRows;
     List<WebElement> tableColumns;
-    private Logger logger;
+    private Logger log = LogManager.getRootLogger();
 
     @Given("^I am on the Dummy sample rest api web page$")
     public void openDummyMainPage() {
@@ -33,22 +43,12 @@ public class CheckDummyTableStepDefinitions {
         assertFalse(driver.findElements(tableLocator).isEmpty());
     }
 
-    @Then("^the table have a specified columns with names$")
-    public void the_table_have_a_specified_columns_with_names(List<String> columnNames) {
-        tableColumns = driver.findElements(theadLocator);
-        String columnName = "";
-        for (int i = 0; i < tableColumns.size(); i++) {
-            columnName = tableColumns.get(i).getText();
-            assertEquals(columnName, columnNames.get(i));
-        }
-    }
-
-    @Then("^the contents of the Method column contains a correct data$")
+    @Then("^the contents of the Method column contains a correct data \"([^\"]*)\"$")
     public void the_contents_of_the_Method_column_contains_a_correct_data(List<String> columnData) {
         checkColumnContent(1, columnData);
     }
 
-    @Then("^the contents of the Type column contains a correct data$")
+    @Then("^the contents of the Type column contains a \"([^\"]*)\" text$")
     public void the_contents_of_the_Type_column_contains_a_correct_data(List<String> columnData) {
         checkColumnContent(2, columnData);
     }
@@ -62,10 +62,9 @@ public class CheckDummyTableStepDefinitions {
         }
     }
 
-    @Then("^I can see web page with table, contains specified columns$")
+    @Then("^I can see web page with table, contains specified columns \"([^\"]*)\"$")
     public void i_can_see_web_page_with_specified_columns(List<String> columnNames) {
         tableColumns = driver.findElements(theadLocator);
-        //System.out.println("Number of columns found:" + tableColumns.size());
         String columnName = "";
         for (int i = 0; i < tableColumns.size(); i++) {
             columnName = tableColumns.get(i).getText();
@@ -96,7 +95,7 @@ public class CheckDummyTableStepDefinitions {
                 break;
             rowNumber++;
         }
-        logger.info(description.getText());
+        log.info(description.getText());
         // находим все элементы - ссылки
         waitForElementPresent(detailsLink);
         List<WebElement> links = driver.findElements(detailsLink);
