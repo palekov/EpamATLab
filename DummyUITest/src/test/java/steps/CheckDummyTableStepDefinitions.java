@@ -18,6 +18,7 @@ import static org.testng.Assert.assertTrue;
 import static steps.Constants.HOME_PAGE_TITLE;
 import static steps.Constants.MAIL_BASE_URL;
 import static steps.Constants.detailsLink;
+import static steps.Constants.methodLocator;
 import static steps.Constants.routeLocator;
 import static steps.Constants.rowsLocator;
 import static steps.Constants.tableLocator;
@@ -26,6 +27,7 @@ import static steps.Constants.waitForElementPresent;
 
 public class CheckDummyTableStepDefinitions {
     String routeTextExpected;
+    String methodTextExpected;
     List<WebElement> tableRows;
     List<WebElement> tableColumns;
     private Logger log = LogManager.getRootLogger();
@@ -37,9 +39,8 @@ public class CheckDummyTableStepDefinitions {
         assertEquals(driver.getTitle(), HOME_PAGE_TITLE);
     }
 
-    @When("^the table with request examples is present$")
+    @When("^the table with some examples is present$")
     public void the_table_with_request_examples_is_present() {
-        waitForElementPresent(tableLocator);
         assertFalse(driver.findElements(tableLocator).isEmpty());
     }
 
@@ -62,7 +63,7 @@ public class CheckDummyTableStepDefinitions {
         }
     }
 
-    @Then("^I can see web page with table, contains specified columns \"([^\"]*)\"$")
+    @Then("^the table contains specified columns \"([^\"]*)\"$")
     public void i_can_see_web_page_with_specified_columns(List<String> columnNames) {
         tableColumns = driver.findElements(theadLocator);
         String columnName = "";
@@ -88,6 +89,8 @@ public class CheckDummyTableStepDefinitions {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             // получаем текст из ячейки Route для последующего сравнения
             routeTextExpected = cells.get(0).getText();
+            // получаем текст из ячейки Method для последующего сравнения
+            methodTextExpected = cells.get(1).getText();
             // получаем текст из столбца Description
             description = cells.get(4);
             // если нашли строку с нужным Description - выходим из цикла
@@ -95,7 +98,7 @@ public class CheckDummyTableStepDefinitions {
                 break;
             rowNumber++;
         }
-        log.info(description.getText());
+        log.info("Checking link - " + description.getText());
         // находим все элементы - ссылки
         waitForElementPresent(detailsLink);
         List<WebElement> links = driver.findElements(detailsLink);
@@ -108,6 +111,13 @@ public class CheckDummyTableStepDefinitions {
         WebElement routeCell = driver.findElement(routeLocator);
         String routeCellText = routeCell.getText();
         assertEquals(routeCellText, routeTextExpected);
+    }
+
+    @Then("^the text in Method column equals to Method column text in main table$")
+    public void the_text_in_Method_column_equals_to_Method_column_text_in_main_table() {
+        WebElement routeCell = driver.findElement(methodLocator);
+        String routeCellText = routeCell.getText();
+        assertEquals(routeCellText, methodTextExpected);
     }
 
 }
