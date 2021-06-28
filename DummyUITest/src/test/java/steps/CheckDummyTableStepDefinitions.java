@@ -111,9 +111,10 @@ public class CheckDummyTableStepDefinitions {
     public void the_text_in_Route_column_equals_to_Route_column_text_in_main_table() {
         WebElement routeCell = driver.findElement(routeLocator);
         String routeCellText = routeCell.getText();
-        routeCellText = stringParser(routeCellText);
+        //routeCellText = stringParser(routeCellText);
         log.info("Asserting: " + routeTextExpected + " - " + routeCellText);
-        assertEquals(routeCellText, routeTextExpected);
+        //assertEquals(routeCellText, routeTextExpected);
+        assertTrue(routeCellText.matches(routeTextExpected + "[/?(0-9)*]"));
     }
 
     @Then("^the text in Method column equals to Method column text in main table$")

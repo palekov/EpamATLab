@@ -12,7 +12,7 @@
         "steps": [
           {
             "result": {
-              "duration": 32378175000,
+              "duration": 25917718800,
               "status": "passed"
             },
             "line": 5,
@@ -24,7 +24,7 @@
           },
           {
             "result": {
-              "duration": 90791200,
+              "duration": 19236200,
               "status": "passed"
             },
             "line": 6,
@@ -36,7 +36,7 @@
           },
           {
             "result": {
-              "duration": 334695500,
+              "duration": 75164900,
               "status": "passed"
             },
             "line": 7,
@@ -54,7 +54,7 @@
           },
           {
             "result": {
-              "duration": 401267400,
+              "duration": 170718100,
               "status": "passed"
             },
             "line": 8,
@@ -72,7 +72,7 @@
           },
           {
             "result": {
-              "duration": 415330300,
+              "duration": 162448800,
               "status": "passed"
             },
             "line": 9,
@@ -100,7 +100,7 @@
         "steps": [
           {
             "result": {
-              "duration": 5442675500,
+              "duration": 3429129800,
               "status": "passed"
             },
             "line": 12,
@@ -112,7 +112,7 @@
           },
           {
             "result": {
-              "duration": 4360513300,
+              "duration": 2580850800,
               "status": "passed"
             },
             "line": 13,
@@ -133,7 +133,7 @@
           },
           {
             "result": {
-              "duration": 32132400,
+              "duration": 18082100,
               "status": "passed"
             },
             "line": 14,
@@ -145,7 +145,7 @@
           },
           {
             "result": {
-              "duration": 281413400,
+              "duration": 61043900,
               "status": "passed"
             },
             "line": 15,
@@ -163,8 +163,8 @@
           },
           {
             "result": {
-              "duration": 97832100,
-              "error_message": "java.lang.AssertionError: expected [/employee] but found [/employees]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertEqualsImpl(Assert.java:135)\r\n\tat org.testng.Assert.assertEquals(Assert.java:116)\r\n\tat org.testng.Assert.assertEquals(Assert.java:190)\r\n\tat org.testng.Assert.assertEquals(Assert.java:200)\r\n\tat steps.CheckDummyTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table(CheckDummyTableStepDefinitions.java:116)\r\n\tat ✽.And the text in Route column equals to Route column text in main table(checkDummyTable.feature:16)\r\n",
+              "duration": 36536200,
+              "error_message": "java.lang.AssertionError: expected [true] but found [false]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertTrue(Assert.java:42)\r\n\tat org.testng.Assert.assertTrue(Assert.java:52)\r\n\tat steps.CheckDummyTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table(CheckDummyTableStepDefinitions.java:118)\r\n\tat ✽.And the text in Route column equals to Route column text in main table(checkDummyTable.feature:16)\r\n",
               "status": "failed"
             },
             "line": 16,
@@ -203,7 +203,7 @@
         "steps": [
           {
             "result": {
-              "duration": 1784156800,
+              "duration": 1630405300,
               "status": "passed"
             },
             "line": 12,
@@ -215,7 +215,7 @@
           },
           {
             "result": {
-              "duration": 4341455600,
+              "duration": 1887551200,
               "status": "passed"
             },
             "line": 13,
@@ -236,7 +236,7 @@
           },
           {
             "result": {
-              "duration": 25552000,
+              "duration": 8579200,
               "status": "passed"
             },
             "line": 14,
@@ -248,7 +248,7 @@
           },
           {
             "result": {
-              "duration": 329385700,
+              "duration": 64028900,
               "status": "passed"
             },
             "line": 15,
@@ -266,8 +266,9 @@
           },
           {
             "result": {
-              "duration": 65305400,
-              "status": "passed"
+              "duration": 26087400,
+              "error_message": "java.lang.AssertionError: expected [true] but found [false]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertTrue(Assert.java:42)\r\n\tat org.testng.Assert.assertTrue(Assert.java:52)\r\n\tat steps.CheckDummyTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table(CheckDummyTableStepDefinitions.java:118)\r\n\tat ✽.And the text in Route column equals to Route column text in main table(checkDummyTable.feature:16)\r\n",
+              "status": "failed"
             },
             "line": 16,
             "name": "the text in Route column equals to Route column text in main table",
@@ -278,8 +279,7 @@
           },
           {
             "result": {
-              "duration": 75691600,
-              "status": "passed"
+              "status": "skipped"
             },
             "line": 17,
             "name": "the text in Method column equals to Method column text in main table",
@@ -306,7 +306,7 @@
         "steps": [
           {
             "result": {
-              "duration": 3225902400,
+              "duration": 2569515600,
               "status": "passed"
             },
             "line": 12,
@@ -318,7 +318,7 @@
           },
           {
             "result": {
-              "duration": 3359512100,
+              "duration": 1772429700,
               "status": "passed"
             },
             "line": 13,
@@ -339,7 +339,7 @@
           },
           {
             "result": {
-              "duration": 25291500,
+              "duration": 9290400,
               "status": "passed"
             },
             "line": 14,
@@ -351,7 +351,7 @@
           },
           {
             "result": {
-              "duration": 60686200,
+              "duration": 23450700,
               "error_message": "java.lang.AssertionError: expected [#] but found [Route]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertEqualsImpl(Assert.java:135)\r\n\tat org.testng.Assert.assertEquals(Assert.java:116)\r\n\tat org.testng.Assert.assertEquals(Assert.java:190)\r\n\tat org.testng.Assert.assertEquals(Assert.java:200)\r\n\tat steps.CheckDummyTableStepDefinitions.i_can_see_web_page_with_specified_columns(CheckDummyTableStepDefinitions.java:72)\r\n\tat ✽.And the table contains specified columns \"#, Route, Method, Sample Json, Results\"(checkDummyTable.feature:15)\r\n",
               "status": "failed"
             },
@@ -408,7 +408,7 @@
         "steps": [
           {
             "result": {
-              "duration": 2044976900,
+              "duration": 2645324600,
               "status": "passed"
             },
             "line": 12,
@@ -420,7 +420,7 @@
           },
           {
             "result": {
-              "duration": 3502671000,
+              "duration": 1709760100,
               "status": "passed"
             },
             "line": 13,
@@ -441,7 +441,7 @@
           },
           {
             "result": {
-              "duration": 23895400,
+              "duration": 14177400,
               "error_message": "java.lang.AssertionError: expected [false] but found [true]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertFalse(Assert.java:63)\r\n\tat org.testng.Assert.assertFalse(Assert.java:73)\r\n\tat steps.CheckDummyTableStepDefinitions.the_table_with_request_examples_is_present(CheckDummyTableStepDefinitions.java:44)\r\n\tat ✽.Then the table with some examples is present(checkDummyTable.feature:14)\r\n",
               "status": "failed"
             },
@@ -509,7 +509,7 @@
         "steps": [
           {
             "result": {
-              "duration": 1653351500,
+              "duration": 1781361900,
               "status": "passed"
             },
             "line": 12,
@@ -521,7 +521,7 @@
           },
           {
             "result": {
-              "duration": 3775730400,
+              "duration": 2022547000,
               "status": "passed"
             },
             "line": 13,
@@ -542,7 +542,7 @@
           },
           {
             "result": {
-              "duration": 37019700,
+              "duration": 16333200,
               "status": "passed"
             },
             "line": 14,
@@ -554,7 +554,7 @@
           },
           {
             "result": {
-              "duration": 345112900,
+              "duration": 61021100,
               "status": "passed"
             },
             "line": 15,
@@ -572,8 +572,9 @@
           },
           {
             "result": {
-              "duration": 84184600,
-              "status": "passed"
+              "duration": 26956400,
+              "error_message": "java.lang.AssertionError: expected [true] but found [false]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertTrue(Assert.java:42)\r\n\tat org.testng.Assert.assertTrue(Assert.java:52)\r\n\tat steps.CheckDummyTableStepDefinitions.the_text_in_Route_column_equals_to_Route_column_text_in_main_table(CheckDummyTableStepDefinitions.java:118)\r\n\tat ✽.And the text in Route column equals to Route column text in main table(checkDummyTable.feature:16)\r\n",
+              "status": "failed"
             },
             "line": 16,
             "name": "the text in Route column equals to Route column text in main table",
@@ -584,9 +585,7 @@
           },
           {
             "result": {
-              "duration": 88181500,
-              "error_message": "java.lang.AssertionError: expected [DELETE] but found [GET]\r\n\tat org.testng.Assert.fail(Assert.java:94)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:513)\r\n\tat org.testng.Assert.assertEqualsImpl(Assert.java:135)\r\n\tat org.testng.Assert.assertEquals(Assert.java:116)\r\n\tat org.testng.Assert.assertEquals(Assert.java:190)\r\n\tat org.testng.Assert.assertEquals(Assert.java:200)\r\n\tat steps.CheckDummyTableStepDefinitions.the_text_in_Method_column_equals_to_Method_column_text_in_main_table(CheckDummyTableStepDefinitions.java:123)\r\n\tat ✽.And the text in Method column equals to Method column text in main table(checkDummyTable.feature:17)\r\n",
-              "status": "failed"
+              "status": "skipped"
             },
             "line": 17,
             "name": "the text in Method column equals to Method column text in main table",
