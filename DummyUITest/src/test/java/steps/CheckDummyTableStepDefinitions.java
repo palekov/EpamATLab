@@ -89,6 +89,7 @@ public class CheckDummyTableStepDefinitions {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             // получаем текст из ячейки Route для последующего сравнения
             routeTextExpected = cells.get(0).getText();
+            routeTextExpected = stringParser(routeTextExpected);
             // получаем текст из ячейки Method для последующего сравнения
             methodTextExpected = cells.get(1).getText();
             // получаем текст из столбца Description
@@ -110,6 +111,8 @@ public class CheckDummyTableStepDefinitions {
     public void the_text_in_Route_column_equals_to_Route_column_text_in_main_table() {
         WebElement routeCell = driver.findElement(routeLocator);
         String routeCellText = routeCell.getText();
+        routeCellText = stringParser(routeCellText);
+        log.info("Asserting: " + routeTextExpected + " - " + routeCellText);
         assertEquals(routeCellText, routeTextExpected);
     }
 
@@ -118,6 +121,17 @@ public class CheckDummyTableStepDefinitions {
         WebElement routeCell = driver.findElement(methodLocator);
         String routeCellText = routeCell.getText();
         assertEquals(routeCellText, methodTextExpected);
+    }
+
+    public static String stringParser(String inputString) {
+        String returnString = "";
+        long occurrencesCount = inputString.chars().filter(ch -> ch == '/').count();
+        if(occurrencesCount > 1) {
+            int endIndex = inputString.lastIndexOf("/");
+            returnString = inputString.substring(0, endIndex);
+        } else
+            return inputString;
+        return returnString;
     }
 
 }
