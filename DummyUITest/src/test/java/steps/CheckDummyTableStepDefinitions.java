@@ -114,7 +114,15 @@ public class CheckDummyTableStepDefinitions {
         //routeCellText = stringParser(routeCellText);
         log.info("Asserting: " + routeTextExpected + " - " + routeCellText);
         //assertEquals(routeCellText, routeTextExpected);
-        assertTrue(routeCellText.matches(routeTextExpected + "[/?(0-9)*]"));
+        int endIndex = routeCellText.lastIndexOf("/");
+        if (endIndex != 0) {
+            log.info("Asserting using Regex...");
+            assertTrue(routeCellText.matches(routeTextExpected + "[/?(0-9)*]"));
+        }
+        else {
+            log.info("Asserting using Equals...");
+            assertEquals(routeCellText, routeTextExpected);
+        }
     }
 
     @Then("^the text in Method column equals to Method column text in main table$")
