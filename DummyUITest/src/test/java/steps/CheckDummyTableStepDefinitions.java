@@ -83,7 +83,7 @@ public class CheckDummyTableStepDefinitions {
         int rowNumber=0;
         WebElement description = null;
         // итерация по строкам таблицы
-        while( rowNumber < tableRows.size()) {
+        do {
             // получаем список ячеек из строки
             row = tableRows.get(rowNumber);
             List<WebElement> cells = row.findElements(By.tagName("td"));
@@ -95,10 +95,12 @@ public class CheckDummyTableStepDefinitions {
             // получаем текст из столбца Description
             description = cells.get(4);
             // если нашли строку с нужным Description - выходим из цикла
-            if (description.getText().equals(rowDescription))
-                break;
+//            if (description.getText().equals(rowDescription))
+//                break;
             rowNumber++;
         }
+        while (rowNumber < tableRows.size() && !(description.getText().equals(rowDescription)));
+
         log.info("Checking link - " + description.getText());
         // находим все элементы - ссылки
         waitForElementPresent(detailsLink);
@@ -111,18 +113,12 @@ public class CheckDummyTableStepDefinitions {
     public void the_text_in_Route_column_equals_to_Route_column_text_in_main_table() {
         WebElement routeCell = driver.findElement(routeLocator);
         String routeCellText = routeCell.getText();
-        //routeCellText = stringParser(routeCellText);
         log.info("Asserting: " + routeTextExpected + " - " + routeCellText);
-        //assertEquals(routeCellText, routeTextExpected);
         int endIndex = routeCellText.lastIndexOf("/");
-        if (endIndex != 0) {
-            log.info("Asserting using Regex...");
-            assertTrue(routeCellText.matches(routeTextExpected + "[/?(0-9)*]"));
-        }
-        else {
-            log.info("Asserting using Equals...");
-            assertEquals(routeCellText, routeTextExpected);
-        }
+        if (endIndex != 0)
+            assertTrue(routeCellText.matches(routeTextExpected + "[/?(0-9)*]"),"Asserting using Regex...");
+        else
+            assertEquals(routeCellText, routeTextExpected,"Asserting using Equals...");
     }
 
     @Then("^the text in Method column equals to Method column text in main table$")
