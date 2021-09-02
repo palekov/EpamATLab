@@ -74,7 +74,6 @@ public class OnlinerTest {
         modelStartPrice.sendKeys("2500");
         WebElement modelEndPrice = driver.findElement(By.xpath("//input[@placeholder='до']"));
         modelEndPrice.sendKeys("15000",Keys.ENTER);
-      //  modelEndPrice.sendKeys(Keys.ENTER);
         threadSleep(5000);
     }
 
