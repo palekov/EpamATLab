@@ -4,7 +4,6 @@ import model.User;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 import pages.*;
-import service.UserCreator;
 
 import static org.testng.Assert.*;
 

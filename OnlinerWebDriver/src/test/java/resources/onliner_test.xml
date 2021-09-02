@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Test suite" verbose="1">
+
+    <test name="OnlinerShopingTest">
+        <classes>
+            <class name="OnlinerTest">
+                <methods>
+                    <include name="loginTest"></include>
+                    <include name="enterToCarMarket"></include>
+                    <include name="selectModel"></include>
+                    <include name="selectPrice"></include>
+                    <include name="checkPriceRange"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
