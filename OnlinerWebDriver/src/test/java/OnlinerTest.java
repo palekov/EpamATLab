@@ -74,10 +74,10 @@ public class OnlinerTest {
     public void enterToCarMarket() {
         System.out.println("Entering to the market...");
         WebElement autoLink = new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a/*[@class='b-main-navigation__text' and text()='РђРІС‚РѕР±Р°СЂР°С…РѕР»РєР°']/parent::a")));
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a/*[@class='b-main-navigation__text' and text()='Автобарахолка']/parent::a")));
         autoLink.click();
         threadSleep(5000);
-        assertTrue(driver.getTitle().contains("РђРІС‚РѕР±Р°СЂР°С…РѕР»РєР°"));
+        assertTrue(driver.getTitle().contains("Автобарахолка"));
     }
 
     @Test
@@ -85,9 +85,9 @@ public class OnlinerTest {
         System.out.println("Selecting model...");
         driver.manage().window().fullscreen();
         WebElement modelSelector = new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div/*[@class='input-style__faux' and text()='РњР°СЂРєР°']/parent::div")));
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div/*[@class='input-style__faux' and text()='Марка']/parent::div")));
         modelSelector.click();
-        WebElement modelInput = driver.findElement(By.xpath("//div/input[@placeholder='РќР°Р№С‚Рё РјР°СЂРєСѓ']"));
+        WebElement modelInput = driver.findElement(By.xpath("//div/input[@placeholder='Найти марку']"));
         modelInput.sendKeys(carModel);
         WebElement modelKey = driver.findElement(By.xpath("//div[@class='dropdown-style__checkbox-sign' and text()='" + carModel + "']"));
         modelKey.click();
@@ -96,9 +96,9 @@ public class OnlinerTest {
     @Test
     public void selectPrice() {
         System.out.println("Slecting price...");
-        WebElement modelStartPrice = driver.findElement(By.xpath("//input[@placeholder='РѕС‚']"));
+        WebElement modelStartPrice = driver.findElement(By.xpath("//input[@placeholder='от']"));
         modelStartPrice.sendKeys(startPrice);
-        WebElement modelEndPrice = driver.findElement(By.xpath("//input[@placeholder='РґРѕ']"));
+        WebElement modelEndPrice = driver.findElement(By.xpath("//input[@placeholder='до']"));
         modelEndPrice.sendKeys(endPrice,Keys.ENTER);
         threadSleep(5000);
     }
@@ -106,7 +106,7 @@ public class OnlinerTest {
     @Test
     public void checkPriceRange() {
         System.out.println("Searching prices...");
-        List<WebElement> allCarPriceDatas = driver.findElements(By.xpath("//div/*[contains(text(),'СЂ.')]"));
+        List<WebElement> allCarPriceDatas = driver.findElements(By.xpath("//div/*[contains(text(),'р.')]"));
         String costString;
         Integer costNumber, startCost, endCost;
         startCost = Integer.parseInt(startPrice.replaceAll("\\D+",""));
