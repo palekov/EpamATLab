@@ -33,6 +33,7 @@
 
     <properties>
         <project.build.sourceEncoding>windows-1251</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>windows-1251</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
