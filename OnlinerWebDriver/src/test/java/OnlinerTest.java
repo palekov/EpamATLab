@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -17,11 +19,35 @@ import static org.testng.Assert.*;
 public class OnlinerTest {
 
     private WebDriver driver;
+    private String browserType, carModel, startPrice, endPrice;
 
     @BeforeClass
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        browserType = System.getProperty("browser");
+        if (browserType == null)
+            browserType = "chrome";
+        carModel = System.getProperty("carmodel");
+        if (carModel == null)
+            carModel = "BMW";
+        startPrice = System.getProperty("startprice");
+        if (startPrice == null)
+            startPrice = "0";
+        endPrice = System.getProperty("endprice");
+        if (endPrice == null)
+            endPrice = "100000";
+        switch (browserType) {
+            case "chrome":
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+                break;
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+                break;
+            default:
+                WebDriverManager.operadriver().setup();
+                driver = new OperaDriver();
+        }
     }
 
     @AfterClass
@@ -62,8 +88,8 @@ public class OnlinerTest {
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div/*[@class='input-style__faux' and text()='Марка']/parent::div")));
         modelSelector.click();
         WebElement modelInput = driver.findElement(By.xpath("//div/input[@placeholder='Найти марку']"));
-        modelInput.sendKeys("BMW");
-        WebElement modelKey = driver.findElement(By.xpath("//div[@class='dropdown-style__checkbox-sign' and text()='BMW']"));
+        modelInput.sendKeys(carModel);
+        WebElement modelKey = driver.findElement(By.xpath("//div[@class='dropdown-style__checkbox-sign' and text()='" + carModel + "']"));
         modelKey.click();
     }
 
@@ -71,9 +97,9 @@ public class OnlinerTest {
     public void selectPrice() {
         System.out.println("Slecting price...");
         WebElement modelStartPrice = driver.findElement(By.xpath("//input[@placeholder='от']"));
-        modelStartPrice.sendKeys("2500");
+        modelStartPrice.sendKeys(startPrice);
         WebElement modelEndPrice = driver.findElement(By.xpath("//input[@placeholder='до']"));
-        modelEndPrice.sendKeys("15000",Keys.ENTER);
+        modelEndPrice.sendKeys(endPrice,Keys.ENTER);
         threadSleep(5000);
     }
 
@@ -82,11 +108,13 @@ public class OnlinerTest {
         System.out.println("Searching prices...");
         List<WebElement> allCarPriceDatas = driver.findElements(By.xpath("//div/*[contains(text(),'р.')]"));
         String costString;
-        Integer costNumber;
+        Integer costNumber, startCost, endCost;
+        startCost = Integer.parseInt(startPrice.replaceAll("\\D+",""));
+        endCost = Integer.parseInt(endPrice.replaceAll("\\D+",""));
         for (int i=0; i<allCarPriceDatas.size();i++){
             costString = allCarPriceDatas.get(i).getText().replaceAll("\\D+","");
             costNumber = Integer.parseInt(costString);
-            assertTrue(costNumber >= 2500 && costNumber <= 15000);
+            assertTrue(costNumber >= startCost && costNumber <= endCost);
         }
     }
 
