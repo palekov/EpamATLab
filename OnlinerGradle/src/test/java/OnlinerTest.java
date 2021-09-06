@@ -88,7 +88,7 @@ public class OnlinerTest {
         System.out.println("Selecting model...");
         driver.manage().window().fullscreen();
         WebElement modelSelector = new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.presenceOfElementLocated
+                .until(ExpectedConditions.elementToBeClickable
                         (By.xpath("//div/*[@class='input-style__faux' and text()='Марка']/parent::div")));
         modelSelector.click();
         WebElement modelInput = new WebDriverWait(driver, 10)
