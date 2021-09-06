@@ -88,10 +88,12 @@ public class OnlinerTest {
         System.out.println("Selecting model...");
         driver.manage().window().fullscreen();
         WebElement modelSelector = new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.presenceOfElementLocated(
-                        By.xpath("//div/*[@class='input-style__faux' and text()='Марка']/parent::div")));
+                .until(ExpectedConditions.presenceOfElementLocated
+                        (By.xpath("//div/*[@class='input-style__faux' and text()='Марка']/parent::div")));
         modelSelector.click();
-        WebElement modelInput = driver.findElement(By.xpath("//div/input[@placeholder='Найти марку']"));
+        WebElement modelInput = new WebDriverWait(driver, 10)
+                .until(ExpectedConditions.presenceOfElementLocated
+                        (By.xpath("//div/input[@placeholder='Найти марку']")));
         modelInput.sendKeys(carModel);
         WebElement modelKey = driver.findElement(By.xpath("//div[@class='dropdown-style__checkbox-sign' and text()='" + carModel + "']"));
         modelKey.click();
