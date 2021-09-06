@@ -75,8 +75,8 @@ public class OnlinerTest {
         System.out.println("Entering to the market...");
         WebElement autoLink = new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.presenceOfElementLocated
-                        (By.xpath("//a/*[@class='b-main-navigation__text' and text()='Автобарахолка']/parent::a")));
-        //(By.xpath("//div//a[@class='b-main-navigation__link' and @href='https://ab.onliner.by']")));
+//                        (By.xpath("//a/*[@class='b-main-navigation__text' and text()='Автобарахолка']/parent::a")));
+        (By.xpath("//div//a[@class='b-main-navigation__link' and @href='https://ab.onliner.by']")));
         autoLink.click();
         threadSleep(5000);
         assertTrue(driver.getTitle().contains("Автобарахолка"));
