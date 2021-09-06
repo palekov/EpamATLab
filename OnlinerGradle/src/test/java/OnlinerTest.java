@@ -73,6 +73,7 @@ public class OnlinerTest {
     @Test
     public void enterToCarMarket() {
         System.out.println("Entering to the market...");
+        driver.manage().window().fullscreen();
         WebElement autoLink = new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.presenceOfElementLocated
 //                        (By.xpath("//a/*[@class='b-main-navigation__text' and text()='Автобарахолка']/parent::a")));

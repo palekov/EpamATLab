@@ -27,7 +27,10 @@ test {
     useTestNG() {
         options.suites("src/test/resources/onliner_test.xml")
         useDefaultListeners = true
+        testLogging.showStandardStreams = true
+        reports.html.enabled = false
     }
+
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }
