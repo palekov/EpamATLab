@@ -2,36 +2,36 @@
 <testng-results skipped="0" failed="0" ignored="0" total="5" passed="5">
   <reporter-output>
   </reporter-output>
-  <suite name="Test suite" duration-ms="27899" started-at="2021-09-06T11:25:07Z" finished-at="2021-09-06T11:25:35Z">
+  <suite name="Test suite" duration-ms="28588" started-at="2021-09-06T12:49:41Z" finished-at="2021-09-06T12:50:10Z">
     <groups>
     </groups>
-    <test name="OnlinerShopingTest" duration-ms="27899" started-at="2021-09-06T11:25:07Z" finished-at="2021-09-06T11:25:35Z">
+    <test name="OnlinerShopingTest" duration-ms="28588" started-at="2021-09-06T12:49:41Z" finished-at="2021-09-06T12:50:10Z">
       <class name="OnlinerTest">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:OnlinerTest@1522b70]" name="setUp" is-config="true" duration-ms="1670" started-at="2021-09-06T11:25:07Z" finished-at="2021-09-06T11:25:09Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:OnlinerTest@355a28cb]" name="setUp" is-config="true" duration-ms="2495" started-at="2021-09-06T12:49:41Z" finished-at="2021-09-06T12:49:44Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="loginTest()[pri:0, instance:OnlinerTest@1522b70]" name="loginTest" duration-ms="6478" started-at="2021-09-06T11:25:09Z" finished-at="2021-09-06T11:25:15Z">
+        <test-method status="PASS" signature="loginTest()[pri:0, instance:OnlinerTest@355a28cb]" name="loginTest" duration-ms="7000" started-at="2021-09-06T12:49:44Z" finished-at="2021-09-06T12:49:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginTest -->
-        <test-method status="PASS" signature="enterToCarMarket()[pri:0, instance:OnlinerTest@1522b70]" name="enterToCarMarket" duration-ms="9984" started-at="2021-09-06T11:25:15Z" finished-at="2021-09-06T11:25:25Z">
+        <test-method status="PASS" signature="enterToCarMarket()[pri:0, instance:OnlinerTest@355a28cb]" name="enterToCarMarket" duration-ms="9936" started-at="2021-09-06T12:49:51Z" finished-at="2021-09-06T12:50:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- enterToCarMarket -->
-        <test-method status="PASS" signature="selectModel()[pri:0, instance:OnlinerTest@1522b70]" name="selectModel" duration-ms="1394" started-at="2021-09-06T11:25:25Z" finished-at="2021-09-06T11:25:27Z">
+        <test-method status="PASS" signature="selectModel()[pri:0, instance:OnlinerTest@355a28cb]" name="selectModel" duration-ms="1204" started-at="2021-09-06T12:50:01Z" finished-at="2021-09-06T12:50:02Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- selectModel -->
-        <test-method status="PASS" signature="selectPrice()[pri:0, instance:OnlinerTest@1522b70]" name="selectPrice" duration-ms="6866" started-at="2021-09-06T11:25:27Z" finished-at="2021-09-06T11:25:34Z">
+        <test-method status="PASS" signature="selectPrice()[pri:0, instance:OnlinerTest@355a28cb]" name="selectPrice" duration-ms="6477" started-at="2021-09-06T12:50:02Z" finished-at="2021-09-06T12:50:08Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- selectPrice -->
-        <test-method status="PASS" signature="checkPriceRange()[pri:0, instance:OnlinerTest@1522b70]" name="checkPriceRange" duration-ms="651" started-at="2021-09-06T11:25:34Z" finished-at="2021-09-06T11:25:34Z">
+        <test-method status="PASS" signature="checkPriceRange()[pri:0, instance:OnlinerTest@355a28cb]" name="checkPriceRange" duration-ms="619" started-at="2021-09-06T12:50:08Z" finished-at="2021-09-06T12:50:09Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkPriceRange -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:OnlinerTest@1522b70]" name="tearDown" is-config="true" duration-ms="840" started-at="2021-09-06T11:25:34Z" finished-at="2021-09-06T11:25:35Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:OnlinerTest@355a28cb]" name="tearDown" is-config="true" duration-ms="824" started-at="2021-09-06T12:50:09Z" finished-at="2021-09-06T12:50:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
